@@ -1,0 +1,29 @@
+/** @TODO: make this all configurable instead of using those two classes */
+.ui-contextpopup-shortqueryhover .freeInfoBox,
+.ui-contextpopup-shortqueryhover .NavFrame {
+	margin: 0;
+	border: none;
+	min-width: 300px;
+}
+
+.ui-contextpopup-shortqueryhover .ui-contextpopup-titlepopup-title {
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.ui-contextpopup .semex-invalid-shortquery-format {
+	color: red;
+}
+
+.ui-contextpopup-shortqueryhover .ui-contextpopup-titlepopup-content {
+	font-size: 0.82em;
+	font-family: verdana, sans-serif;
+}
+
+.semex-shortqueryinfo-loading,
+.semex-shortqueryinfo-loading-failed {
+	font-style: italic;
+}
+.semex-shortqueryinfo-loading-failed {
+	color: red;	
+}

@@ -1,0 +1,46 @@
+== About ==
+
+~~ THIS IS NOT A FINAL RELEASE YET, ITS CONSIDERED AN ALPHA VERSION BY NOW ~~
+
+The 'Semantic Expressiveness' extension is an enhancement for 'Semantic MediaWiki'.
+Its main feature is to introduce a new syntax for inline short queries. The purpose
+of this simplest form of inline query is to fight redundancies within the wiki.
+Without 'Semantic Expressivenss' it is customary to declare properties in one place
+but using the same information again all over the same article or on other pages.
+With 'Semantic Expressiveness' it is possible to use simple references in form of a
+new syntax to place the same information in various places without writing redundant
+information. This way if the property changes, the information will update itself
+all over the wiki wherever the new syntax is in place.
+There are also further features like parser functions for template developers and a
+JavaScript context popup using AJAX to display further information on cross-article
+inline queries.
+
+* Website: https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
+* License: GPL v3
+* Author:  Daniel Werner < danweetz@web.de >
+
+
+== Installation ==
+
+Once you have downloaded the code, place the 'SemanticExpressiveness' directory within
+your MediaWiki 'extensions' directory. Then add the following code to your
+[[Manual:LocalSettings.php|LocalSettings.php]] file:
+
+ # Semantic Expressiveness
+ require_once( "$IP/extensions/SemanticExpressiveness/SemanticExpressiveness.php" );
+ 
+This extension requires Jeroen De Dauws 'Validator' extension (version 0.4.14 or
+above). It must be included before the 'Semantic Expressiveness' extension.
+You can get it at: http://www.mediawiki.org/wiki/Extension:Validator
+
+Furthermore, PHP 5.3+ is required and currently it is necessary to apply a patch for
+MediaWiki bug #34678 manually:
+https://bugzilla.wikimedia.org/attachment.cgi?id=10095&action=diff
+
+
+== Contributing ==
+
+If you have bug reports or feature requests, please add them to the 'Semantic Expressiveness'
+Talk page [0]. You can also send them to Daniel Werner < danweetz@web.de >
+
+[0] https://www.mediawiki.org/w/index.php?title=Extension_talk:Semantic_Expressiveness

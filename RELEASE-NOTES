@@ -1,0 +1,15 @@
+ 'Semantic Expressiveness' Changelog:
+ =====================================
+ 
+ * Version 0.1 alpha
+   ~~ THIS IS NOT A FINAL RELEASE YET ~~
+   
+   - Syntax for so called inline short queries, basically "<?property::page>" with a few advanced
+     syntactical features like nested "<?A::<?B::page>>" or "<?A::B::page>". This syntax is getting
+	 parsed after template execution and fully respects nowiki, noincude, comments, pre and others.
+   - Parser function version of the new syntax called "?" with advanced parameters.
+   - Extensive JavaScript allowing to display information from a short queries source page like the
+     pages fact box or any other content. Might need some configuration for custom wiki adjustment.
+   - "?to?!" (might be renamed later) parser function allowing to parse the short query syntax early
+     to give template programmers full control.
+   - "SemExExpressiveString" class, extendable parser for the new syntax, also recognizes wikilinks.

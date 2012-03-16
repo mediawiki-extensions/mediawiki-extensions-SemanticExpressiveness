@@ -1,0 +1,29 @@
+.shortQuery .result {
+	border-bottom: 1px dotted grey;
+}
+.shortQuery > .source,
+.shortQuery > .type,
+.shortQuery > .value {
+	display: none;
+}
+
+.abstractShortQueryValue {
+	font-style: italic!important;
+	background-color: rgba( 235, 90, 90, 0.1 );
+	border: 1px solid rgba( 235, 90, 90, 0.1 );
+}
+.abstractShortQueryValue * {
+	font-style: normal;
+}
+.abstractShortQueryValue .result {	
+	background-color: #edf9d8;
+	border-top: 1px solid #dff0bf;
+	padding: 0 2px;
+	margin-left: -2px;
+}
+
+.abstractShortQuery .property a:not( :hover ):not( .new ) {
+	/* don't show link color if property exists, but show it on :hover */
+	color: inherit;
+	text-decoration: underline;
+}

@@ -1,0 +1,75 @@
+
+#ui-contextpopup-store { position: absolute; top: 0; left: 0; margin: 0; padding: 0; }
+
+/* The actual visible popup */
+.ui-contextpopup {
+	position: absolute;
+	z-index: 999;
+	padding: 0;
+}
+
+.ui-contextpopup-subject {
+}
+
+.ui-contextpopup-subject-active {
+	background-color: #f2f2f2;
+}
+
+.ui-contextpopup-ontop {
+	padding-bottom: 10px;
+}
+
+.ui-contextpopup-onbottom {
+	padding-top: 10px;
+}
+
+.ui-contextpopup-box {
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
+	-khtml-box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
+	
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-khtml-border-radius: 2px;
+	
+	background-color: white;
+	border: 1px #545454 solid;
+	padding: 4px;
+	height: auto;
+	width: auto;
+	min-width: 28px;
+	min-height: 4px;
+	z-index: auto;
+}
+
+.ui-contextpopup-pointer {
+	position:absolute;
+	height: 10px;
+	width: 20px;
+}
+
+.ui-contextpopup-pointer {
+	font-size:0px; /* for IE6 */
+	margin: 0;
+	padding: 0;
+}
+.ui-contextpopup-onbottom .ui-contextpopup-pointer {
+	background-image: url('./images/pointer-up.png');	
+	top: 1px;
+}
+.ui-contextpopup-ontop .ui-contextpopup-pointer {
+	background-image: url('./images/pointer-down.png');
+	bottom: 1px;
+}
+.ui-contextpopup-fromright .ui-contextpopup-pointer {
+	left: 7px;
+}
+.ui-contextpopup-fromleft .ui-contextpopup-pointer {
+	right: 7px;
+}
+
+.ui-contextpopup .ui-contextpopup-box * {
+	float: none;
+}
