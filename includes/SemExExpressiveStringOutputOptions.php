@@ -44,12 +44,12 @@ class SemExExpressiveStringOutputOptions extends SemExPFParamsBasedFactory {
 	
 	
 	/**
-	 * The output will be in its abstract representation if a failure occurred.
+	 * The output will be in its abstract representation if a failure occured.
 	 */
 	const ABSTRACT_IF_FAILURE = true;
 	
 	/**
-	 * The output will never have an abstract representation, even if a failure has occurred. Normally
+	 * The output will never have an abstract representation, even if a failure has occured. Normally
 	 * an empty string will be returned instead.
 	 */
 	const NO_ABSTRACT = false;
