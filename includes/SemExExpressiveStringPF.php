@@ -43,7 +43,7 @@ class SemExExpressiveStringPF extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		$params = array();
+		$params = SemExExpressiveStringOutputOptions::getPFParams();
 		
 		# input text.
 		# since 0.1
@@ -55,13 +55,11 @@ class SemExExpressiveStringPF extends ParserHook {
 		
 		$params['detect'] = new ListParameter( 'detect' );
 		$params['detect']->addCriteria( $pieceTypesCriteria );
-		$params['detect']->setDefault( false, false );
+		$params['detect']->setDefault( array( '' ), false );
 		
 		$params['ignore'] = new ListParameter( 'ignore' );
 		$params['ignore']->addCriteria( $pieceTypesCriteria );
 		$params['ignore']->setDefault( array(), false );
-				
-		$params = array_merge( $params, SemExExpressiveStringOutputOptions::getPFParams() );
 		
 		return $params;
 	}
@@ -102,7 +100,7 @@ class SemExExpressiveStringPF extends ParserHook {
 		// get all types that should be handled by this
 		$enabledTypes = array();
 		
-		if( $parameters['detect'] !== false ) {
+		if( implode( '', $parameters['detect'] ) !== '' ) { // '' counts as if parameter not set
 			foreach( $parameters['detect'] as $typeName ) {
 				$type = SemExExpressiveString::getRegisteredPieceTypeByName( $typeName );
 				if( $type !== null ) {
@@ -115,11 +113,13 @@ class SemExExpressiveStringPF extends ParserHook {
 			$enabledTypes = SemExExpressiveString::getRegisteredPieceTypeNames();
 		}
 		
-		$enabledTypes = array_flip( $enabledTypes );
-		foreach( $parameters['ignore'] as $typeName ) {
-			unset( $enabledTypes[ SemExExpressiveString::getRegisteredPieceTypeByName( $typeName ) ] );
+		if( $enabledTypes !== null ) {
+			$enabledTypes = array_flip( $enabledTypes );
+			foreach( $parameters['ignore'] as $typeName ) {
+				unset( $enabledTypes[ SemExExpressiveString::getRegisteredPieceTypeByName( $typeName ) ] );
+			}
+			$enabledTypes = array_flip( $enabledTypes );
 		}
-		$enabledTypes = array_flip( $enabledTypes );
 		
 		// build expressive string from input with enabled types:
 		$exprString = new SemExExpressiveString( $parameters['text'], $this->parser, $enabledTypes );
