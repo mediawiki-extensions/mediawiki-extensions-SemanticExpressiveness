@@ -50,7 +50,6 @@ $wgAutoloadClasses['SemExExpressiveStringPieceSQ'      ] = $incDir . 'SemExExpre
 $wgAutoloadClasses['SemExExpressiveStringPieceSQResult'] = $incDir . 'SemExExpressiveStringPieceSQResult.php';
 $wgAutoloadClasses['SemExExpressiveStringPieceWikiLink'] = $incDir . 'SemExExpressiveStringPieceWikiLink.php';
 $wgAutoloadClasses['SemExExpressiveStringOutputOptions'] = $incDir . 'SemExExpressiveStringOutputOptions.php';
-$wgAutoloadClasses['SemExQueryPF'                      ] = $incDir . 'SemExQueryPF.php';
 $wgAutoloadClasses['SemExShortQuery'                   ] = $incDir . 'SemExShortQuery.php';
 $wgAutoloadClasses['SemExShortQueryProcessor'          ] = $incDir . 'SemExShortQueryProcessor.php';
 $wgAutoloadClasses['SemExShortQueryResult'             ] = $incDir . 'SemExShortQueryResult.php';
@@ -65,8 +64,9 @@ $wgAutoloadClasses['SemExParamManipulationProperty'   ] = $incDir . 'validation/
 $wgAutoloadClasses['SemExParamManipulationQuerySource'] = $incDir . 'validation/SemExParamManipulationQuerySource.php';
 
 // Parser function initializations:
-$wgAutoloadClasses['SemExQueryPF'            ] = $incDir . 'SemExQueryPF.php';
-$wgAutoloadClasses['SemExExpressiveStringPF' ] = $incDir . 'SemExExpressiveStringPF.php';
+$wgAutoloadClasses['SemExQueryPF'           ] = $incDir . 'parserhooks/SemExQueryPF.php';
+$wgAutoloadClasses['SemExPlainQueryPF'      ] = $incDir . 'parserhooks/SemExPlainQueryPF.php';
+$wgAutoloadClasses['SemExExpressiveStringPF'] = $incDir . 'parserhooks/SemExExpressiveStringPF.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'SemExExpressiveStringPF::staticInit';
 
@@ -85,8 +85,8 @@ class ExtSemEx {
 	
 	static function init( &$parser ) {
 		$parser->setFunctionHook( '?',  array( 'SemExQueryPF', 'render' ), SFH_NO_HASH );
-		//$parser->setFunctionHook( '?!', array( 'SemExPlainQueryPF', 'render' ),  SFH_NO_HASH );
-		$parser->setFunctionHook( '?to?!', __CLASS__ . '::parserFunc_QueryToPlainQuery', SFH_NO_HASH );
+		$parser->setFunctionHook( '?!', array( 'SemExPlainQueryPF', 'render' ), SFH_NO_HASH );
+		//$parser->setFunctionHook( '?to?!', array( __CLASS__, 'parserFunc_QueryToPlainQuery' ), SFH_NO_HASH );
 		return true;
 	}
 	

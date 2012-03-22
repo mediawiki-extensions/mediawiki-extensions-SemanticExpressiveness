@@ -10,7 +10,6 @@
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-
 class SemExQueryPF {
 	
 	public static function render( Parser &$parser ) {
