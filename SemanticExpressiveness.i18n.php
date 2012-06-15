@@ -12,7 +12,7 @@ $messages = array();
  * @author Daniel Werner
  */
 $messages['en'] = array(
-	'semex-desc' => 'Adds a syntax for more expressive short queries.',
+	'semex-desc' => 'Adds a syntax for more expressive short queries',
 	'semex-shortquery-title' => '$1 from $2',
 	'semex-shortquery-title-from-ref' => '$1 from ref $2',
 	'semex-shortquery-hover-loading' => 'Loading',
