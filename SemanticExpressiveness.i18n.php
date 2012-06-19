@@ -27,10 +27,15 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Daniel Werner
  * @author Kghbln
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'semex-shortquery-title' => '<$1: semantic property name> from <$2: page the query got the property value from>',
-	'semex-shortquery-title-from-ref' => '<$1: semantic property name> from reference <$2: another semantic property name of the same page>',
+	'semex-shortquery-title' => 'Parameters:
+* $1: semantic property name
+* $2: page the query got the property value from',
+	'semex-shortquery-title-from-ref' => 'Parameters:
+* $1: semantic property name
+* $2: another semantic property name of the same page',
 	'semex-shortquery-error-missing-property' => '{{identical|Property}}',
 	'semex-shortquery-error-byref-has-many-values' => '{{Identical|Property}}',
 	'semex-shortquery-error-byref-has-wrong-type' => '{{Identical|Property}}
@@ -70,7 +75,7 @@ $messages['fr'] = array(
 	'semex-expressivestring-unresolvable' => 'Balisage insoluble',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -102,6 +107,14 @@ $messages['it'] = array(
 	'semex-expressivestring-unresolvable' => 'Markup non risolvibile',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'semex-shortquery-title' => '$1 vun $2',
+	'semex-shortquery-hover-loading' => 'Lueden',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
@@ -116,6 +129,22 @@ $messages['mk'] = array(
 	'semex-shortquery-error-byref-has-wrong-type' => 'Даденото својство на наводот треба да биде од типот „Страница“.',
 	'semex-shortquery-error-failed-nested-queries' => 'Краткото барање не може да се изврши бидејќи не работи вметнатото кратко барање,',
 	'semex-expressivestring-unresolvable' => 'Синтаксата на ознаките не може да се обработи.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'semex-desc' => 'Voegt syntaxis toe voor meer expressieve korte zoekopdrachten',
+	'semex-shortquery-title' => '$1 van $2',
+	'semex-shortquery-title-from-ref' => '$1 van referentie $2',
+	'semex-shortquery-hover-loading' => 'Bezig met laden...',
+	'semex-shortquery-hover-loading-failed' => "Het laden van de inhoud van de doelpagina's voor de korte zoekopdrachten is mislukt.",
+	'semex-shortquery-error-missing-property' => 'Er is geen waarde ingesteld voor de opgevraagde eigenschap.',
+	'semex-shortquery-error-byref-has-many-values' => 'De opgegeven referentie-eigenschap heeft meer dan één waarde. Alleen de eerst is genomen als het doel voor de zoekopdracht.',
+	'semex-shortquery-error-byref-has-wrong-type' => 'De opgegeven referentie-eigenschap hoort van het type "Page" te zijn.',
+	'semex-shortquery-error-failed-nested-queries' => 'Korte zoekopdracht kan niet uitgevoerd worden omdat de geneste korte zoekopdracht is mislukt.',
+	'semex-expressivestring-unresolvable' => 'De opmaak wordt niet begrepen',
 );
 
 /** Tagalog (Tagalog)
