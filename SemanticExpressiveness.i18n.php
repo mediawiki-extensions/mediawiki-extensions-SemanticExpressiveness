@@ -91,6 +91,13 @@ $messages['gl'] = array(
 	'semex-expressivestring-unresolvable' => 'Formato irresoluble',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'semex-shortquery-title' => '$1 z $2',
+);
+
 /** Italian (italiano)
  * @author Beta16
  */
