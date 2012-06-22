@@ -95,7 +95,11 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'semex-desc' => 'Přidawa syntaksu za bóle wuprajiwe krótke naprašowanja',
 	'semex-shortquery-title' => '$1 z $2',
+	'semex-shortquery-title-from-ref' => '$1 z referency $2',
+	'semex-shortquery-error-missing-property' => 'Za naprašowanu kajkosć njeje so žana hódnota definowała.',
+	'semex-shortquery-error-byref-has-wrong-type' => 'Data referencna kajkosć měła typ "strona" měć.',
 );
 
 /** Italian (italiano)
