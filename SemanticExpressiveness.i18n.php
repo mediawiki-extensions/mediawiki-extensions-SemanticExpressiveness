@@ -91,7 +91,7 @@ $messages['gl'] = array(
 	'semex-expressivestring-unresolvable' => 'Formato irresoluble',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
