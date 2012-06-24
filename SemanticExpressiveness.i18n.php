@@ -42,6 +42,13 @@ $messages['qqq'] = array(
 {{Identical|Type}}',
 );
 
+/** Breton (brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'semex-shortquery-hover-loading' => 'O kargañ...',
+);
+
 /** German (Deutsch)
  * @author Daniel Werner
  * @author Kghbln
@@ -98,8 +105,23 @@ $messages['hsb'] = array(
 	'semex-desc' => 'Přidawa syntaksu za bóle wuprajiwe krótke naprašowanja',
 	'semex-shortquery-title' => '$1 z $2',
 	'semex-shortquery-title-from-ref' => '$1 z referency $2',
+	'semex-shortquery-hover-loading' => 'Začituje so',
+	'semex-shortquery-hover-loading-failed' => 'Začitowanje wobsaha cilowych stronow krótkich naprašowanjow je so njeporadźiło.',
 	'semex-shortquery-error-missing-property' => 'Za naprašowanu kajkosć njeje so žana hódnota definowała.',
+	'semex-shortquery-error-byref-has-many-values' => 'Podata referencna kajkosć ma wjace hač jednu hódnotu, jenož prěnja je so jako cil naprašowanja wužiła.',
 	'semex-shortquery-error-byref-has-wrong-type' => 'Data referencna kajkosć měła typ "strona" měć.',
+	'semex-shortquery-error-failed-nested-queries' => 'Krótke naprašowanje njeda so wuwjesć, dokelž wobsahowane krótke naprašowanje je so njeporadźiło.',
+	'semex-expressivestring-unresolvable' => 'Njerozwjazujomna syntaksa',
+);
+
+/** Interlingua (interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'semex-desc' => 'Adde un syntaxe pro curte consultas plus expressive',
+	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title-from-ref' => '$1 ab ref $2',
+	'semex-shortquery-hover-loading' => 'Cargamento...',
 );
 
 /** Italian (italiano)
