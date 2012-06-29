@@ -66,6 +66,18 @@ $messages['de'] = array(
 	'semex-expressivestring-unresolvable' => 'Die Abfragesyntax konnte nicht verarbeitet werden.',
 );
 
+/** Spanish (español)
+ * @author Mr.Ajedrez
+ */
+$messages['es'] = array(
+	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-hover-loading' => 'Cargando',
+	'semex-shortquery-error-missing-property' => 'No se ha definido un valor para la propiedad requerida.',
+	'semex-shortquery-error-byref-has-many-values' => 'La propiedad de referencia dada tiene más de un valor, solo se tomó el primero como objetivo de las consultas.',
+	'semex-shortquery-error-byref-has-wrong-type' => 'La propiedad de referencia dada debería ser una del tipo "Página".',
+	'semex-expressivestring-unresolvable' => 'Marcado irresoluble',
+);
+
 /** French (français)
  * @author DavidL
  */
