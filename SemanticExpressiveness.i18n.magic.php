@@ -33,3 +33,8 @@ $magicWords['as'] = array(
 $magicWords['mk'] = array(
 	'?to?!' => array( 0, '?до?!' ),
 );
+
+/** Dutch (Nederlands) */
+$magicWords['nl'] = array(
+	'?to?!' => array( 0, '?naar?!' ),
+);
