@@ -131,6 +131,21 @@ $messages['hsb'] = array(
 	'semex-expressivestring-unresolvable' => 'Njerozwjazujomna syntaksa',
 );
 
+/** Hungarian (magyar)
+ * @author TK-999
+ */
+$messages['hu'] = array(
+	'semex-desc' => 'Szintaxist hoz létre a rövid lekérdezések kifejezőbbé tevéséhez',
+	'semex-shortquery-title' => '$1 a(z) $2 lapról',
+	'semex-shortquery-hover-loading' => 'Betöltés',
+	'semex-shortquery-hover-loading-failed' => 'A rövid lekérdezés céloldalai tartalmának betöltése nem sikerült.',
+	'semex-shortquery-error-missing-property' => 'A lekérdezett tulajdonsághoz nincs megadva érték.',
+	'semex-shortquery-error-byref-has-many-values' => 'Az adott tulajdonságnak egynél több értéke van, csak az elsőt tekintem a lekérdezés céljának.',
+	'semex-shortquery-error-byref-has-wrong-type' => 'Az adott tulajdonságnak "Lap" typusúnak kell lennie.',
+	'semex-shortquery-error-failed-nested-queries' => 'A rövid lekérdezés nem hajtható végre, mert az egymásba ágyazott rövid lekérdezéseket nem sikerült végrehajtani.',
+	'semex-expressivestring-unresolvable' => 'Feloldhatatlan kód',
+);
+
 /** Interlingua (interlingua)
  * @author McDutchie
  */
