@@ -218,6 +218,13 @@ $messages['nl'] = array(
 	'semex-expressivestring-unresolvable' => 'De opmaak wordt niet begrepen',
 );
 
+/** Portuguese (português)
+ * @author SandroHc
+ */
+$messages['pt'] = array(
+	'semex-shortquery-hover-loading' => 'A carregar',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
