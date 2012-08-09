@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * Constructor for short query result representation within JavaScript.
@@ -98,7 +99,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		
 		// query result can have several values which are stored within the title of child elements
 		// of the short queries direct child with class 'value'		
-		values = this._elem.children( '.value' ).children( '*[title]' );
+		var values = this._elem.children( '.value' ).children( '*[title]' );
 		if( values.length < 1 ) {
 			return null;
 		}
@@ -107,7 +108,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		var titles = new Array( values.length );
 		
 		values.each( function( index, elem ) {
-			titles[index] = $( elem ).attr( 'title' )
+			titles[index] = $( elem ).attr( 'title' );
 		} );
 		
 		this._queryRawResult = titles;
@@ -122,7 +123,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 	getResult: function() {
 		var result = this._elem.children( '.result' );
 		if( result.length != 1 ) {
-			return null
+			return null;
 		}
 		return result.contents();
 	},

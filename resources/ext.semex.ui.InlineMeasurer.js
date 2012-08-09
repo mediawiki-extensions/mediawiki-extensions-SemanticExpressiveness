@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * The InlineMeasurer helps to get some information about multi-line inline elements,

@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * Module for 'Semantic Expresiveness' extensions user interface elements.

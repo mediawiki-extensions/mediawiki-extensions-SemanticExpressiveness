@@ -89,7 +89,7 @@ class ExtSemEx {
 		//$parser->setFunctionHook( '?to?!', array( __CLASS__, 'parserFunc_QueryToPlainQuery' ), SFH_NO_HASH );
 		return true;
 	}
-	
+
 	/**
 	 * Returns the extensions base installation directory.
 	 * @return string
@@ -101,28 +101,7 @@ class ExtSemEx {
 		}
 		return $dir;
 	}
-		
-	/**
-	 * Get the RPG-Dev-Tools installation directory path as seen from the web.
-	 * @return string
-	 */
-	public static function getScriptPath() {
-		static $path = null;	
-		if( $path === null ) {
-			global $wgVersion, $wgScriptPath, $wgExtensionAssetsPath;
-			
-			$dir = str_replace( '\\', '/', self::getDir() );
-			$dirName = substr( $dir, strrpos( $dir, '/' ) + 1 );
-			
-			$path = (
-				( version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath )
-					? $wgExtensionAssetsPath
-					: $wgScriptPath . '/extensions'
-			) . "/$dirName";
-		}
-		return $path;
-	}
-	
+
 	/**
 	 * Registers JavaScript and CSS to ResourceLoader.
 	 */
@@ -130,27 +109,27 @@ class ExtSemEx {
 		global $wgResourceModules;
 		
 		$moduleTemplate = array(
-			'localBasePath' => self::getDir(),
-			'remoteBasePath' => self::getScriptPath(),
-			'group' => 'ext.semex'
+			'localBasePath' => self::getDir() . '/resources',
+			'remoteExtPath' => 'SemanticExpressiveness/resources',
 		);
+
 		$wgResourceModules['ext.semex'] = $moduleTemplate + array(
 			'scripts' => array(
-				'resources/ext.semex.js',
-				'resources/ext.semex.ShortQueryResult.js',
-				'resources/ext.semex.ui.js',
-				'resources/ext.semex.ui.InlineMeasurer.js',
-				'resources/ext.semex.ui.ContextPopup.js',
-				'resources/ext.semex.ui.TitledContextPopup.js',
-				'resources/ext.semex.ui.ShortQueryHover.js',
-				'resources/ext.semex.ui.ShortQueryHover.Cache.js',
-				'resources/ext.semex.ui.ShortQueryHover.initialize.js',
+				'ext.semex.js',
+				'ext.semex.ShortQueryResult.js',
+				'ext.semex.ui.js',
+				'ext.semex.ui.InlineMeasurer.js',
+				'ext.semex.ui.ContextPopup.js',
+				'ext.semex.ui.TitledContextPopup.js',
+				'ext.semex.ui.ShortQueryHover.js',
+				'ext.semex.ui.ShortQueryHover.Cache.js',
+				'ext.semex.ui.ShortQueryHover.initialize.js',
 			),
 			'styles' => array(
-				'resources/ext.semex.css',
-				'resources/ext.semex.ui.ContextPopup.css',
-				'resources/ext.semex.ui.TitledContextPopup.css',
-				'resources/ext.semex.ui.ShortQueryHover.css',
+				'ext.semex.css',
+				'ext.semex.ui.ContextPopup.css',
+				'ext.semex.ui.TitledContextPopup.css',
+				'ext.semex.ui.ShortQueryHover.css',
 			),
 			'messages' => array(
 				'semex-shortquery-title',
@@ -159,23 +138,25 @@ class ExtSemEx {
 			),
 		);
 	}
-	
-	public static function onOutputPageParserOutput() {
+
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
+	 */
+	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $parseroutput ) {
 		// load CSS and JavaScript
 		// we can't add this just within SemExShortQueryResult since it's possible to get a
 		// short query result from another page which is stored within a SMW property!
-		global $wgOut;
-		$wgOut->addModules( 'ext.semex' );	
+		$out->addModules( 'ext.semex' );
 		return true;
 	}
-	
+
 	/*
 	 * NOTE: this hook requires the fix for bug #34678, https://bugzilla.wikimedia.org/show_bug.cgi?id=34678
 	 */
 	public static function onInternalParseBeforeSanitize( Parser &$parser, &$text ) {		
 		$exprString = new SemExExpressiveString( $text, $parser, SEMEX_EXPR_PIECE_SQ );
 		$text = $exprString->getWikiText();
-				
+
 		/*
 		 * Sanitize the whole thing, otherwise HTML and JS code injection would be possible.
 		 * Basically the same is happening in Parser::internalParse() right before 'InternalParseBeforeLinks' hook is called.

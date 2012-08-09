@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * Constructor for context popup container which pops up whenever hovering over a defined
@@ -174,10 +175,10 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		var self = this;
 		this._subject.bind(
 			'mouseenter.' + this.POPUP_ID,
-			function() { self._hoverInFunc( self.PARTS.SUBJECT ) }
+			function() { self._hoverInFunc( self.PARTS.SUBJECT ); }
 		).bind(
 			'mouseleave.' + this.POPUP_ID,
-			function() { self._hoverOutFunc() }
+			function() { self._hoverOutFunc(); }
 		);
 	},
 	
@@ -207,7 +208,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	_hoverInFunc: function( part ) {
 		this._touchedPart = part;
 		// abord countdown to close()
-		this._clearTimeTillFade();		
+		this._clearTimeTillFade();
 
 		if( ! this.isVisible() ) {
 			// wait short time before opening popup, so fast mouse movments over document won't
@@ -223,7 +224,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			this._clearTimeTillDisplay();
 		}
 		else {
-			activeChild = this.getActiveChild();
+			var activeChild = this.getActiveChild();
 			
 			if( lastTouched === this.PARTS.SUBJECT
 				&& activeChild !== null
@@ -276,7 +277,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			if( typeof callback != 'undefined' ) {
 				callback();
 			}
-		}, time );		
+		}, time );
 		$( this ).data( this.POPUP_ID + '-fadeTimeoutId', timeoutId );
 	},
 	/**
@@ -297,8 +298,8 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	 * Cancels the timer till popup will fade. This also stops the timer for all parents since a
 	 * popup can't exist without its parent.
 	 */
-	_clearTimeTillFade: function() {		
-		// do the same for all parents:	
+	_clearTimeTillFade: function() {
+		// do the same for all parents:
 		var parent = this.getParent();
 		if( parent !== null ){
 			parent._clearTimeTillFade();
@@ -318,9 +319,8 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			if( store.length == 0 ) {
 				// no store yet, create it
 				var store = $( '<div/>', {
-						'id': this.POPUP_STORE_ID
-					}
-				);
+					'id': this.POPUP_STORE_ID
+				} );
 				store.appendTo( '#bodyContent' ); // place for MWs content, to have proper css for popups
 			}
 			this._popupStore = store;
@@ -353,7 +353,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		var isUpdate = this._popup !== null; // is this a update of the content while popup is visible?
 		
 		// append popup here so css is taken into account for POSITIONING calculations
-		divPopup = this._draw_buildPopup();
+		var divPopup = this._draw_buildPopup();
 		if( isUpdate ) {
 			// detach popup so we can be 100% sure that the mouseenter event gets fired in case
 			// re-positioning doesn't change position and mouse is still within popup
@@ -398,20 +398,20 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		var popupStoreOffset = this.getPopupStore().offset();
 		var divPopup = this._popup;		
 		// get pointer to add ontop/onbottom class for it as well... IE6 support once again...
-		var divPointer = divPopup.children( '.' + this.POPUP_CLASS + '-pointer' )
+		var divPointer = divPopup.children( '.' + this.POPUP_CLASS + '-pointer' );
 		
 		// calc Y:
 		var posY = this._subject.offset().top - popupStoreOffset.top;
 		if( this._orientation.vertical === this.ORIENTATION.TOP ) { // get Y
 			// above subject
 			var yClassSuffix = '-ontop';
-			divPopup.addClass( this.POPUP_CLASS + '-ontop' )
+			divPopup.addClass( this.POPUP_CLASS + '-ontop' );
 			divPointer.addClass( this.POPUP_CLASS + '-pointer-ontop' );
 			posY -= divPopup.outerHeight(); // height is different after classes are applied!
 		} else {
 			// underneath subject
 			var yClassSuffix = '-onbottom';
-			divPopup.addClass( this.POPUP_CLASS + '-onbottom' )
+			divPopup.addClass( this.POPUP_CLASS + '-onbottom' );
 			divPointer.addClass( this.POPUP_CLASS + '-pointer-onbottom' );
 			posY += this._subject.outerHeight();
 		}
@@ -546,7 +546,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	 *        > Might be worse performance but less complicated than current handling.
 	 */
 	/*
-	_draw_contentUpdateCleanup: function( newPopup, newOrientation ) {		
+	_draw_contentUpdateCleanup: function( newPopup, newOrientation ) {
 		this._popup.unbind();
 		this._popup.empty().remove();
 		
@@ -756,7 +756,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		var self = this;
 		childSubjects.each( function() {
 			// check for potential subjects data which should be a ContextPopup instance
-			childObj = $( this ).data( self.POPUP_CLASS );
+			var childObj = $( this ).data( self.POPUP_CLASS );
 			if( typeof childObj != 'undefined' ) {
 				ChildPopups[i++] = childObj;
 			}

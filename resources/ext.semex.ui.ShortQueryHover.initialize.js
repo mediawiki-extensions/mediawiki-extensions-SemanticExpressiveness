@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * Adds ui popup functionality to all short query results within a specified range of the document.
@@ -26,14 +27,14 @@ window.semanticExpresiveness.ui.ShortQueryHover.initialize = function( range, pr
 		range = $( 'body' );
 	}
 	if( typeof preCfgFunc == 'undefined' ) {
-		configFunc = function(){};
+		var configFunc = function(){};
 	}
 	if( typeof pastCfgFunc == 'undefined' ) {
 		pastCfgFunc = function(){};
 	}
 	range
 	.find( 'span.shortQuery' )
-	.each( function() {		
+	.each( function() {
 		// create popup but don't initialize yet by not passing any arguments
 		var queryHover = new window.semanticExpresiveness.ui.ShortQueryHover();
 		
@@ -42,11 +43,11 @@ window.semanticExpresiveness.ui.ShortQueryHover.initialize = function( range, pr
 		
 		try {
 			// in case the short query markup is invalid, initialization will trigger an error!
-			$sqResult = new window.semanticExpresiveness.ShortQueryResult( this );
+			var $sqResult = new window.semanticExpresiveness.ShortQueryResult( this );
 			
 			if( $sqResult.isAbstractResult() ) {
 				return; // no popup for abstract (failed) queries
-			}			
+			}
 		}
 		catch( e ) {
 			// initialize some simple context popup which at least communicates that this is
@@ -64,7 +65,7 @@ window.semanticExpresiveness.ui.ShortQueryHover.initialize = function( range, pr
 		
 		// init context popup after options are set
 		queryHover._init( $sqResult );
-				
+
 		if( queryHover.getQueryResult().getSource() === window.wgTitle ) {
 			// first-level popup to the same page as it is placed on should only display the basic
 			// short query information instead of getting its own pages content via AJAX.

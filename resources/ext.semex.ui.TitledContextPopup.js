@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * Constructor for context popup container which allows to display some title section
@@ -42,7 +43,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 	 */
 	setTitle: function( content ) {
 		if( typeof content == 'undefined' ) {
-			content = null
+			content = null;
 		}
 		if( content instanceof String ) {
 			content = $( document.createTextNode( content ) );
@@ -63,7 +64,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 	 */
 	_draw_buildPopup: function() {
 		// call parent function...
-		divPopup = this.$package.ContextPopup.prototype._draw_buildPopup.call( this );
+		var divPopup = this.$package.ContextPopup.prototype._draw_buildPopup.call( this );
 		
 		if( this._title === null ) {
 			// TitleContextPopup without title set is not much more than normal ContextPopup
@@ -73,7 +74,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 		var boxClass = this.POPUP_CLASS + '-box';
 		
 		// ...to get the content part from DOM
-		divContent = divPopup.children( '.' + boxClass );		
+		var divContent = divPopup.children( '.' + boxClass );
 		divContent
 		.addClass( this.POPUP_CLASS + '-titlepopup-content' )
 		.removeClass( boxClass );
@@ -123,7 +124,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 		if( this._orientation == null || this._title == null ) {
 			return null;
 		}
-		if( this._orientation.vertical == this.ORIENTATION.TOP ) {
+		if( this._orientation.vertical === this.ORIENTATION.TOP ) {
 			return this.ORIENTATION.BOTTOM;
 		} else {
 			return this.ORIENTATION.TOP;

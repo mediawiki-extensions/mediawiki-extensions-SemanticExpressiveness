@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * Constructor for context Popup container adjusted for 'Semantic Expressiveness' extension needs
@@ -69,7 +70,7 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	 */
 	_draw_buildPopup: function() {
 		// call parent function...
-		divPopup = this.$package.TitledContextPopup.prototype._draw_buildPopup.call( this );
+		var divPopup = this.$package.TitledContextPopup.prototype._draw_buildPopup.call( this );
 		// add class to identify this as short query hover popup
 		divPopup.addClass( this.POPUP_CLASS + '-shortqueryhover' );
 				
@@ -129,7 +130,7 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	/**
 	 * @see window.semanticExpresiveness.ui.ContextPopup.show()
 	 */
-	show: function() {		
+	show: function() {
 		if( ! this.$package.TitledContextPopup.prototype.show.call( this ) ) {
 			// no state change, do nothing
 			return false;
@@ -154,7 +155,8 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	 */
 	getQueryInfoSource: function() {
 		var source = this._queryResult.getSource();
-		return mw.util.wikiGetlink( source ) + '&action=render&action=purge';
+		// NOTE: adding action=purge will not work if user not logged in (because of "really want to purge?" message)
+		return mw.util.wikiGetlink( source ) + '?action=render';
 	},
 	
 	/**
@@ -173,7 +175,7 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 				if( jqXHR.status == 0 ) {
 					dummy = false;
 				}
-				self._applyQueryInfo( dummy, rawData, jqXHR );				
+				self._applyQueryInfo( dummy, rawData, jqXHR );
 			}
 		);
 	},

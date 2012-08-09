@@ -21,7 +21,7 @@ class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
 	 * $origLimit = ini_set( 'pcre.recursion_limit', 8 );	
 	 * to enforce hard limit for nested syntax for this regex doesn't work. The whole regex will fail
 	 */
-	protected static $regex = '<\?!?\s* [^<\|>]{1,64}? (?:\s*::\s*:?\s* (?>[^<>]{0,32}(?R)?){1,4})? \s*>';	
+	protected static $regex = '<\?!?\s* [^<\|>]{1,64}? (?:\s*::\s*:?\s* (?>[^<>]{0,32}(?R)?){1,4})? \s*>';
 	protected static $regex_modifiers = 'x';
 	protected static $regex_essentials = array();
 	

@@ -8,6 +8,7 @@
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+"use strict";
 
 /**
  * Constructor for AJAX short query information cache which can be used to share retrieved
@@ -20,7 +21,7 @@ window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 	/*
 	 * Internal store for cached elements
 	 */
-	_cache: new Object,
+	_cache: {}, // TODO: probably should be initialized in constructor/init
 	
 	_resolveContext: function( context ) {
 		if( context instanceof String ) {
