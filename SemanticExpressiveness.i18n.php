@@ -178,6 +178,16 @@ $messages['it'] = array(
 	'semex-expressivestring-unresolvable' => 'Markup non risolvibile',
 );
 
+/** Japanese (日本語)
+ * @author Shirayuki
+ */
+$messages['ja'] = array(
+	'semex-desc' => '表現力豊かな短いクエリーの構文を追加する',
+	'semex-shortquery-hover-loading' => '読み込み中',
+	'semex-shortquery-error-failed-nested-queries' => '入れ子の短いクエリーに失敗したため、短いクエリーを実行できません。',
+	'semex-expressivestring-unresolvable' => '解決できないマークアップ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
