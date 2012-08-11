@@ -14,7 +14,7 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class CriterionIsQuerySource extends ItemParameterCriterion {
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -23,7 +23,7 @@ class CriterionIsQuerySource extends ItemParameterCriterion {
 	public function __construct() {
 		parent::__construct();
 	}
-	
+
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */
@@ -31,18 +31,18 @@ class CriterionIsQuerySource extends ItemParameterCriterion {
 		global $smwgQuerySources;
 		return array_key_exists( $value, $smwgQuerySources );
 	}
-	
+
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
-	 */	
+	 */
 	protected function getItemErrorMessage( Parameter $parameter ) {
 		return '';
 	}
-	
+
 	/** 
 	 * @see ItemParameterCriterion::getFullListErrorMessage
-	 */	
+	 */
 	protected function getFullListErrorMessage( Parameter $parameter ) {
 		return '';
-	}	
+	}
 }

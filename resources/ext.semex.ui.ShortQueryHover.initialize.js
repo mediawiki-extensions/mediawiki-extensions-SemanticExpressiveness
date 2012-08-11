@@ -37,14 +37,14 @@ window.semanticExpresiveness.ui.ShortQueryHover.initialize = function( range, pr
 	.each( function() {
 		// create popup but don't initialize yet by not passing any arguments
 		var queryHover = new window.semanticExpresiveness.ui.ShortQueryHover();
-		
+
 		// run callback for advanced configuration
 		preCfgFunc( queryHover );
-		
+
 		try {
 			// in case the short query markup is invalid, initialization will trigger an error!
 			var $sqResult = new window.semanticExpresiveness.ShortQueryResult( this );
-			
+
 			if( $sqResult.isAbstractResult() ) {
 				return; // no popup for abstract (failed) queries
 			}
@@ -59,10 +59,10 @@ window.semanticExpresiveness.ui.ShortQueryHover.initialize = function( range, pr
 			);
 			errorHover.setContent( null );
 			$( this ).addClass( 'semex-invalid-shortquery-format' );
-			
+
 			return;
 		}
-		
+
 		// init context popup after options are set
 		queryHover._init( $sqResult );
 

@@ -13,7 +13,7 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ShortQueryProcessor {
-	
+
 	/**
 	 * Processes a 'Semantic Expressiveness' Short Qery as given by an array of parameters as usually
 	 * given by the '?' and '?!' parser functions.
@@ -24,15 +24,15 @@ class ShortQueryProcessor {
 	 * @return array
 	 */
 	public static function getResultFromFunctionParams( \Parser $parser, array $rawParams ) {
-		
+
 		$query = ShortQuery::newFromPFParams( $rawParams );
 		$options = ShortQueryOutputOptions::newFromPFParams( $rawParams );
-		
+
 		// @ToDo: Check for validation errors at some point
-		
+
 		return self::getResultFromQuery( $parser, $query, $options );
 	}
-	
+
 	/**
 	 * Processes a 'Semantic Expressiveness' Short Query and returns the result which can contain
 	 * either a valid result or an abstract value.
@@ -51,11 +51,11 @@ class ShortQueryProcessor {
 			$options = null
 	) {
 		$result = new ShortQueryResult( $query, $parser );
-		
+
 		if( $options !== null ) {
 			return $result->getOutput( $options );
-		}		
-		
+		}
+
 		return $result;
 	}
 }

@@ -22,14 +22,14 @@ window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 	 * Internal store for cached elements
 	 */
 	_cache: {}, // TODO: probably should be initialized in constructor/init
-	
+
 	_resolveContext: function( context ) {
 		if( context instanceof String ) {
 			return context;
 		}
 		return context.getQueryResult().getSource();
 	},
-	
+
 	/**
 	 * Returns an information which has been cached before.
 	 * @param context semanticExpresiveness.ui.ShortQueryHover|string
@@ -38,7 +38,7 @@ window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 	getInfo: function( context ) {
 		return this._cache[ '__' + this._resolveContext( context ) ];
 	},
-	
+
 	/*
 	 * Cache something.
 	 * @param context semanticExpresiveness.ui.ShortQueryHover|string
@@ -47,7 +47,7 @@ window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 	addInfo: function( context, value ) {
 		this._cache[ '__' + this._resolveContext( context ) ] = value;
 	},
-	
+
 	/*
 	 * Removes one information from the cache.
 	 * @param context semanticExpresiveness.ui.ShortQueryHover|string
@@ -61,7 +61,7 @@ window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 		}
 		return false;
 	},
-	
+
 	/*
 	 * Returns whether the information is cached already.
 	 * @param context semanticExpresiveness.ui.ShortQueryHover|string
@@ -70,10 +70,10 @@ window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 	hasInfo: function( context ) {
 		return this._cache.hasOwnProperty( '__' + this._resolveContext( context ) )
 	},
-	
+
 	/*
 	 * Removes all cached informations from the cache.
-	 */	
+	 */
 	clear: function() {
 		this._cache = new Object();
 	}

@@ -13,9 +13,9 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 abstract class PFParamsBasedFactory {
-	
+
 	protected static $pfParamsValidatorElement;
-	
+
 	/**
 	 * Fabricates a new instance by a set of parser function parameters.
 	 * If the given parameters were insufficient, false will be returned. Validation errors can be
@@ -34,13 +34,13 @@ abstract class PFParamsBasedFactory {
 			$unknownInvalid = false
 	) {
 		$params = static::getValidatedPFParams( $params, $defaultParams, $validator, $unknownInvalid, true );
-		
+
 		if( $validator->hasFatalError() ) {
 			return false;
 		}
 		return static::newFromValidatedParams( $params, $validator );
 	}
-	
+
 	/**
 	 * Same as newFromPFParams() except that the $params array has to have the parameter names set
 	 * as key values.
@@ -58,13 +58,13 @@ abstract class PFParamsBasedFactory {
 			$unknownInvalid = false
 	) {
 		$params = static::getValidatedPFParams( $params, array(), $validator, $unknownInvalid, false );
-		
+
 		if( $validator->hasFatalError() ) {
 			return false;
 		}
 		return static::newFromValidatedParams( $params, $validator );
 	}
-		
+
 	/**
 	 * This should be overwritten by classes inheriting this one to fabricate a new instance by a set
 	 * of parameters.
@@ -75,7 +75,7 @@ abstract class PFParamsBasedFactory {
 	public static function newFromValidatedParams( array $params ) {
 		return null;
 	}
-	
+
 	/**
 	 * Returns the validated parser function parameters by a given set of unprocessed parameters.
 	 * 
@@ -97,18 +97,18 @@ abstract class PFParamsBasedFactory {
 			$pfParamsStyle = true
 	) {
 		$validator = new Validator( static::$pfParamsValidatorElement, $unknownInvalid );
-		
+
 		if( $pfParamsStyle ) {
 			$validator->setFunctionParams( $params, static::getPFParams(), $defaultParams );
 		} else {
 			$validator->setParameters( $params, static::getPFParams() );
 		}
-		
+
 		$validator->validateParameters();
-		
+
 		return $validator->getParameterValues();
 	}
-	
+
 	/**
 	 * Returns a description of all allowed function Parameters representing this class.
 	 * 

@@ -30,22 +30,22 @@ window.semanticExpresiveness.ui.InlineMeasurer = {};
 window.semanticExpresiveness.ui.InlineMeasurer.measure = function( element ) {
 	var elem = $( element );
 	var result = new window.semanticExpresiveness.ui.InlineMeasurer.Measurement( element );
-	
+
 	// add helpers into dom:
 	var helper1 = $( '<span/>' );
 	var helper2 = $( '<span/>' );
 	elem.prepend( helper1 );
 	elem.append( helper2 );
-	
+
 	// measure:
 	result.isOneLiner = helper1.position().top === helper2.position().top;
 	result.firstLineWidth = elem.outerWidth() - ( helper1.offset().left - elem.offset().left );
 	result.lastLineOffset = helper2.offset().left - elem.offset().left;
-	
+
 	// destroy helper objects:
 	helper1.empty().remove()
 	helper2.empty().remove()
-	
+
 	return result;
 }
 
@@ -61,21 +61,21 @@ window.semanticExpresiveness.ui.InlineMeasurer.Measurement.prototype = {
 	 * could be 'wrong' due to some DOM updates or other influences already.
 	 */
 	element: null,
-	
+
 	/*
 	 * Whether the inline-element spreads over several lines. This can change after text or DOM
 	 * have been modified or even when re-sizing the browsers viewport.
 	 * @var boolean
 	 */	 
 	isOneLiner: true,
-	
+
 	/**
 	 * Width of the first line. In case the element spreads over several lines, the first and the
 	 * last line could be shorter as the whole elements width.
 	 * @var integer
 	 */
 	firstLineWidth: 0,
-	
+
 	/**
 	 * Width of the last line. In case the element spreads over several lines, the first and the
 	 * last line could be shorter as the whole elements width.

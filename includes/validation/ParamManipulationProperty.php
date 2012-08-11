@@ -13,7 +13,7 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ParamManipulationProperty extends ItemParameterManipulation {
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -22,12 +22,12 @@ class ParamManipulationProperty extends ItemParameterManipulation {
 	public function __construct() {
 		parent::__construct();
 	}
-	
+
 	/**
 	 * @see ItemParameterManipulation::doManipulation
-	 */	
+	 */
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		$value = SMWPropertyValue::makeUserProperty( $value );
 	}
-	
+
 }

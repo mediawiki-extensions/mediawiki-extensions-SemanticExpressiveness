@@ -12,12 +12,12 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ShortQueryAbstractResult extends ShortQueryResult {
-	
+
 	public function getAbstractResult() {
 		// this is the abstract result already
 		return $this;
 	}
-	
+
 	/**
 	 * Returns an abstract representation of the result which expresses what exactly the query is all
 	 * about. Does some extra formatting for pretty wiki text compared to getAbstractRawText(). If all
@@ -40,35 +40,35 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 		$source = $parts['source'];
 		$fromRef = $parts['fromref'];
 		$property = $parts['property'];
-		
+
 		$out =
 			'<b>&lt;</b>' .
 			$this->buildAbstractText( $property, $source, $fromRef ) .
 			'<b>&gt;</b>';
-		
+
 		$out = "<span class=\"abstractShortQueryValue\">$out</span>";
-		
+
 		if( $linked === ShortQueryOutputOptions::LINK_TOPIC ) {
 			// wrap whole result in one link to the source
 			$topic = $this->getSource();
 			$out = "[[:{$topic}|{$out}]]";
 		}
-				
+
 		if( $showErrors ) {
 			// don't get any error about the queries general success, just about invalid input
 			$out .= $this->getErrorTextForFormattedSQ();
 		}
-		
+
 		return $out;
 	}
-	
+
 	public function getWikiText(
 			$linked = ShortQueryOutputOptions::LINK_ALL,
 			$showErrors = true
 	) {
 		return $this->getWikiText_internal( $linked, $showErrors, true );
 	}
-	
+
 	/**
 	 * Returns an abstract representation of the result which expresses what exactly the query is all
 	 * about.
@@ -84,7 +84,7 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 		);
 		return "<$text>";
 	}
-	
+
 	/**
 	 * Helper function to put together the abstract string
 	 */
@@ -102,7 +102,7 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 		}
 		return $ret;
 	}
-	
+
 	/**
 	 * Returns all necessary information part of abstract information about the query.
 	 * 
@@ -114,8 +114,8 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 	protected function getAbstractParts( $raw, $linked ) {
 		$parts = array();
 		$parts['fromref'] = false;
-		
-		$property = $this->query->getProperty()->getDataItem()->getLabel();		
+
+		$property = $this->query->getProperty()->getDataItem()->getLabel();
 		if( $linked ) {
 			$propTitle = Title::makeTitle( SMW_NS_PROPERTY, $property );
 			$property = "[[:{$propTitle->getPrefixedText()}|$property]]";
@@ -123,8 +123,8 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 		if( ! $raw ) {
 			$property = "<span class=\"property\">$property</span>";
 		}
-		$parts['property'] = $property;		
-		
+		$parts['property'] = $property;
+
 		if(
 			$this->getSource() !== null
 			&& $this->parser->getTitle()->getPrefixedText() === $this->getSource()->getPrefixedText()
@@ -135,8 +135,8 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 		elseif( $this->query->getSourceType() === ShortQuery::SOURCE_FROM_REF ) {
 			// query 'from ref'
 			$parts['fromref'] = true;
-			$parts['source'] = $this->query->getSource()->getDataItem()->getLabel();			
-			if( ! $raw ) {				
+			$parts['source'] = $this->query->getSource()->getDataItem()->getLabel();
+			if( ! $raw ) {
 				$parts['source'] = "<u>{$parts['source']}</u>";
 			}
 		}
@@ -154,7 +154,7 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 					// source must be from unresolved expressive string
 					$source = $this->query->getSource();
 				}
-				
+
 				$source = ( $raw )
 					? $source->getRawText( true )
 					: $source->getWikiText( true, $linked );
@@ -171,7 +171,7 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 		if( $parts['source'] !== null && ! $raw ) {
 			$parts['source'] = "<span class=\"source\">{$parts['source']}</span>";
 		}
-		
+
 		return $parts;
 	}
 }

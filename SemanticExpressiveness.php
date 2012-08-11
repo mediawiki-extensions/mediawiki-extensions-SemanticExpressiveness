@@ -81,9 +81,9 @@ define( 'SEMEX_EXPR_PIECE_WIKILINK', ExpressiveStringPieceWikiLink::getType() );
 
 
 class Ext {
-	
+
 	const VERSION = '0.1 alpha';
-	
+
 	static function init( &$parser ) {
 		$parser->setFunctionHook( '?',  array( 'SemEx\QueryPF', 'render' ), SFH_NO_HASH );
 		$parser->setFunctionHook( '?!', array( 'SemEx\PlainQueryPF', 'render' ), SFH_NO_HASH );
@@ -105,7 +105,7 @@ class Ext {
 	 */
 	public static function registerResourceModules() {
 		global $wgResourceModules;
-		
+
 		$moduleTemplate = array(
 			'localBasePath' => self::getDir() . '/resources',
 			'remoteExtPath' => 'SemanticExpressiveness/resources',

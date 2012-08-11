@@ -14,16 +14,16 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ExpressiveString {
-	
+
 	protected $enabledPieceTypes;
 	protected $parser;
-	
+
 	/**
 	 * All parts the original string $string consists of
 	 * @var array of ShortQueryResult objects and/or strings
 	 */
 	protected $pieces = array();
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -47,16 +47,16 @@ class ExpressiveString {
 		krsort( $enabledPieceTypes ); // highest will be initialized last
 		$this->enabledPieceTypes = $enabledPieceTypes;
 		$this->parser = $parser;
-		
+
 		// add string as non-expressive string...
 		$this->addString( $string );
-		
+
 		// ... and examine its expressive meaning one by one:
 		foreach( $this->getEnabledPieceTypes() as $pieceType ) {
 			$pieceType :: initWithin( $this );
 		}
 	}
-	
+
 	/**
 	 * Returns all parts the original string consists of.
 	 * 
@@ -65,7 +65,7 @@ class ExpressiveString {
 	public function getPieces() {
 		return $this->pieces;
 	}
-	
+
 	/**
 	 * Returns a piece from a given index or null if the index doesn't exist.
 	 * 
@@ -78,13 +78,13 @@ class ExpressiveString {
 		}
 		return $this->pieces[ $index ];
 	}
-	
+
 	/**
 	 * Returns all pieces of the string which which have their own expressive meaning and not just
 	 * represent a simple string.
 	 * 
 	 * @return ExpressiveStringPiece[]
-	 */	
+	 */
 	public function getExpressivePieces() {
 		$exprPieces = array();
 		foreach( $this->pieces as $piece ) {
@@ -94,7 +94,7 @@ class ExpressiveString {
 		}
 		return $exprPieces;
 	}
-	
+
 	/**
 	 * Returns whether the string has any expressive pieces.
 	 * 
@@ -108,7 +108,7 @@ class ExpressiveString {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true if any expressive piece is not resolvable, meaning the piece doesn't have a pure
 	 * textual representation.
@@ -123,7 +123,7 @@ class ExpressiveString {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * This will examine a string for its expressive meaning and add all parts accordingly.
 	 * 
@@ -131,10 +131,10 @@ class ExpressiveString {
 	 * @param int $index see self::addPieces()
 	 */
 	public function addExpressiveString( $string, $index = null ) {
-		$newExprString = new static( $string, $this->parser, $this->getEnabledPieceTypes() );		
-		$this->addPieces( $newExprString->getPieces(), $index );		
+		$newExprString = new static( $string, $this->parser, $this->getEnabledPieceTypes() );
+		$this->addPieces( $newExprString->getPieces(), $index );
 	}
-	
+
 	/**
 	 * Shorthand function for self::addPieces( new ExpressiveStringPiece( $stringPiece ) ).
 	 * 
@@ -145,7 +145,7 @@ class ExpressiveString {
 		$piece = new ExpressiveStringPiece( $stringPiece );
 		$this->addPieces( array( $piece ), $index );
 	}
-	
+
 	/**
 	 * Allows to insert additional pieces to the expressive string. By default at the end
 	 * or optionally at a certain index.
@@ -161,7 +161,7 @@ class ExpressiveString {
 		}
 		$this->pieces = array_values( $this->pieces ); // re-numerate to be on the safe side
 		$totalPieces = count( $this->pieces );
-		
+
 		if( $index < 0 ) {
 			// -1 will insert $pieces before last current piece
 			$index = $totalPieces - $index;
@@ -169,10 +169,10 @@ class ExpressiveString {
 				$index = 0;
 			}
 		}
-		
+
 		if( $index === null || $index >= $totalPieces ) {
 			// pieces will be added at the end
-			$index = $totalPieces;			
+			$index = $totalPieces;
 		}
 		else {
 			// pieces will be inserted before an existing one
@@ -180,7 +180,7 @@ class ExpressiveString {
 			$pieces[] = $this->pieces[ $index ];
 			unset( $this->pieces[ $index ] );
 		}
-		
+
 		if( $index > 0 && $totalPieces > 0 ) {
 			// add the one before new pieces for reduction
 			$index--;
@@ -190,12 +190,12 @@ class ExpressiveString {
 			);
 			unset( $this->pieces[ $index ] );
 		}
-		
+
 		static::reducePieces( $pieces );
-		
+
 		array_splice( $this->pieces, $index, 0, $pieces ); // re-numerates keys
 	}
-	
+
 	/**
 	 * Reduces an array of ExpressiveStringPiece elements where possible. This means if the array
 	 * contains several non-expressive objects in a row, they will be reduced to one instead.
@@ -218,9 +218,9 @@ class ExpressiveString {
 				$i++;
 				continue;
 			}
-			
+
 			$thisPieceType = $piece->getType();
-			
+
 			if(
 				$lastPieceType === SEMEX_EXPR_PIECE_STRING
 				&& $thisPieceType === SEMEX_EXPR_PIECE_STRING
@@ -239,7 +239,7 @@ class ExpressiveString {
 		$pieces = array_values( $pieces ); // re-numerate
 		return $i;
 	}
-	
+
 	/**
 	 * Removes pieces of the string starting from a given index to the end or a predefined
 	 * number of pieces.
@@ -255,7 +255,7 @@ class ExpressiveString {
 		array_splice( $this->pieces, $offset, $length );
 		static::reducePieces( $this->pieces );
 	}
-	
+
 	/**
 	 * Returns the parser used for certain transformations
 	 * @return Parser
@@ -263,11 +263,11 @@ class ExpressiveString {
 	public function getParser() {
 		return $this->parser;
 	}
-	
+
 	public function setParser( Parser $parser ) {
 		$this->parser = $parser;
 	}
-	
+
 	/**
 	 * Returns the expressive string as wiki text with all expressive pieces resolved but without any
 	 * further markup, just plain text.
@@ -278,8 +278,8 @@ class ExpressiveString {
 	 */
 	public function getRawText( $expressiveIfEmpty = false ) {
 		$result = '';
-		
-		foreach( $this->pieces as $piece ) {			
+
+		foreach( $this->pieces as $piece ) {
 			if( $expressiveIfEmpty && $piece->isUnresolvable() ) {
 				$pieceText = $piece->getAbstractRawText();
 			} else {
@@ -289,7 +289,7 @@ class ExpressiveString {
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * Returns the expressive string as wiki text with all expressive pieces resolved, perhaps with
 	 * markup built around some pieces.
@@ -305,7 +305,7 @@ class ExpressiveString {
 		$showErrors = false
 	) {
 		$result = '';
-		
+
 		foreach( $this->pieces as $piece ) {
 			if( ! $expressiveIfEmpty && $piece->isUnresolvable() ) {
 				$pieceText = $piece->getAbstractWikiText( $linked, $showErrors );
@@ -316,7 +316,7 @@ class ExpressiveString {
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * same as getRawText() but instead of the resolved meaning of the expressive pieces this will
 	 * include the abstract representation of all pieces as long as an abstract version is available
@@ -326,13 +326,13 @@ class ExpressiveString {
 	 */
 	public function getAbstractRawText() {
 		$result = '';
-		
+
 		foreach( $this->pieces as $piece ) {
 			$result .= $piece->getAbstractRawText();
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * same as getWikiText() but instead of the resolved meaning of the expressive pieces this will
 	 * include the abstract representation of all pieces as long as an abstract version is available
@@ -345,13 +345,13 @@ class ExpressiveString {
 		$showErrors = false
 	) {
 		$result = '';
-		
+
 		foreach( $this->pieces as $piece ) {
 			$result .= $piece->getAbstractWikiText( $linked, $showErrors );
 		}
 		return $result;
-	}	
-	
+	}
+
 	/**
 	 * Returns an output generated by one or several ExpressiveStringOutputOptions objects.
 	 * 
@@ -368,10 +368,10 @@ class ExpressiveString {
 	 */
 	public function getOutput( $defaultOption = null, $options = array() ) {
 		$result = '';
-		
+
 		foreach( $this->pieces as $piece ) {
 			$pieceType = $piece->getType();
-			
+
 			if( array_key_exists( $pieceType, $options ) ) {
 				// option/fallback for this piece type specified
 				$pieceOption = $options[ $pieceType ];
@@ -380,18 +380,18 @@ class ExpressiveString {
 				// no specific option for this type, use specified default option
 				$pieceOption = $defaultOption;
 			}
-			
+
 			if( $pieceOption === null ) {
 				// option wasn't set! use default option for this piece type
 				$pieceOption = $pieceOption :: getDefaultOutputOptions();
 				$options[ $pieceType ] = $pieceOption; // remember for next pice of this type!
 			}
-						
+
 			$result .= $piece->getOutput( $pieceOption );
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * Returns which types of expressive string pieces exist. The key number defines the priority
 	 * of the type within parsing. The highest will be initialized last during the parser process.
@@ -403,18 +403,18 @@ class ExpressiveString {
 		if( $types !== null ) {
 			return $types;
 		}
-		
+
 		$types = array();
-		
+
 		foreach( static::pieceTypeRegistration() as $priority => $typeDef ) {
 			$types[ $priority ] = is_array( $typeDef )
 					? $typeDef[0]
 					: $typeDef;
 		}
-		
+
 		return $types;
 	}
-	
+
 	/**
 	 * Returns all registered types in an array as keys and their public names as values. If a
 	 * registered type doesn't have a name, the type won't be in this list.
@@ -427,9 +427,9 @@ class ExpressiveString {
 		if( $types !== null ) {
 			return $types;
 		}
-		
+
 		$types = array();
-		
+
 		foreach( static::pieceTypeRegistration() as $typeDef ) {
 			if( is_array( $typeDef )
 				&& ! empty( $typeDef[1] )
@@ -437,10 +437,10 @@ class ExpressiveString {
 				$types[ $typeDef[0] ] = $typeDef[1];
 			}
 		}
-		
+
 		return $types;
 	}
-	
+
 	/**
 	 * Returns the class name of a certain registered piece type by the name it's been registered to
 	 * this class. Some types might not be registered by a name at all.
@@ -449,7 +449,7 @@ class ExpressiveString {
 	 * 
 	 * @return string|null piece type class name or null if there is no name identifier for it.
 	 */
-	public static function getRegisteredPieceTypeByName( $name ) {		
+	public static function getRegisteredPieceTypeByName( $name ) {
 		$types = static::getRegisteredPieceTypeNames();
 		$index = array_search( $name, $types );
 		if( $index !== false ) {
@@ -457,13 +457,13 @@ class ExpressiveString {
 		}
 		return null;
 	}
-	
+
 	protected static function pieceTypeRegistration() {
 		static $types = null;
 		if( $types !== null ) {
 			return $types;
 		}
-		
+
 		$types = array(
 			// key defines priority
 			0    => SEMEX_EXPR_PIECE_STRING, // will always be initialized since there is nothing to initialize
@@ -471,13 +471,13 @@ class ExpressiveString {
 			1000 => array( SEMEX_EXPR_PIECE_SQRESULT, 'shortqueryresult' ),
 			2000 => array( SEMEX_EXPR_PIECE_SQ, 'shortquery' )
 		);
-		
+
 		// allow other extensions to handle further expressive string pieces
 		wfRunHooks( __CLASS__ . 'PieceTypesRegistration' , array( &$types ) );
-		
+
 		return $types;
 	}
-	
+
 	/**
 	 * Takes an array with piece types as values and sets their keys according to the registered piece
 	 * types priorities.
@@ -496,7 +496,7 @@ class ExpressiveString {
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * Returns which types of expressive string pieces are enabled for this object.
 	 * This can differ from static::getRegisteredPieceTypes() if specified within the constructor.

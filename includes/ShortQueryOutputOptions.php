@@ -16,16 +16,16 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ShortQueryOutputOptions extends ExpressiveStringOutputOptions {
-	
+
 	protected static $pfParamsValidatorElement = 'short query output options';
-	
+
 	/**
 	 * Link depending on the properties Type. Values coming from properties of Type 'Page' will
 	 * display a link. If the queried value consists of multiple values or is a set of data
 	 * bundled in one property, the linking will happen individually for each part if appropriate.
 	 */
 	const LINK_ALL = true;
-	
+
 	/**
 	 * The output will be wrapped inside a link to the queries source page, even if the property
 	 * value is a value of type 'Page' which would bring its own link to another page. This makes
@@ -33,8 +33,8 @@ class ShortQueryOutputOptions extends ExpressiveStringOutputOptions {
 	 * e.g. a 'Name' property.
 	 */
 	const LINK_TOPIC = 2;
-	
-	
+
+
 	/**
 	 * Defines whether the short query result should contain a link to the queried property
 	 * or the target page. Following values are possible:
@@ -54,21 +54,21 @@ class ShortQueryOutputOptions extends ExpressiveStringOutputOptions {
 	public function setLink( $val ) {
 		return parent::setLink( $val );
 	}
-	
+
 	/**
 	 * @see PFParamsBasedFactory::newFromValidatedParams()
 	 */
 	public static function newFromValidatedParams( array $params ) {
 		$sqOpt = parent::newFromValidatedParams( $params );
-		
+
 		$link = $params['link'];
 		if( $link == 'topic' || $link == 'source' ) {
 			$sqOpt->setLink( self::LINK_TOPIC );
 		}
-		
+
 		return $sqOpt;
 	}
-	
+
 	/**
 	 * @see ExpressiveStringOutputOptions::getPFParams()
 	 * 
@@ -76,18 +76,18 @@ class ShortQueryOutputOptions extends ExpressiveStringOutputOptions {
 	 */
 	public static function getPFParams() {
 		$params = parent::getPFParams();
-		
-		// add 'topic' to the allowed 'link' parameter values:		
+
+		// add 'topic' to the allowed 'link' parameter values:
 		$linkCriteria = $params['link']->getCriteria();
 		$linkCriteria = array_merge( $linkCriteria[0]->getAllowedValues(), array( 'topic', 'source' ) );
-		
-		$newLink = new Parameter( 'link' );		
+
+		$newLink = new Parameter( 'link' );
 		$newLink->addCriteria( new CriterionInArray( $linkCriteria ) );
 		$newLink->setDefault( $params['link']->getDefault() );
-		
+
 		// overwrite old parameter definition:
 		$params['link'] = $newLink;
-				
+
 		return $params;
 	}
 }

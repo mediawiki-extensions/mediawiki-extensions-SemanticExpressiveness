@@ -14,9 +14,9 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class CriterionIsProperty extends ItemParameterCriterion {
-	
+
 	protected $allowedTypes;
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -32,14 +32,14 @@ class CriterionIsProperty extends ItemParameterCriterion {
 		$this->allowedTypes = $allowedTypes;
 		parent::__construct();
 	}
-	
+
 	/**
 	 * @see ItemParameterCriterion::validate
-	 */	
+	 */
 	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		// create SMW property from user input:
 		$prop = SMWPropertyValue::makeUserProperty( $value );
-		
+
 		if( $this->allowedTypes !== null ) {
 			// filter unallowed types for this validation:
 			$type = $prop->getPropertyTypeID();
@@ -49,18 +49,18 @@ class CriterionIsProperty extends ItemParameterCriterion {
 		}
 		return $prop->isValid();
 	}
-	
+
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
-	 */	
+	 */
 	protected function getItemErrorMessage( Parameter $parameter ) {
 		return '';
 	}
-	
+
 	/** 
 	 * @see ItemParameterCriterion::getFullListErrorMessage
-	 */	
+	 */
 	protected function getFullListErrorMessage( Parameter $parameter ) {
 		return '';
-	}	
+	}
 }

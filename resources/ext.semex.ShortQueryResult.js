@@ -17,7 +17,7 @@
  */
 window.semanticExpresiveness.ShortQueryResult = function( element ) {
 	this._elem = $( element );
-	
+
 	// validation for the short query result:
 	if(
 		   this.getSource() === false
@@ -36,7 +36,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 	_querySource: null,
 	_queryProperty: null,
 	_queryRawResult: null,
-	
+
 	/**
 	 * Returns the node in the DOM representing this short query result.
 	 * @return Node
@@ -44,7 +44,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 	getDOMNode: function() {
 		return this._elem;
 	},
-	
+
 	/**
 	 * Returns whether this short query result is an abstract result for some reason, most likely
 	 * the query failed in this case.
@@ -53,7 +53,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 	isAbstractResult: function() {
 		return this._elem.hasClass( 'abstractShortQuery' );
 	},
-	
+
 	/**
 	 * Returns the local page name of the page the displayed query information was taken from.
 	 * In case this is an abstract short query result, it is possible that the source was another
@@ -65,7 +65,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 			return this._querySource;
 		}
 		this._querySource = this._getShortQueryInfo( 'source' );
-		
+
 		if( this._querySource === false
 			&& this.isAbstractResult()
 			&& this._elem.children( '.source' ).length == 1
@@ -75,7 +75,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		}
 		return this._querySource;
 	},
-	
+
 	/**
 	 * Returns the property name of the queried value.
 	 * @return string
@@ -87,7 +87,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		this._queryProperty = this._getShortQueryInfo( 'type' );
 		return this._queryProperty;
 	},
-	
+
 	/**
 	 * Returns the unformatted, raw result of the query. Returns null in case the query went wrong.
 	 * @return string[]|null
@@ -96,25 +96,25 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		if( this._queryRawResult !== null ) {
 			return this._queryRawResult;
 		}
-		
+
 		// query result can have several values which are stored within the title of child elements
-		// of the short queries direct child with class 'value'		
+		// of the short queries direct child with class 'value'
 		var values = this._elem.children( '.value' ).children( '*[title]' );
 		if( values.length < 1 ) {
 			return null;
 		}
-		
+
 		// put all values into an array:
 		var titles = new Array( values.length );
-		
+
 		values.each( function( index, elem ) {
 			titles[index] = $( elem ).attr( 'title' );
 		} );
-		
+
 		this._queryRawResult = titles;
 		return titles;
 	},
-	
+
 	/**
 	 * Returns the DOM elements which are part of the formatted result. Returns null in case the query
 	 * went wrong. For unformatted result see getRawResult() function.
@@ -127,7 +127,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		}
 		return result.contents();
 	},
-	
+
 	/**
 	 * Generic helper to get attached information from the short queries DOM.
 	 * @param info string class name of the element where the information lays within the 'title'

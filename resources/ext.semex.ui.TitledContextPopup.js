@@ -25,18 +25,18 @@ window.semanticExpresiveness.ui.TitledContextPopup = function( subject ){
  */
 window.semanticExpresiveness.ui.TitledContextPopup.prototype = new window.semanticExpresiveness.ui.ContextPopup();
 $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
-	
+
 	/**
 	 * Title which should be displayed next to the popups content.
 	 * @var jQuery
 	 */
 	_title: null,
-	
+
 	/**
 	 * @see semanticExpresiveness.ui.TitledContextPopup.POPUP_STORE_ID
 	 */
 	//POPUP_STORE_ID: 'ui-titledcontextpopup-store',
-	
+
 	/**
 	 * Allows to set the content of the title.
 	 * @param $content jQuery|String
@@ -50,7 +50,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 		}
 		this._title = content;
 	},
-	
+
 	/**
 	 * Returns the content which should be displayed as title within the popup container.
 	 * @return jQuery
@@ -58,27 +58,27 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 	getTitle: function() {
 		return this._title;
 	},
-	
+
 	/**
 	 * @see semanticExpresiveness.ui.ContextPopup._draw_buildPopup()
 	 */
 	_draw_buildPopup: function() {
 		// call parent function...
 		var divPopup = this.$package.ContextPopup.prototype._draw_buildPopup.call( this );
-		
+
 		if( this._title === null ) {
 			// TitleContextPopup without title set is not much more than normal ContextPopup
 			return divPopup;
 		}
-		
+
 		var boxClass = this.POPUP_CLASS + '-box';
-		
+
 		// ...to get the content part from DOM
 		var divContent = divPopup.children( '.' + boxClass );
 		divContent
 		.addClass( this.POPUP_CLASS + '-titlepopup-content' )
 		.removeClass( boxClass );
-		
+
 		var divContainer = $( '<div/>', { // parent for title and content, replaces old content node
 			'class': this.POPUP_CLASS + '-titlepopup-container ' + boxClass
 		} );
@@ -86,7 +86,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 			'class': this.POPUP_CLASS + '-titlepopup-title'
 		} );
 		divTitle.append( this._title );
-		
+
 		// set content div next to title div within a new container:
 		divContainer.append( divTitle );
 		if( this._content !== null ) {
@@ -98,10 +98,10 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 		divPopup
 		.append( divContainer )
 		.addClass( this.POPUP_CLASS + '-titlepopup' );
-		
+
 		return divPopup;
 	},
-	
+
 	/**
 	 * @see semanticExpresiveness.ui.TitledContextPopup._draw_doPositioning()
 	 */
@@ -114,7 +114,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 		}
 		this.$package.ContextPopup.prototype._draw_doPositioning.call( this );
 	},
-	
+
 	/**
 	 * Returns the designated position of the title part of the popup. If the popup is not visible
 	 * at the moment or no title is set, null will be returned.
@@ -130,5 +130,5 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 			return this.ORIENTATION.TOP;
 		}
 	}
-	
+
 } );

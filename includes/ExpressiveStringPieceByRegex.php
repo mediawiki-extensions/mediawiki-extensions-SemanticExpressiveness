@@ -14,7 +14,7 @@ use Parser;
  * @author Daniel Werner < danweetz@web.de >
  */
 abstract class ExpressiveStringPieceByRegex extends ExpressiveStringPiece {
-	
+
 	/**
 	 * The regular expression to match pieces which will be considered candidates for being pieces of
 	 * this type and which can be further examined in static::examineRegexMatch()
@@ -23,13 +23,13 @@ abstract class ExpressiveStringPieceByRegex extends ExpressiveStringPiece {
 	 * @var string
 	 */
 	protected static $regex;
-	
+
 	/**
 	 * Optional modifiers for the static::$regex regex.
 	 * @var string
 	 */
 	protected static $regex_modifiers = '';
-	
+
 	/**
 	 * Array telling which backreferences of $regex are essential information and which can be ignored.
 	 * The array index refers to the backreference index within $regex, if it is set to true it means
@@ -39,22 +39,22 @@ abstract class ExpressiveStringPieceByRegex extends ExpressiveStringPiece {
 	 * @var bool[]
 	 */
 	protected static $regex_essentials = array();
-	
-	
+
+
 	protected static function examineString( $string, Parser $parser ) {
 		// the regex is built to hold the whole matched string as backref for later
 		$regex = '/(' . static::$regex . ')/' . static::$regex_modifiers;
 		$rawParts = preg_split( $regex, $string, -1, PREG_SPLIT_DELIM_CAPTURE );
-				
+
 		$count = count( $rawParts ) ;
 		if( $count <= 1 ) {
 			// no match for this type
 			return false;
 		}
-		
+
 		$parts = array();
 		$backrefs = count( static::$regex_essentials );
-		
+
 		// group backrefs and actual match which belong together, put non-expressive strings inbetween
 		// so we have an array full of strings and sub-arrays still in the right order:
 		for( $i = 0; $i < $count; $i++ ){
@@ -63,7 +63,7 @@ abstract class ExpressiveStringPieceByRegex extends ExpressiveStringPiece {
 			if( $i === $count ) {
 				break; // last piece
 			}
-			
+
 			// get all essential backrefs for the matching piece:
 			$essentialBackrefs = array(
 				$rawParts[ $i ] // the part holding the whole matched string, the raw piece
@@ -71,12 +71,12 @@ abstract class ExpressiveStringPieceByRegex extends ExpressiveStringPiece {
 			for( $k = 0; $k < $backrefs; $k++ ) {
 				$i++;
 				if( static::$regex_essentials[ $k ] ) {
-					$essentialBackrefs[] = $rawParts[ $i ];					
+					$essentialBackrefs[] = $rawParts[ $i ];
 				}
 			}
 			$parts[] = $essentialBackrefs;
 		}
-		
+
 		// walk through the created array and call sub-function for each array element which holds all the
 		// information about one potential match for a piece of this type:
 		$result = array();
@@ -90,20 +90,20 @@ abstract class ExpressiveStringPieceByRegex extends ExpressiveStringPiece {
 				}
 				continue;
 			}
-			
+
 			$piece = static::examineRegexMatch( $part, $parser );
-			
+
 			if( $piece === false ) {
 				// not a piece of this type, consider it a meaningless string
 				$piece = new ExpressiveStringPiece( $part[0], $parser );
 			}
-			
+
 			$result[] = $piece;
 		}
-		
+
 		return $result;
 	}
-	
+
 	/**
 	 * Function called by examineString() when a static::$regex matching string has been found.
 	 * Returns the resolved piece or false in case this is not a piece of this type.

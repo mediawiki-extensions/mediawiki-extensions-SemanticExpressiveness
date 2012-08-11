@@ -28,12 +28,12 @@
 	-moz-box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
 	-webkit-box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
 	-khtml-box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
-	
+
 	border-radius: 2px;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	-khtml-border-radius: 2px;
-	
+
 	background-color: white;
 	border: 1px #545454 solid;
 	padding: 4px;
@@ -56,7 +56,7 @@
 	padding: 0;
 }
 .ui-contextpopup-onbottom .ui-contextpopup-pointer {
-	background-image: url('./images/pointer-up.png');	
+	background-image: url('./images/pointer-up.png');
 	top: 1px;
 }
 .ui-contextpopup-ontop .ui-contextpopup-pointer {

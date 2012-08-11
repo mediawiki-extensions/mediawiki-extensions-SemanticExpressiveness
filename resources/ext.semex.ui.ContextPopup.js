@@ -45,11 +45,11 @@
 window.semanticExpresiveness.ui.ContextPopup = function( subject ) {
 	// alternative to any $parent or _super nonsens. At lest this save a few bytes of code
 	this.$package = window.semanticExpresiveness.ui;
-	
+
 	// increase instances count to give IDs to popups
 	this._id = this.$package.ContextPopup.instances++;
 	this.POPUP_ID = this.POPUP_CLASS + '-' + this._id;
-	
+
 	if( typeof subject != 'undefined' ) {
 		this._init( subject );
 	}
@@ -64,7 +64,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		SUBJECT: 1,
 		POPUP: 2
 	},
-	
+
 	/**
 	 * @const
 	 * @enum number
@@ -75,20 +75,20 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		LEFT: 3,
 		RIGHT: 4
 	},
-	
+
 	TIME_TO_FIRST_NOTICE: 175, // time the mouse has to stay on the subject untill the popup fades in
 	TIME_TO_FADE_IN:      125,
 	TIME_TO_FADE_OUT:     150, // has to be lower than this.TIME_TO_REENTER time!
 	TIME_TO_REENTER:      333, // time after mouse has left popup untill the popup finally fades
 	// time after content-update to enter mouse to avoid bug #102 or in case popups position has changed:
 	TIME_TO_REENTER_ON_UPDATE: 1750,
-	
+
 	/**
 	 * @const
 	 * Class which marks a popup within the site html.
 	 */
 	POPUP_CLASS: 'ui-contextpopup',
-	
+
 	/**
 	 * @const
 	 * ID of the popup which can be used within DOM or for events.
@@ -119,7 +119,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	 * @var jQuery|null
 	 */
 	_popupStore: null,
-	
+
 	/**
 	 * An unique ID for the popup instance to keep track of its events.
 	 * @var integer
@@ -131,20 +131,20 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	 * @var jQuery|null
 	 */
 	_popup: null,
-	
+
 	/**
 	 * Whether the box is visible currently.
 	 * @var boolean
 	 */
 	_visible: false,
-	
+
 	/**
 	 * Contains the current orientation of the box. If it isn't visible at the moment this
 	 * will be set to null.
 	 * @var Object|null
 	 */
 	_orientation: null,
-	
+
 	/**
 	 * Equals one of this.PARTS properties to give information about which part of the ui element
 	 * was last and still is touched. In case the mouse is outside, this is set to null
@@ -152,7 +152,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	 * @var integer|null
 	 */
 	_touchedPart: null,
-	
+
 	/**
 	 * Initialize the context popup and assign it to some html element.
 	 * This should normally be called directly by the constructor.
@@ -166,11 +166,11 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		this._subject.addClass( this.POPUP_CLASS + '-subject' );
 		// kind of bind this object to the element so parents can find their child context popups
 		this._subject.data( this.POPUP_CLASS, this );
-		
+
 		// remove title so it won't get in the way of the popup
 		this._subject.data( this.POPUP_ID + '-origTitle', this._subject.attr( 'title' ) );
 		this._subject.removeAttr( 'title' );
-		
+
 		// register events for associated popup trigger:
 		var self = this;
 		this._subject.bind(
@@ -181,7 +181,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			function() { self._hoverOutFunc(); }
 		);
 	},
-	
+
 	/**
 	 * Savely removes the popup and associated events from the DOM
 	 */
@@ -193,18 +193,18 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		.unbind( '.' + this.POPUP_ID )
 		// restore original title which was removed before:
 		.attr( 'title', this._subject.data( this.POPUP_ID + '-origTitle' ) );
-		
+
 		this._subject
 		.removeData( this.POPUP_ID + '-origTitle' )
 		.removeData( this.POPUP_CLASS )
 		.removeClass( this.POPUP_CLASS + '-subject' )
 		.removeClass( this.POPUP_CLASS + '-subject-active' );
-		
+
 		if( this._popup !== null ) {
 			this._popup.empty().remove();
 		}
 	},
-	
+
 	_hoverInFunc: function( part ) {
 		this._touchedPart = part;
 		// abord countdown to close()
@@ -225,7 +225,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		}
 		else {
 			var activeChild = this.getActiveChild();
-			
+
 			if( lastTouched === this.PARTS.SUBJECT
 				&& activeChild !== null
 				&& activeChild._touchedPart !== null
@@ -233,7 +233,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 				// we entered, not left some sub-popup, so don't close anything!
 				return;
 			}
-			
+
 			if( lastTouched !== this.PARTS.SUBJECT ) {
 				// consider closing all parents if mouse doesn't touch any in time
 				this._setTimeTillFadeParents( this.TIME_TO_REENTER );
@@ -244,7 +244,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			}
 		}
 	},
-	
+
 	/**
 	 * Sets the time the mouse has to be somewhere where the popup gets triggered to actually display
 	 * the popup.
@@ -264,7 +264,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	_clearTimeTillDisplay: function() {
 		clearTimeout( $( this ).data( this.POPUP_ID + '-enterTimeoutId' ) );
 	},
-	
+
 	/**
 	 * Sets the time left untill the popup will be closed if the mouse doesn't re-activate it somehow.
 	 * @param time integer
@@ -288,11 +288,11 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	_setTimeTillFadeParents: function( time, callback ) {
 		// fade this popup first, then first parent all up the chain
 		this._setTimeTillFade( time, callback );
-		// do the same for all parents:	
+		// do the same for all parents:
 		var parent = this.getParent();
 		if( parent !== null ){
 			parent._setTimeTillFadeParents( time, callback );
-		}		
+		}
 	},
 	/**
 	 * Cancels the timer till popup will fade. This also stops the timer for all parents since a
@@ -327,7 +327,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		}
 		return this._popupStore;
 	},
-	
+
 	/**
 	 * Returns the popups current orientation or null if its not displayed right now.
 	 * @return integer|null
@@ -349,9 +349,9 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			// nothing to draw!
 			return false;
 		}
-		
+
 		var isUpdate = this._popup !== null; // is this a update of the content while popup is visible?
-		
+
 		// append popup here so css is taken into account for POSITIONING calculations
 		var divPopup = this._draw_buildPopup();
 		if( isUpdate ) {
@@ -365,30 +365,30 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			// calculate popup box positioning:
 			orientation = this.getIdealAlignment( divPopup );
 		}
-		
+
 		this._popup = divPopup;
 		this._orientation = orientation;
-		
+
 		// POSITIONING of the popup
 		this._draw_doPositioning();
-		
+
 		if( isUpdate // if we update the popups content while it is still visible
 			&& this._touchedPart != this.PARTS.SUBJECT // and mouse possibly within popup
 		) {
 			// will be triggered even if mouse still within popup since we detached the popup before.
-			// in case the mouse is outside the new popup, this leaves us with enough time to enter the popup.			
+			// in case the mouse is outside the new popup, this leaves us with enough time to enter the popup.
 			this._setTimeTillFadeParents( this.TIME_TO_REENTER_ON_UPDATE );
 			self._touchedPart = null; // parents should be set to null already
 			//this._draw_contentUpdateCleanup( divPopup, orientation );
-			
+
 			// FIXME: no solution for Bug #102 yet. (window.scrollTo() no solution, doesn't trigger mouse event)
 		}
-		
+
 		this._popup.hide().fadeIn( this.TIME_TO_FADE_IN );
-		
+
 		return true;
 	},
-	
+
 	/**
 	 * Sub-routine of this.draw() to do the positioning so the popup will appear relative
 	 * to the triggering subject element.
@@ -396,10 +396,10 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	_draw_doPositioning: function() {
 		// Consider that the popup store might not be at position 0;0 !
 		var popupStoreOffset = this.getPopupStore().offset();
-		var divPopup = this._popup;		
+		var divPopup = this._popup;
 		// get pointer to add ontop/onbottom class for it as well... IE6 support once again...
 		var divPointer = divPopup.children( '.' + this.POPUP_CLASS + '-pointer' );
-		
+
 		// calc Y:
 		var posY = this._subject.offset().top - popupStoreOffset.top;
 		if( this._orientation.vertical === this.ORIENTATION.TOP ) { // get Y
@@ -415,13 +415,13 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			divPointer.addClass( this.POPUP_CLASS + '-pointer-onbottom' );
 			posY += this._subject.outerHeight();
 		}
-		
+
 		// calc X:
 		var posX = -popupStoreOffset.left;
 		if( this._orientation.horizontal === this.ORIENTATION.LEFT ) {
 			// expand to left
 			divPopup.addClass( this.POPUP_CLASS + '-fromleft' );
-			posX += this._subject.offset().left + this._subject.outerWidth() - divPopup.outerWidth() // <<left			
+			posX += this._subject.offset().left + this._subject.outerWidth() - divPopup.outerWidth() // <<left
 		} else {
 			// expand to right
 			divPopup.addClass( this.POPUP_CLASS + '-fromright' );
@@ -442,14 +442,14 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			posX = -popupStoreOffset.left + 10; // 10px tollerance
 			xOverflow = origPosX - posX;
 		}
-		
+
 		// apply calculated coordinates
 		divPopup.css( 'top', posY + 'px' );
 		divPopup.css( 'left', posX + 'px' );
-		
+
 		// get popups pointer for adjustments
 		divPointer = divPopup.children( '.' + this.POPUP_CLASS + '-pointer' );
-		
+
 		// if pointer goes over the right edge, move it to the edge and cut it nicely.
 		// this basically happens when popup is cut off on the right side by the viewport.
 		var margingSide = 'left';
@@ -457,7 +457,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		if( pointerEndX > divPopup.outerWidth() ) {
 			var divBox = divPopup.children( '.' + this.POPUP_CLASS + '-box' );
 			divPointer.css( 'border-right', divBox.css( 'border-right' ) );
-			divPointer.css( 'width', divPointer.width() / 2 );			
+			divPointer.css( 'width', divPointer.width() / 2 );
 			if( this._orientation.horizontal == this.ORIENTATION.RIGHT ) {
 				xPointerMarging = divPopup.outerWidth() - ( divPointer.position().left + divPointer.outerWidth() );
 				xPointerMarging += 'px';
@@ -466,10 +466,10 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 				margingSide = 'right';
 			}
 		}
-		
+
 		divPointer.css( 'margin-' + margingSide, xPointerMarging );
 	},
-	
+
 	/**
 	 * Called by this.draw() when the popups html for the dom has to be built.
 	 */
@@ -479,10 +479,10 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		 * The inner divs marging is just good for some space between subject and box.
 		 */
 		var divPopup; // outer div (for position marging/positioning)
-		
+
 		if( this._popup === null ) {
 			divPopup = $( '<div/>' ); 
-			
+
 			// if mouse can touch te popup:
 			if( this.isTouchable ) {
 				// when moving mouse from popup trigger element into popup, don't destroy popup!
@@ -497,27 +497,27 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			// just clean-up the existing popup for re-using it
 			divPopup = this._draw_existingPopupCleanup( this._popup );
 		}
-		
+
 		divPopup
 		.addClass( this.POPUP_CLASS + ' ' + this.POPUP_ID )
 		.data( this.POPUP_CLASS, this ); // bind this object to element so child popups can get its parent
-		
+
 		var divContent = $( '<div/>', { // inner div (for shadow and box shape + style marging)
 			'class': this.POPUP_CLASS + '-box'
-		} );		
+		} );
 		var divPointer = $( '<div/>', { // div for arrow
 			'class': this.POPUP_CLASS + '-pointer'
 		} );
-		
+
 		divContent
 		.append( this._content ) // actual content
 		.appendTo( divPopup );
-		
+
 		divPointer.appendTo( divPopup );
-		
+
 		return divPopup;
 	},
-	
+
 	/**
 	 * Sub-Function of this._draw_buildPopup(), gets called when this.setContent() changes the content
 	 * which leads to a re-draw. In that case we don't destroy the original popup but rather clean up
@@ -532,7 +532,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		.removeAttr( 'class' )
 		.removeAttr( 'style' );
 	},
-	
+
 	/**
 	 * Called whenever the popups content gets updated while the popup is still being displayed.
 	 * In this case the popup size might change and perhaps it will be re-aligned which could
@@ -549,7 +549,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	_draw_contentUpdateCleanup: function( newPopup, newOrientation ) {
 		this._popup.unbind();
 		this._popup.empty().remove();
-		
+
 		if( this._touchedPart != this.PARTS.SUBJECT ) {
 			if( newOrientation.vertical != this._orientation.vertical ) {
 				// popup now displayed on the other side, mouse must be outside now!
@@ -575,12 +575,12 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 					self._touchedPart = null;
 					mouseMoveUnbind();
 				} );
-				
+
 				// ...unless we're still within popup-triggering territory (indicated by mouse-movement)
 				this._subject.bind( 'mousemove.ContextPopupUpdateCleanup',  mouseMoveHandler( this.PARTS.SUBJECT ) );
 				newPopup.bind( 'mousemove.ContextPopupUpdateCleanup', mouseMoveHandler( this.PARTS.POPUP ) );
 			}
-		}		
+		}
 	},
 	*/
 
@@ -592,17 +592,17 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	 */
 	getIdealAlignment: function( popup ) {
 		var measurement = this.$package.InlineMeasurer.measure( this._subject );
-		
+
 		// calculate viewport offset at top and bottom
 		var spaceT = this._subject.offset().top - $( window ).scrollTop();
 		var spaceB = $( window ).height() - spaceT - this._subject.outerHeight();
-		
+
 		// calculate viewport offset left and right
 		var spaceL = this._subject.offset().left - $( window ).scrollLeft();
 		var spaceR = $( window ).width() - spaceL - this._subject.outerWidth();
-		
+
 		var result = new Object();
-		
+
 		result.vertical = ( // if enough space, always expand downwards
 				spaceT <= spaceB
 				|| spaceB > ( popup.outerHeight() + 10 )
@@ -610,7 +610,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			)
 			? this.ORIENTATION.BOTTOM
 			: this.ORIENTATION.TOP;
-		
+
 		result.horizontal = ( // if enough space, always expand to right if subject isn't a multi-line inline-element
 				!( !measurement.isOneLiner && result.vertical == this.ORIENTATION.TOP )
 				&& (
@@ -622,7 +622,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 			)
 			? this.ORIENTATION.RIGHT
 			: this.ORIENTATION.LEFT;
-		
+
 		return result;
 	},
 
@@ -634,14 +634,14 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 	show: function() {
 		if( this._visible ) {
 			return false;
-		}			
+		}
 		if( this.beforeShow != null && !this.beforeShow() ) { // callback
 			return false;
 		}
 		this._subject.addClass( this.POPUP_CLASS + '-subject-active' );
 		this._visible = true;
 		this.draw();
-		
+
 		return true;
 	},
 
@@ -741,7 +741,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		}
 		return parentObj;
 	},
-	
+
 	/**
 	 * Returns all sub-popups within the popups content.
 	 * @return Array contains the ContextPopup child instances
@@ -751,7 +751,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		if( !( this._content instanceof jQuery ) ) {
 			return ChildPopups;
 		}
-		var childSubjects = this._content.find( '.' + this.POPUP_CLASS + '-subject' );		
+		var childSubjects = this._content.find( '.' + this.POPUP_CLASS + '-subject' );
 		var i = 0;
 		var self = this;
 		childSubjects.each( function() {
@@ -763,7 +763,7 @@ window.semanticExpresiveness.ui.ContextPopup.prototype = {
 		} );
 		return ChildPopups;
 	},
-	
+
 	/**
 	 * Returns the direct active sub-popup. There can only be one direct active sub-popup
 	 * at a time. In case no sub-popup exists or none is active, null will be returned.

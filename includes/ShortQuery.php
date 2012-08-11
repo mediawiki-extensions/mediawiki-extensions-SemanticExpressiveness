@@ -14,20 +14,20 @@ use SMWPropertyValue, Title;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ShortQuery extends PFParamsBasedFactory {
-	
+
 	protected static $pfParamsValidatorElement = 'SemEx Short Query';
-	
+
 	protected $property;
 	protected $source;
 	protected $store = null;
 	protected $useCache = true;
-	
+
 	const SOURCE_IS_TITLE = 1;
 	const SOURCE_FROM_CONTEXT = 2; // source from current page (depending on Parser object)
 	const SOURCE_FROM_REF = 3; // source from another property of the current page
 	const SOURCE_IS_SHORTQUERY = 4;
 	const SOURCE_IS_ESTRING = 5; // ESTRING = ExpressiveString
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -39,7 +39,7 @@ class ShortQuery extends PFParamsBasedFactory {
 		$this->property = $property;
 		$this->source = $source; // null implies current page
 	}
-	
+
 	/**
 	 * Sets the source from where a specific property should be queried from. This can consist of different
 	 * types of values. The possible types and their meanings:
@@ -58,7 +58,7 @@ class ShortQuery extends PFParamsBasedFactory {
 	public function setSource( $source ) {
 		$this->source = $source;
 	}
-	
+
 	/**
 	 * Returns the source the specific property should be queried from.
 	 * @return Title|SMWPropertyValue|ExpressiveString|null
@@ -66,7 +66,7 @@ class ShortQuery extends PFParamsBasedFactory {
 	public function getSource() {
 		return $this->source;
 	}
-	
+
 	/**
 	 * Returns the kind of source the query will get the requested property from. the following types
 	 * are possible:
@@ -98,7 +98,7 @@ class ShortQuery extends PFParamsBasedFactory {
 		}
 		return self::SOURCE_IS_TITLE;
 	}
-	
+
 	/**
 	 * Function to define for which property should be queried.
 	 * @param SMWPropertyValue $property
@@ -106,7 +106,7 @@ class ShortQuery extends PFParamsBasedFactory {
 	public function setProperty( SMWPropertyValue $property ) {
 		$this->property = $property;
 	}
-	
+
 	/**
 	 * Returns the property for which the query is asking.
 	 * @return SMWPropertyValue
@@ -114,7 +114,7 @@ class ShortQuery extends PFParamsBasedFactory {
 	public function getProperty() {
 		return $this->property;
 	}
-	
+
 	/**
 	 * Defines whether queries having the same source as the page they are defined on should
 	 * consider properties collected during the page rendering which are not stored within the
@@ -126,7 +126,7 @@ class ShortQuery extends PFParamsBasedFactory {
 	public function setUseCache( $val ) {
 		return wfSetVar( $this->useCache,  $val );
 	}
-	
+
 	/**
 	 * @see ShortQuery::setUseCache()
 	 * @return bool
@@ -134,7 +134,7 @@ class ShortQuery extends PFParamsBasedFactory {
 	public function getUseCache() {
 		return $this->useCache;
 	}
-	
+
 	/**
 	 * Sets the Store which should be the source for the query.
 	 * Consider that depending on the cache option, the store won't even have an effect.
@@ -143,9 +143,9 @@ class ShortQuery extends PFParamsBasedFactory {
 	 * @return SMWStore
 	 */
 	public function setStore( SMWStore $val ) {
-		return wfSetVar( $this->store, $val );		
+		return wfSetVar( $this->store, $val );
 	}
-	
+
 	/**
 	 * @see ShortQuery::setStore()
 	 * @return SMWStore
@@ -156,7 +156,7 @@ class ShortQuery extends PFParamsBasedFactory {
 		}
 		return $this->store;
 	}
-	
+
 	/**
 	 * Returns the associated store name which identifies the store within $smwgQuerySources
 	 * A empty string refers to the default store. Returns false in case the store in use is
@@ -170,63 +170,63 @@ class ShortQuery extends PFParamsBasedFactory {
 		) {
 			return ''; // default store
 		}
-		
+
 		global $smwgQuerySources;
-		
-		$storeClass = get_class( $this->store );		
+
+		$storeClass = get_class( $this->store );
 		$index = array_search( $storeClass, $smwgQuerySources ); // false if unknown
-					
+
 		return $index;
 	}
-	
+
 	/**
 	 * @see PFParamsBasedFactory::newFromValidatedParams()
 	 */
 	public static function newFromValidatedParams( array $params ) {
 		$query = new self( $params['property'] );
-		
+
 		if( $params['from ref'] ) {
 			$query->setSource( $params['from ref'] );
 		}
 		elseif( $params['from'] ) {
 			$query->setSource( $params['from'] );
 		}
-		
+
 		$query->setUseCache( $params['cache'] );
 		$query->setStore( $params['source'] );
-		
+
 		return $query;
 	}
-	
+
 	/**
 	 * Returns a description of all allowed function Parameters representing a ShortQuery.
 	 */
 	public static function getPFParams() {
 		$params = array();
-		
+
 		$params['property'] = new Parameter( 'property' );
 		$params['property']->addCriteria( new CriterionIsProperty() );
 		$params['property']->addManipulations( new ParamManipulationProperty() );
-		
+
 		$params['from'] = new Parameter( 'from', Parameter::TYPE_TITLE );
 		$params['from']->setDefault( false, false );
-		
+
 		$params['from ref'] = new Parameter( 'from ref' );
 		$params['from ref']->addCriteria( // only allow properties of type 'Page' for this!
 			new CriterionIsProperty( '_wpg' )
 		);
 		$params['from ref']->addManipulations( new ParamManipulationProperty() );
 		$params['from ref']->setDefault( false, false );
-		
+
 		$params['cache'] = new Parameter( 'cache', Parameter::TYPE_BOOLEAN );
 		$params['cache']->setDefault( true );
-		
+
 		// this has nothing to do with set/getSource but delivers the value for set/getStore:
 		$params['source'] = new Parameter( 'source' );
 		$params['source']->addCriteria( new CriterionIsQuerySource() );
 		$params['source']->addManipulations( new ParamManipulationQuerySource() );
 		$params['source']->setDefault( smwfGetStore(), false );
-		
+
 		return $params;
 	}
 }

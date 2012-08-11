@@ -15,7 +15,7 @@ use Parser;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ExpressiveStringPieceSQResult extends ExpressiveStringPieceByRegex {
-	
+
 	// [1] match <span> with 'shortQuery' class if we can make sure...
 	// [2] ... no further <span>-pairs inside...
 	//     OR
@@ -30,64 +30,64 @@ class ExpressiveStringPieceSQResult extends ExpressiveStringPieceByRegex {
 		(?# COMMENT #3 )
 		| (?P<innerDOM> <span(?:\s+[^>]*|)>(?: (?>(?!<span(?:\s+[^>]*|)>|<\/span>).)* | (?&innerDOM) )*?<\/span> )*
 		)* <\/span>';
-	
+
 	protected static $regex_modifiers = 'sx';
 	protected static $regex_essentials = array( false, false );
-	
+
 	/**
 	 * @var ShortQueryResult
 	 */
 	protected $value;
-	
+
 	function __construct( ShortQueryResult $value ) {
 		parent::__construct( $value );
 	}
-	
+
 	public function getRawText() {
 		return $this->value->getRawText();
 	}
-	
+
 	public function getWikiText(
 		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		return $this->value->getWikiText( $linked, $showErrors );
 	}
-	
+
 	public function getAbstractRawText() {
 		return $this->value->getAbstractResult()->getRawText();
 	}
-	
+
 	public function getAbstractWikiText(
 		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		return $this->value->getAbstractResult()->getWikiText( $linked, $showErrors );
 	}
-	
+
 	public static function hasAbstractRepresentation() {
 		return true;
 	}
-	
+
 	public function isUnresolvable() {
 		return $this->value->isEmpty();
 	}
-	
+
 	protected function getErrors_internal() {
 		return $this->value->getErrors();
 	}
-	
+
 	protected function getOutputByOptions( ExpressiveStringOutputOptions $options ) {
 		return $this->value->getOutput( $options );
 	}
-	
+
 	/**
 	 * @return ShortQueryOutputOptions
 	 */
 	public static function getDefaultOutputOptions() {
 		return new ShortQueryOutputOptions();
 	}
-	
+
 	protected static function examineRegexMatch( array $backRefs, Parser $parser ) {
 		/*
 		$part = str_replace( '&nbsp;', ' ', $part );
@@ -96,16 +96,16 @@ class ExpressiveStringPieceSQResult extends ExpressiveStringPieceByRegex {
 		*/
 		$xmlDoc = new DOMDocument();
 		$xmlDoc->strictErrorChecking = false;
-		
+
 		wfSuppressWarnings();
 		$validDom = $xmlDoc->loadXML( $backRefs[0] );
 		wfRestoreWarnings();
-		
+
 		if( ! $validDom ) {
 			// no well-formed xml, insert as plain string
 			return false;
 		}
-		
+
 		try {
 			// try to re-fabricate short query result from DOM:
 			$sqResult = ShortQueryResult::newFromDOM( $xmlDoc->documentElement, $parser );
@@ -113,7 +113,7 @@ class ExpressiveStringPieceSQResult extends ExpressiveStringPieceByRegex {
 			// invalid, insert as plain string
 			return false;
 		}
-		
+
 		return new static( $sqResult );
 	}
 }

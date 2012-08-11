@@ -14,7 +14,7 @@ namespace SemEx;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ParamManipulationQuerySource extends ItemParameterManipulation {
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -22,20 +22,20 @@ class ParamManipulationQuerySource extends ItemParameterManipulation {
 	 */
 	public function __construct() {
 		parent::__construct();
-	}	
-	
+	}
+
 	/**
 	 * @see ItemParameterManipulation::doManipulation
-	 */	
+	 */
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		global $smwgQuerySources;
-		
-		// get specific store or take default:		
+
+		// get specific store or take default:
 		if( array_key_exists( $value, $smwgQuerySources ) ) {
 			$value = new $smwgQuerySources[ $value ]();
 		} else {
 			$value = smwfGetStore(); // take default
 		}
 	}
-	
+
 }
