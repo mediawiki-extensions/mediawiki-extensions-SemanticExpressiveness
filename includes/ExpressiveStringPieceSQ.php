@@ -12,7 +12,7 @@ use Parser;
  * 
  * @since 0.1
  * 
- * @file ExpressiveStringPieceSQ.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >

@@ -14,7 +14,7 @@ namespace SemEx;
  * @license: ISC License
  * @author: Daniel Werner < danweetz@web.de >
  *
- * @file SemanticExpressiveness.php
+ * @file
  * @ingroup SemanticExpressiveness
  */
 

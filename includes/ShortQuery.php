@@ -8,7 +8,7 @@ use SMWPropertyValue, Title;
  * 
  * @since 0.1
  * 
- * @file ShortQuery.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >

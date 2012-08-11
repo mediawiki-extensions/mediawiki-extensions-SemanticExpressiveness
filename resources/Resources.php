@@ -5,7 +5,7 @@
  *
  * @since 0.1
  *
- * @file Resources.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @licence GNU GPL v2+

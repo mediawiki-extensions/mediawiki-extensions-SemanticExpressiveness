@@ -6,7 +6,7 @@ namespace SemEx;
  * 
  * @since 0.1
  * 
- * @file PlainQueryPF.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >

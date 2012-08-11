@@ -5,10 +5,10 @@ namespace SemEx;
  * Class for defining options for expressive strings output.
  * ExpressiveString::getOutput() can be used to get the formatted output in the form defined by
  * a ExpressiveStringOutputOptions object.
- * 
+ *
  * @since 0.1
- * 
- * @file ExpressiveStringOutputOptions.php
+ *
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >

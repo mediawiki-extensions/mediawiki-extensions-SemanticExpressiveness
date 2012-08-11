@@ -7,7 +7,7 @@ namespace SemEx;
  * 
  * @since 0.1
  * 
- * @file ShortQueryResult.php
+ * @file
  * @ingroup SemanticExpressiveness
  * @ingroup Criteria
  *

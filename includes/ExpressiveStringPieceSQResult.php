@@ -9,7 +9,7 @@ use Parser;
  * 
  * @since 0.1
  * 
- * @file ExpressiveStringPieceSQResult.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >

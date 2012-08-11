@@ -8,7 +8,7 @@ namespace SemEx;
  * 
  * @since 0.1
  * 
- * @file ExpressiveStringPiece.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >

@@ -11,7 +11,7 @@ use SMWDataValueFactory;
  * 
  * @since 0.1
  * 
- * @file ShortQueryResult.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @licence GNU GPL v3+

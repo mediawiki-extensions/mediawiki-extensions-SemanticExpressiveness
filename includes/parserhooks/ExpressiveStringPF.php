@@ -7,7 +7,7 @@ use ParserHook, Validator, ListParameter;
  * 
  * @since 0.1
  * 
- * @file ExpressiveStringPF.php
+ * @file
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
