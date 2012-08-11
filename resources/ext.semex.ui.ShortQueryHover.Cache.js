@@ -15,7 +15,7 @@
  * information between several ShortQueryHover elements.
  */
 window.semanticExpresiveness.ui.ShortQueryHover.Cache = function(){
-}
+};
 
 window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 	/*
@@ -78,3 +78,4 @@ window.semanticExpresiveness.ui.ShortQueryHover.Cache.prototype = {
 		this._cache = new Object();
 	}
 };
+

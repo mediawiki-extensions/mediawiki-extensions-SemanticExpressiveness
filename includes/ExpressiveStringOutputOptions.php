@@ -45,12 +45,12 @@ class ExpressiveStringOutputOptions extends PFParamsBasedFactory {
 
 
 	/**
-	 * The output will be in its abstract representation if a failure occured.
+	 * The output will be in its abstract representation if a failure has occurred.
 	 */
 	const ABSTRACT_IF_FAILURE = true;
 
 	/**
-	 * The output will never have an abstract representation, even if a failure has occured. Normally
+	 * The output will never have an abstract representation, even if a failure has occurred. Normally
 	 * an empty string will be returned instead.
 	 */
 	const NO_ABSTRACT = false;

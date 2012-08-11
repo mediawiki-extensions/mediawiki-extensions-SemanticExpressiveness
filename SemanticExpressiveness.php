@@ -20,6 +20,10 @@ namespace SemEx;
 
 if( !defined( 'MEDIAWIKI' ) ) { die(); }
 
+if ( version_compare( $wgVersion, '1.20a', '<' ) ) {
+	die( '<b>Error:</b> SemanticExpressiveness requires MediaWiki 1.20 or above.' );
+}
+
 $wgExtensionCredits[ defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other' ][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Semantic Expressiveness',
@@ -37,13 +41,15 @@ $wgExtensionMessagesFiles['SemExMagic'] = Ext::getDir() . '/SemanticExpressivene
 
 // resources inclusion:
 Ext::registerResourceModules();
-$wgHooks['OutputPageParserOutput'][]      = 'SemEx\Ext::onOutputPageParserOutput';
-$wgHooks['InternalParseBeforeSanitize'][] = 'SemEx\Ext::onInternalParseBeforeSanitize';
+$wgHooks['OutputPageParserOutput'][]      = 'SemEx\Hooks::onOutputPageParserOutput';
+$wgHooks['InternalParseBeforeSanitize'][] = 'SemEx\Hooks::onInternalParseBeforeSanitize';
 
 
 $incDir = Ext::getDir() . '/includes/';
 
 // general inclusions:
+$wgAutoloadClasses['SemEx\Hooks'] = Ext::getDir() . '/SemanticExpressiveness.hooks.php';
+
 $wgAutoloadClasses['SemEx\ExpressiveString'             ] = $incDir . 'ExpressiveString.php';
 $wgAutoloadClasses['SemEx\ExpressiveStringPiece'        ] = $incDir . 'ExpressiveStringPiece.php';
 $wgAutoloadClasses['SemEx\ExpressiveStringPieceByRegex' ] = $incDir . 'ExpressiveStringPieceByRegex.php';
@@ -135,38 +141,5 @@ class Ext {
 				'semex-shortquery-hover-loading-failed'
 			),
 		);
-	}
-
-	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
-	 */
-	public static function onOutputPageParserOutput( \OutputPage &$out, \ParserOutput $parseroutput ) {
-		// load CSS and JavaScript
-		// we can't add this just within ShortQueryResult since it's possible to get a
-		// short query result from another page which is stored within a SMW property!
-		$out->addModules( 'ext.semex' );
-		return true;
-	}
-
-	/*
-	 * NOTE: this hook requires the fix for bug #34678, https://bugzilla.wikimedia.org/show_bug.cgi?id=34678
-	 */
-	public static function onInternalParseBeforeSanitize( \Parser &$parser, &$text ) {
-		$exprString = new ExpressiveString( $text, $parser, SEMEX_EXPR_PIECE_SQ );
-		$text = $exprString->getWikiText();
-
-		/*
-		 * Sanitize the whole thing, otherwise HTML and JS code injection would be possible.
-		 * Basically the same is happening in Parser::internalParse() right before 'InternalParseBeforeLinks' hook is called.
-		 */
-		/*
-		$text = Sanitizer::removeHTMLtags(
-				$text,
-				array( &$parser, 'attributeStripCallback' ),
-				false,
-				array_keys( $parser->mTransparentTagHooks )
-		);
-		 */
-		return true;
 	}
 }
