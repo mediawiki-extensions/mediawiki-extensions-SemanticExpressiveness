@@ -153,7 +153,7 @@ $messages['ia'] = array(
 	'semex-desc' => 'Adde un syntaxe pro curte consultas plus expressive',
 	'semex-shortquery-title' => '$1 de $2',
 	'semex-shortquery-title-from-ref' => '$1 ab ref $2',
-	'semex-shortquery-hover-loading' => 'Cargamento...',
+	'semex-shortquery-hover-loading' => 'Cargamento',
 	'semex-shortquery-hover-loading-failed' => 'Le cargamento del contento del paginas de destination de consultas curte ha fallite.',
 	'semex-shortquery-error-missing-property' => 'Nulle valor definite pro le proprietate requirite.',
 	'semex-shortquery-error-byref-has-many-values' => 'Le proprietate de referentia date ha plus de un valor. Solmente le prime esseva prendite como le objectivo de consultas.',
@@ -233,6 +233,13 @@ $messages['nl'] = array(
  */
 $messages['pt'] = array(
 	'semex-shortquery-hover-loading' => 'A carregar',
+);
+
+/** Romanian (română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'semex-shortquery-hover-loading' => 'Se încarcă',
 );
 
 /** Tagalog (Tagalog)
