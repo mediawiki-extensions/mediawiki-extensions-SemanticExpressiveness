@@ -39,8 +39,11 @@ $wgHooks['ParserFirstCallInit'][] = 'SemEx\Ext::init';
 $wgExtensionMessagesFiles['SemEx'     ] = Ext::getDir() . '/SemanticExpressiveness.i18n.php';
 $wgExtensionMessagesFiles['SemExMagic'] = Ext::getDir() . '/SemanticExpressiveness.i18n.magic.php';
 
-// resources inclusion:
-Ext::registerResourceModules();
+// Resource Loader Modules:
+$wgResourceModules = array_merge( $wgResourceModules, include( Ext::getDir() . '/resources/Resources.php' ) );
+
+// Hooks:
+$wgAutoloadClasses['SemEx\Hooks'] = Ext::getDir() . '/SemanticExpressiveness.hooks.php';
 $wgHooks['OutputPageParserOutput'][]      = 'SemEx\Hooks::onOutputPageParserOutput';
 $wgHooks['InternalParseBeforeSanitize'][] = 'SemEx\Hooks::onInternalParseBeforeSanitize';
 
@@ -48,8 +51,6 @@ $wgHooks['InternalParseBeforeSanitize'][] = 'SemEx\Hooks::onInternalParseBeforeS
 $incDir = Ext::getDir() . '/includes/';
 
 // general inclusions:
-$wgAutoloadClasses['SemEx\Hooks'] = Ext::getDir() . '/SemanticExpressiveness.hooks.php';
-
 $wgAutoloadClasses['SemEx\ExpressiveString'             ] = $incDir . 'ExpressiveString.php';
 $wgAutoloadClasses['SemEx\ExpressiveStringPiece'        ] = $incDir . 'ExpressiveStringPiece.php';
 $wgAutoloadClasses['SemEx\ExpressiveStringPieceByRegex' ] = $incDir . 'ExpressiveStringPieceByRegex.php';
@@ -64,7 +65,7 @@ $wgAutoloadClasses['SemEx\ShortQueryAbstractResult'     ] = $incDir . 'ShortQuer
 $wgAutoloadClasses['SemEx\ShortQueryOutputOptions'      ] = $incDir . 'ShortQueryOutputOptions.php';
 $wgAutoloadClasses['SemEx\PFParamsBasedFactory'         ] = $incDir . 'PFParamsBasedFactory.php';
 
-// validator stuff:
+// Validator stuff:
 $wgAutoloadClasses['SemEx\CriterionIsProperty'         ] = $incDir . 'validation/CriterionIsProperty.php';
 $wgAutoloadClasses['SemEx\CriterionIsQuerySource'      ] = $incDir . 'validation/CriterionIsQuerySource.php';
 $wgAutoloadClasses['SemEx\ParamManipulationProperty'   ] = $incDir . 'validation/ParamManipulationProperty.php';
@@ -104,42 +105,5 @@ class Ext {
 	public static function getDir() {
 		static $dir = __DIR__;
 		return $dir;
-	}
-
-	/**
-	 * Registers JavaScript and CSS to ResourceLoader.
-	 */
-	public static function registerResourceModules() {
-		global $wgResourceModules;
-
-		$moduleTemplate = array(
-			'localBasePath' => self::getDir() . '/resources',
-			'remoteExtPath' => 'SemanticExpressiveness/resources',
-		);
-
-		$wgResourceModules['ext.semex'] = $moduleTemplate + array(
-			'scripts' => array(
-				'ext.semex.js',
-				'ext.semex.ShortQueryResult.js',
-				'ext.semex.ui.js',
-				'ext.semex.ui.InlineMeasurer.js',
-				'ext.semex.ui.ContextPopup.js',
-				'ext.semex.ui.TitledContextPopup.js',
-				'ext.semex.ui.ShortQueryHover.js',
-				'ext.semex.ui.ShortQueryHover.Cache.js',
-				'ext.semex.ui.ShortQueryHover.initialize.js',
-			),
-			'styles' => array(
-				'ext.semex.css',
-				'ext.semex.ui.ContextPopup.css',
-				'ext.semex.ui.TitledContextPopup.css',
-				'ext.semex.ui.ShortQueryHover.css',
-			),
-			'messages' => array(
-				'semex-shortquery-title',
-				'semex-shortquery-hover-loading',
-				'semex-shortquery-hover-loading-failed'
-			),
-		);
 	}
 }
