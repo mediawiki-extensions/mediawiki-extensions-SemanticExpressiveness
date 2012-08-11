@@ -188,6 +188,14 @@ $messages['ja'] = array(
 	'semex-expressivestring-unresolvable' => '解決できないマークアップ',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'semex-shortquery-title' => '$1 $2-დან',
+	'semex-shortquery-hover-loading' => 'იტვირთება',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
