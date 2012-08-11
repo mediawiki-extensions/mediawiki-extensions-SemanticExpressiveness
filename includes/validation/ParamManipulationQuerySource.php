@@ -1,4 +1,5 @@
 <?php
+namespace SemEx;
 
 /**
 * Parameter manipulation converting the value to a SMWStore listed within the global
@@ -6,13 +7,13 @@
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryResult.php
+ * @file ShortQueryResult.php
  * @ingroup SemanticExpressiveness
  * @ingroup ParameterManipulations
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExParamManipulationQuerySource extends ItemParameterManipulation {
+class ParamManipulationQuerySource extends ItemParameterManipulation {
 	
 	/**
 	 * Constructor.

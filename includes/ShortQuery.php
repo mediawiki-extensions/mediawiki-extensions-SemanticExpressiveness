@@ -1,17 +1,19 @@
 <?php
+namespace SemEx;
+use SMWPropertyValue, Title;
 
 /**
  * Class describing a 'Semantic Expressiveness' short query.
- * SemExShortQueryProcessor::getResultFromQuery() can be used to get a short queries result.
+ * ShortQueryProcessor::getResultFromQuery() can be used to get a short queries result.
  * 
  * @since 0.1
  * 
- * @file SemExShortQuery.php
+ * @file ShortQuery.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExShortQuery extends SemExPFParamsBasedFactory {
+class ShortQuery extends PFParamsBasedFactory {
 	
 	protected static $pfParamsValidatorElement = 'SemEx Short Query';
 	
@@ -30,7 +32,7 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 	 * Constructor
 	 * 
 	 * @param SMWPropertyValue $property the property which should be queried
-	 * @param Title|SMWPropertyValue|SemExExpressiveString|null where the property should be queried from.
+	 * @param Title|SMWPropertyValue|ExpressiveString|null where the property should be queried from.
 	 *        See setSource() for details.
 	 */
 	public function __construct( SMWPropertyValue $property, $source = null ) {
@@ -44,14 +46,14 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 	 *                   Title: The titles will be searched for the source property.
 	 *        SMWPropertyValue: SMW property which should be of type 'Page'. In that case the current pages
 	 *                          property value will be taken as source for the query.
-	 *         SemExShortQuery: The result of another short query is taken as source.
-	 *   SemExExpressiveString: Source is a expressive string which can contain further short queries. This
+	 *         ShortQuery: The result of another short query is taken as source.
+	 *   ExpressiveString: Source is a expressive string which can contain further short queries. This
 	 *                          makes the short query highly expressive as it's possible to trace the source
 	 *                          of what should be queried.
 	 *                    null: implies that the property should be queried from the query processors current
 	 *                          context page.
 	 * 
-	 * @param Title|SMWPropertyValue|SemExShortQuery|SemExExpressiveString|null $source
+	 * @param Title|SMWPropertyValue|ShortQuery|ExpressiveString|null $source
 	 */
 	public function setSource( $source ) {
 		$this->source = $source;
@@ -59,7 +61,7 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 	
 	/**
 	 * Returns the source the specific property should be queried from.
-	 * @return Title|SMWPropertyValue|SemExExpressiveString|null
+	 * @return Title|SMWPropertyValue|ExpressiveString|null
 	 */
 	public function getSource() {
 		return $this->source;
@@ -91,7 +93,7 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 		if( $this->source instanceof self ) {
 			return self::SOURCE_IS_SHORTQUERY;
 		}
-		if( $this->source instanceof SemExExpressiveString ) {
+		if( $this->source instanceof ExpressiveString ) {
 			return self::SOURCE_IS_ESTRING;
 		}
 		return self::SOURCE_IS_TITLE;
@@ -126,7 +128,7 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 	}
 	
 	/**
-	 * @see SemExShortQuery::setUseCache()
+	 * @see ShortQuery::setUseCache()
 	 * @return bool
 	 */
 	public function getUseCache() {
@@ -145,7 +147,7 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 	}
 	
 	/**
-	 * @see SemExShortQuery::setStore()
+	 * @see ShortQuery::setStore()
 	 * @return SMWStore
 	 */
 	public function getStore() {
@@ -178,7 +180,7 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 	}
 	
 	/**
-	 * @see SemExPFParamsBasedFactory::newFromValidatedParams()
+	 * @see PFParamsBasedFactory::newFromValidatedParams()
 	 */
 	public static function newFromValidatedParams( array $params ) {
 		$query = new self( $params['property'] );
@@ -197,23 +199,23 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 	}
 	
 	/**
-	 * Returns a description of all allowed function Parameters representing a SemExShortQuery.
+	 * Returns a description of all allowed function Parameters representing a ShortQuery.
 	 */
 	public static function getPFParams() {
 		$params = array();
 		
 		$params['property'] = new Parameter( 'property' );
-		$params['property']->addCriteria( new SemExCriterionIsProperty() );
-		$params['property']->addManipulations( new SemExParamManipulationProperty() );
+		$params['property']->addCriteria( new CriterionIsProperty() );
+		$params['property']->addManipulations( new ParamManipulationProperty() );
 		
 		$params['from'] = new Parameter( 'from', Parameter::TYPE_TITLE );
 		$params['from']->setDefault( false, false );
 		
 		$params['from ref'] = new Parameter( 'from ref' );
 		$params['from ref']->addCriteria( // only allow properties of type 'Page' for this!
-			new SemExCriterionIsProperty( '_wpg' )
+			new CriterionIsProperty( '_wpg' )
 		);
-		$params['from ref']->addManipulations( new SemExParamManipulationProperty() );
+		$params['from ref']->addManipulations( new ParamManipulationProperty() );
 		$params['from ref']->setDefault( false, false );
 		
 		$params['cache'] = new Parameter( 'cache', Parameter::TYPE_BOOLEAN );
@@ -221,8 +223,8 @@ class SemExShortQuery extends SemExPFParamsBasedFactory {
 		
 		// this has nothing to do with set/getSource but delivers the value for set/getStore:
 		$params['source'] = new Parameter( 'source' );
-		$params['source']->addCriteria( new SemExCriterionIsQuerySource() );
-		$params['source']->addManipulations( new SemExParamManipulationQuerySource() );
+		$params['source']->addCriteria( new CriterionIsQuerySource() );
+		$params['source']->addManipulations( new ParamManipulationQuerySource() );
 		$params['source']->setDefault( smwfGetStore(), false );
 		
 		return $params;

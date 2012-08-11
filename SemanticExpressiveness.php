@@ -1,4 +1,5 @@
 <?php
+namespace SemEx;
 
 /**
  * 'Semantic Expressiveness' introduces a short hand query syntax to query single values from the
@@ -23,69 +24,69 @@ $wgExtensionCredits[ defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'
 	'path'           => __FILE__,
 	'name'           => 'Semantic Expressiveness',
 	'descriptionmsg' => 'semex-desc',
-	'version'        => ExtSemEx::VERSION,
+	'version'        => Ext::VERSION,
 	'author'         => '[https://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness',
 );
 
-$wgHooks['ParserFirstCallInit'   ][] = 'ExtSemEx::init';
+$wgHooks['ParserFirstCallInit'][] = 'SemEx\Ext::init';
 
 // language files:
-$wgExtensionMessagesFiles['SemEx'     ] = ExtSemEx::getDir() . '/SemanticExpressiveness.i18n.php';
-$wgExtensionMessagesFiles['SemExMagic'] = ExtSemEx::getDir() . '/SemanticExpressiveness.i18n.magic.php';
+$wgExtensionMessagesFiles['SemEx'     ] = Ext::getDir() . '/SemanticExpressiveness.i18n.php';
+$wgExtensionMessagesFiles['SemExMagic'] = Ext::getDir() . '/SemanticExpressiveness.i18n.magic.php';
 
 // resources inclusion:
-ExtSemEx::registerResourceModules();
-$wgHooks['OutputPageParserOutput'][]      = 'ExtSemEx::onOutputPageParserOutput';
-$wgHooks['InternalParseBeforeSanitize'][] = 'ExtSemEx::onInternalParseBeforeSanitize';
+Ext::registerResourceModules();
+$wgHooks['OutputPageParserOutput'][]      = 'SemEx\Ext::onOutputPageParserOutput';
+$wgHooks['InternalParseBeforeSanitize'][] = 'SemEx\Ext::onInternalParseBeforeSanitize';
 
 
-$incDir = ExtSemEx::getDir() . '/includes/';
+$incDir = Ext::getDir() . '/includes/';
 
 // general inclusions:
-$wgAutoloadClasses['SemExExpressiveString'             ] = $incDir . 'SemExExpressiveString.php';
-$wgAutoloadClasses['SemExExpressiveStringPiece'        ] = $incDir . 'SemExExpressiveStringPiece.php';
-$wgAutoloadClasses['SemExExpressiveStringPieceByRegex' ] = $incDir . 'SemExExpressiveStringPieceByRegex.php';
-$wgAutoloadClasses['SemExExpressiveStringPieceSQ'      ] = $incDir . 'SemExExpressiveStringPieceSQ.php';
-$wgAutoloadClasses['SemExExpressiveStringPieceSQResult'] = $incDir . 'SemExExpressiveStringPieceSQResult.php';
-$wgAutoloadClasses['SemExExpressiveStringPieceWikiLink'] = $incDir . 'SemExExpressiveStringPieceWikiLink.php';
-$wgAutoloadClasses['SemExExpressiveStringOutputOptions'] = $incDir . 'SemExExpressiveStringOutputOptions.php';
-$wgAutoloadClasses['SemExShortQuery'                   ] = $incDir . 'SemExShortQuery.php';
-$wgAutoloadClasses['SemExShortQueryProcessor'          ] = $incDir . 'SemExShortQueryProcessor.php';
-$wgAutoloadClasses['SemExShortQueryResult'             ] = $incDir . 'SemExShortQueryResult.php';
-$wgAutoloadClasses['SemExShortQueryAbstractResult'     ] = $incDir . 'SemExShortQueryAbstractResult.php';
-$wgAutoloadClasses['SemExShortQueryOutputOptions'      ] = $incDir . 'SemExShortQueryOutputOptions.php';
-$wgAutoloadClasses['SemExPFParamsBasedFactory'         ] = $incDir . 'SemExPFParamsBasedFactory.php';
+$wgAutoloadClasses['SemEx\ExpressiveString'             ] = $incDir . 'ExpressiveString.php';
+$wgAutoloadClasses['SemEx\ExpressiveStringPiece'        ] = $incDir . 'ExpressiveStringPiece.php';
+$wgAutoloadClasses['SemEx\ExpressiveStringPieceByRegex' ] = $incDir . 'ExpressiveStringPieceByRegex.php';
+$wgAutoloadClasses['SemEx\ExpressiveStringPieceSQ'      ] = $incDir . 'ExpressiveStringPieceSQ.php';
+$wgAutoloadClasses['SemEx\ExpressiveStringPieceSQResult'] = $incDir . 'ExpressiveStringPieceSQResult.php';
+$wgAutoloadClasses['SemEx\ExpressiveStringPieceWikiLink'] = $incDir . 'ExpressiveStringPieceWikiLink.php';
+$wgAutoloadClasses['SemEx\ExpressiveStringOutputOptions'] = $incDir . 'ExpressiveStringOutputOptions.php';
+$wgAutoloadClasses['SemEx\ShortQuery'                   ] = $incDir . 'ShortQuery.php';
+$wgAutoloadClasses['SemEx\ShortQueryProcessor'          ] = $incDir . 'ShortQueryProcessor.php';
+$wgAutoloadClasses['SemEx\ShortQueryResult'             ] = $incDir . 'ShortQueryResult.php';
+$wgAutoloadClasses['SemEx\ShortQueryAbstractResult'     ] = $incDir . 'ShortQueryAbstractResult.php';
+$wgAutoloadClasses['SemEx\ShortQueryOutputOptions'      ] = $incDir . 'ShortQueryOutputOptions.php';
+$wgAutoloadClasses['SemEx\PFParamsBasedFactory'         ] = $incDir . 'PFParamsBasedFactory.php';
 
 // validator stuff:
-$wgAutoloadClasses['SemExCriterionIsProperty'         ] = $incDir . 'validation/SemExCriterionIsProperty.php';
-$wgAutoloadClasses['SemExCriterionIsQuerySource'      ] = $incDir . 'validation/SemExCriterionIsQuerySource.php';
-$wgAutoloadClasses['SemExParamManipulationProperty'   ] = $incDir . 'validation/SemExParamManipulationProperty.php';
-$wgAutoloadClasses['SemExParamManipulationQuerySource'] = $incDir . 'validation/SemExParamManipulationQuerySource.php';
+$wgAutoloadClasses['SemEx\CriterionIsProperty'         ] = $incDir . 'validation/CriterionIsProperty.php';
+$wgAutoloadClasses['SemEx\CriterionIsQuerySource'      ] = $incDir . 'validation/CriterionIsQuerySource.php';
+$wgAutoloadClasses['SemEx\ParamManipulationProperty'   ] = $incDir . 'validation/ParamManipulationProperty.php';
+$wgAutoloadClasses['SemEx\ParamManipulationQuerySource'] = $incDir . 'validation/ParamManipulationQuerySource.php';
 
 // Parser function initializations:
-$wgAutoloadClasses['SemExQueryPF'           ] = $incDir . 'parserhooks/SemExQueryPF.php';
-$wgAutoloadClasses['SemExPlainQueryPF'      ] = $incDir . 'parserhooks/SemExPlainQueryPF.php';
-$wgAutoloadClasses['SemExExpressiveStringPF'] = $incDir . 'parserhooks/SemExExpressiveStringPF.php';
+$wgAutoloadClasses['SemEx\QueryPF'           ] = $incDir . 'parserhooks/QueryPF.php';
+$wgAutoloadClasses['SemEx\PlainQueryPF'      ] = $incDir . 'parserhooks/PlainQueryPF.php';
+$wgAutoloadClasses['SemEx\ExpressiveStringPF'] = $incDir . 'parserhooks/ExpressiveStringPF.php';
 
-$wgHooks['ParserFirstCallInit'][] = 'SemExExpressiveStringPF::staticInit';
+$wgHooks['ParserFirstCallInit'][] = 'SemEx\ExpressiveStringPF::staticInit';
 
 unset( $incDir );
 
 
-define( 'SEMEX_EXPR_PIECE_STRING',   SemExExpressiveStringPiece::getType() );
-define( 'SEMEX_EXPR_PIECE_SQRESULT', SemExExpressiveStringPieceSQResult::getType() );
-define( 'SEMEX_EXPR_PIECE_SQ',       SemExExpressiveStringPieceSQ::getType() );
-define( 'SEMEX_EXPR_PIECE_WIKILINK', SemExExpressiveStringPieceWikiLink::getType() );
+define( 'SEMEX_EXPR_PIECE_STRING',   ExpressiveStringPiece::getType() );
+define( 'SEMEX_EXPR_PIECE_SQRESULT', ExpressiveStringPieceSQResult::getType() );
+define( 'SEMEX_EXPR_PIECE_SQ',       ExpressiveStringPieceSQ::getType() );
+define( 'SEMEX_EXPR_PIECE_WIKILINK', ExpressiveStringPieceWikiLink::getType() );
 
 
-class ExtSemEx {
+class Ext {
 	
 	const VERSION = '0.1 alpha';
 	
 	static function init( &$parser ) {
-		$parser->setFunctionHook( '?',  array( 'SemExQueryPF', 'render' ), SFH_NO_HASH );
-		$parser->setFunctionHook( '?!', array( 'SemExPlainQueryPF', 'render' ), SFH_NO_HASH );
+		$parser->setFunctionHook( '?',  array( 'SemEx\QueryPF', 'render' ), SFH_NO_HASH );
+		$parser->setFunctionHook( '?!', array( 'SemEx\PlainQueryPF', 'render' ), SFH_NO_HASH );
 		//$parser->setFunctionHook( '?to?!', array( __CLASS__, 'parserFunc_QueryToPlainQuery' ), SFH_NO_HASH );
 		return true;
 	}
@@ -95,10 +96,7 @@ class ExtSemEx {
 	 * @return string
 	 */
 	public static function getDir() {
-		static $dir = null;		
-		if( $dir === null ) {
-			$dir = dirname( __FILE__ );
-		}
+		static $dir = __DIR__;
 		return $dir;
 	}
 
@@ -142,9 +140,9 @@ class ExtSemEx {
 	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
 	 */
-	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $parseroutput ) {
+	public static function onOutputPageParserOutput( \OutputPage &$out, \ParserOutput $parseroutput ) {
 		// load CSS and JavaScript
-		// we can't add this just within SemExShortQueryResult since it's possible to get a
+		// we can't add this just within ShortQueryResult since it's possible to get a
 		// short query result from another page which is stored within a SMW property!
 		$out->addModules( 'ext.semex' );
 		return true;
@@ -153,8 +151,8 @@ class ExtSemEx {
 	/*
 	 * NOTE: this hook requires the fix for bug #34678, https://bugzilla.wikimedia.org/show_bug.cgi?id=34678
 	 */
-	public static function onInternalParseBeforeSanitize( Parser &$parser, &$text ) {		
-		$exprString = new SemExExpressiveString( $text, $parser, SEMEX_EXPR_PIECE_SQ );
+	public static function onInternalParseBeforeSanitize( \Parser &$parser, &$text ) {
+		$exprString = new ExpressiveString( $text, $parser, SEMEX_EXPR_PIECE_SQ );
 		$text = $exprString->getWikiText();
 
 		/*

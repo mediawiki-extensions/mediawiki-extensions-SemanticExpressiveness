@@ -1,4 +1,5 @@
 <?php
+namespace SemEx;
 
 /**
  * Interface for classes offering a factory method for creating a new instance from parser function
@@ -6,12 +7,12 @@
  * 
  * @since 0.1
  * 
- * @file SemExPFParamsBasedFactory.php
+ * @file PFParamsBasedFactory.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-abstract class SemExPFParamsBasedFactory {
+abstract class PFParamsBasedFactory {
 	
 	protected static $pfParamsValidatorElement;
 	

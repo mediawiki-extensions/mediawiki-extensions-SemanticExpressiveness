@@ -1,4 +1,5 @@
 <?php
+namespace SemEx;
 
 /**
  * Parameter criterion for 'Validator' stating that the value must be the key of a registered
@@ -6,13 +7,13 @@
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryResult.php
+ * @file ShortQueryResult.php
  * @ingroup SemanticExpressiveness
  * @ingroup Criteria
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExCriterionIsQuerySource extends ItemParameterCriterion {
+class CriterionIsQuerySource extends ItemParameterCriterion {
 	
 	/**
 	 * Constructor.

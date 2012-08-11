@@ -1,26 +1,26 @@
 <?php
+namespace SemEx;
 
 /**
- * Class which can process a string which potentially contains one or several SemExShortQueryResult
+ * Class which can process a string which potentially contains one or several ShortQueryResult
  * representations. Once initialized, this will offer access to all failed and successful short query
- * results and text parts inbetween. Also allows to convert the whole string into plain text or to
- * convert containing 
+ * results and text parts inbetween. Also allows to convert the whole string into plain text.
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveString.php
+ * @file ExpressiveString.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExExpressiveString {
+class ExpressiveString {
 	
 	protected $enabledPieceTypes;
 	protected $parser;
 	
 	/**
 	 * All parts the original string $string consists of
-	 * @var array of SemExShortQueryResult objects and/or strings
+	 * @var array of ShortQueryResult objects and/or strings
 	 */
 	protected $pieces = array();
 	
@@ -32,7 +32,7 @@ class SemExExpressiveString {
 	 * @param array|string $enabledPieceTypes allows to define which expressive types should be
 	 *        detected. See static::getRegisteredPieceTypes() for all possible types.
 	 */
-	function __construct( $string, Parser $parser, $enabledPieceTypes = null ) {
+	function __construct( $string, \Parser $parser, $enabledPieceTypes = null ) {
 		if( $enabledPieceTypes === null ) {
 			$enabledPieceTypes = static::getRegisteredPieceTypes();
 		}
@@ -55,14 +55,14 @@ class SemExExpressiveString {
 		foreach( $this->getEnabledPieceTypes() as $pieceType ) {
 			$pieceType :: initWithin( $this );
 		}
-	}	
+	}
 	
 	/**
 	 * Returns all parts the original string consists of.
 	 * 
-	 * @return SemExExpressiveStringPiece[]
+	 * @return ExpressiveStringPiece[]
 	 */
-	public function getPieces() {		
+	public function getPieces() {
 		return $this->pieces;
 	}
 	
@@ -70,7 +70,7 @@ class SemExExpressiveString {
 	 * Returns a piece from a given index or null if the index doesn't exist.
 	 * 
 	 * @param int $index 
-	 * @return SemExExpressiveStringPiece
+	 * @return ExpressiveStringPiece
 	 */
 	public function getPiece( $index ) {
 		if( ! array_key_exists( $index, $this->pieces ) ) {
@@ -83,7 +83,7 @@ class SemExExpressiveString {
 	 * Returns all pieces of the string which which have their own expressive meaning and not just
 	 * represent a simple string.
 	 * 
-	 * @return SemExExpressiveStringPiece[] 
+	 * @return ExpressiveStringPiece[]
 	 */	
 	public function getExpressivePieces() {
 		$exprPieces = array();
@@ -136,13 +136,13 @@ class SemExExpressiveString {
 	}
 	
 	/**
-	 * Shorthand function for self::addPieces( new SemExExpressiveStringPiece( $stringPiece ) ).
+	 * Shorthand function for self::addPieces( new ExpressiveStringPiece( $stringPiece ) ).
 	 * 
 	 * @param string $stringPiece
 	 * @param int $index see self::addPieces()
 	 */
 	public function addString( $stringPiece, $index = null ) {
-		$piece = new SemExExpressiveStringPiece( $stringPiece );
+		$piece = new ExpressiveStringPiece( $stringPiece );
 		$this->addPieces( array( $piece ), $index );
 	}
 	
@@ -150,7 +150,7 @@ class SemExExpressiveString {
 	 * Allows to insert additional pieces to the expressive string. By default at the end
 	 * or optionally at a certain index.
 	 * 
-	 * @param SemExExpressiveStringPiece|SemExExpressiveStringPiece[] $pieces
+	 * @param ExpressiveStringPiece|ExpressiveStringPiece[] $pieces
 	 * @param int $index if this is set, the new pieces will be inserted at this index,
 	 *        the original item at this position will be moved behind the inserted ones.
 	 *        Negative index will insert the items that far from the end.
@@ -179,7 +179,7 @@ class SemExExpressiveString {
 			// add the piece after new pieces for reduction
 			$pieces[] = $this->pieces[ $index ];
 			unset( $this->pieces[ $index ] );
-		}		
+		}
 		
 		if( $index > 0 && $totalPieces > 0 ) {
 			// add the one before new pieces for reduction
@@ -197,18 +197,20 @@ class SemExExpressiveString {
 	}
 	
 	/**
-	 * Reduces an array of SemExExpressiveStringPiece elements where possible. This means if the
-	 * array contains several non-expressive objects in a row, they will be reduced to one instead.
+	 * Reduces an array of ExpressiveStringPiece elements where possible. This means if the array
+	 * contains several non-expressive objects in a row, they will be reduced to one instead.
 	 * This will also make all keys numeric and close gaps.
 	 * 
-	 * @param SemExExpressiveStringPiece[] $pieces
+	 * @param ExpressiveStringPiece[] $pieces
 	 * @return int number of reduced pieces
 	 */
 	protected static function reducePieces( array &$pieces ) {
 		$lastPieceType = null;
+		$lastPieceKey = null;
 		$i = 0;
+
 		foreach( $pieces as $key => $piece ) {
-			if( ! $piece instanceof SemExExpressiveStringPiece
+			if( ! $piece instanceof ExpressiveStringPiece
 				|| $piece->getValue() === ''
 			){
 				// remove totally useless empty string or invalid item
@@ -299,7 +301,7 @@ class SemExExpressiveString {
 	 */
 	public function getWikiText(
 		$expressiveIfEmpty = true,
-		$linked = SemExExpressiveStringOutputOptions::LINK_ALL,
+		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		$result = '';
@@ -339,7 +341,7 @@ class SemExExpressiveString {
 	 * @return string
 	 */
 	public function getAbstractWikiText(
-		$linked = SemExExpressiveStringOutputOptions::LINK_ALL,
+		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		$result = '';
@@ -351,11 +353,11 @@ class SemExExpressiveString {
 	}	
 	
 	/**
-	 * Returns an output generated by one or several SemExExpressiveStringOutputOptions objects.
+	 * Returns an output generated by one or several ExpressiveStringOutputOptions objects.
 	 * 
-	 * @param SemExExpressiveStringOutputOptions|null $defaultOption allows to set a option used
+	 * @param ExpressiveStringOutputOptions|null $defaultOption allows to set a option used
 	 *        as default. If set to null the piece types own default options will be used.
-	 * @param SemExExpressiveStringOutputOptions[]|null[] $options If one option is given, it will
+	 * @param ExpressiveStringOutputOptions[]|null[] $options If one option is given, it will
 	 *        be taken for all types of pieces, otherwise an array is expected which holds keys
 	 *        which refer to certain piece types to define a certain option per type. If the
 	 *        value for one type is set to null, it will fall back to its default option. If a

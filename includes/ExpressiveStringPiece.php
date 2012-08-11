@@ -1,16 +1,18 @@
 <?php
+namespace SemEx;
+use Parser;
 
 /**
- * Class representing one piece of a SemExExpressiveString.
+ * Class representing one piece of a ExpressiveString.
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveStringPiece.php
+ * @file ExpressiveStringPiece.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExExpressiveStringPiece {
+class ExpressiveStringPiece {
 	
 	protected $value;
 	
@@ -51,7 +53,7 @@ class SemExExpressiveStringPiece {
 	 * @return string
 	 */
 	public function getWikiText(
-		$linked = SemExExpressiveStringOutputOptions::LINK_ALL,
+		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		return $this->value;
@@ -74,20 +76,20 @@ class SemExExpressiveStringPiece {
 	 * @return string 
 	 */
 	public function getAbstractWikiText(
-		$linked = SemExExpressiveStringOutputOptions::LINK_ALL,
+		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		return $this->getWikiText( $linked, $showErrors );
 	}
 	
 	/**
-	 * Returns the output of the piece in a form specified by a SemExExpressiveStringOutputOptions
+	 * Returns the output of the piece in a form specified by a ExpressiveStringOutputOptions
 	 * object.
 	 * 
-	 * @param SemExExpressiveStringOutputOptions $options
+	 * @param ExpressiveStringOutputOptions $options
 	 * @return string
 	 */
-	public final function getOutput( SemExExpressiveStringOutputOptions $options ) {
+	public final function getOutput( ExpressiveStringOutputOptions $options ) {
 		// make sure that the output options object contains all options which might be expected by
 		// any overridden ancestor class function.
 		$dfltOptions = $this->getDefaultOutputOptions();
@@ -101,21 +103,21 @@ class SemExExpressiveStringPiece {
 	
 	/**
 	 * This is the function handling getOutput() internally, receiving ab appropriate instance of
-	 * 'SemExExpressiveStringOutputOptions' or rather of the subclass describing all options for
+	 * 'ExpressiveStringOutputOptions' or rather of the subclass describing all options for
 	 * the piece type.
 	 * It is datermined by getDefaultOutputOptions() which one would be the most suitable
-	 * 'SemExExpressiveStringOutputOptions' subclass for this type.
+	 * 'ExpressiveStringOutputOptions' subclass for this type.
 	 * 
-	 * @param SemExExpressiveStringOutputOptions $options
+	 * @param ExpressiveStringOutputOptions $options
 	 * @return string
 	 */
-	protected function getOutputByOptions( SemExExpressiveStringOutputOptions $options ) {
-		$useRaw = $options->getFormat() === SemExExpressiveStringOutputOptions::FORMAT_RAW;
+	protected function getOutputByOptions( ExpressiveStringOutputOptions $options ) {
+		$useRaw = $options->getFormat() === ExpressiveStringOutputOptions::FORMAT_RAW;
 		$linked = $options->getLink();
 		$errors = $options->getShowErrors();
 		
-		if( $options->getShowAbstract() === SemExExpressiveStringOutputOptions::ABSTRACT_ONLY
-			|| $options->getShowAbstract() === SemExExpressiveStringOutputOptions::ABSTRACT_IF_FAILURE
+		if( $options->getShowAbstract() === ExpressiveStringOutputOptions::ABSTRACT_ONLY
+			|| $options->getShowAbstract() === ExpressiveStringOutputOptions::ABSTRACT_IF_FAILURE
 			&& $this->isUnresolvable()
 		) {
 			if( $useRaw ) {
@@ -194,13 +196,13 @@ class SemExExpressiveStringPiece {
 	}
 	
 	/**
-	 * Returns an instance of SemExExpressiveStringOutputOptions (or a descendant class engineered for
+	 * Returns an instance of ExpressiveStringOutputOptions (or a descendant class engineered for
 	 * this specific piece type) which holds the default output options.
 	 * 
-	 * @return SemExExpressiveStringOutputOptions
+	 * @return ExpressiveStringOutputOptions
 	 */
 	public static function getDefaultOutputOptions() {
-		return new SemExExpressiveStringOutputOptions();
+		return new ExpressiveStringOutputOptions();
 	}
 	
 	/**
@@ -215,12 +217,12 @@ class SemExExpressiveStringPiece {
 	}
 	
 	/**
-	 * This will initialize the piece type within a existing SemExExpressiveString object by examining
+	 * This will initialize the piece type within a existing ExpressiveString object by examining
 	 * its non-expressive parts for expressive meaning.
 	 * 
-	 * @param SemExExpressiveString $target
+	 * @param ExpressiveString $target
 	 */
-	public static function initWithin( SemExExpressiveString $target ) {
+	public static function initWithin( ExpressiveString $target ) {
 		if( ! static::isExpressive() ) {
 			// unnecessary to examine a non-expressive meaning just to end up with the same!
 			return;
@@ -243,13 +245,13 @@ class SemExExpressiveStringPiece {
 	}
 	
 	/**
-	 * Examines a string or a SemExExpressiveStringPiece about whether it does match this piece type
+	 * Examines a string or a ExpressiveStringPiece about whether it does match this piece type
 	 * and returns an array with this type of piece detected and non-expressive information as normal
-	 * SemExExpressiveStringPiece objects. Returns false if nothing detected.
+	 * ExpressiveStringPiece objects. Returns false if nothing detected.
 	 * 
-	 * @param string|SemExExpressiveStringPiece $piece
+	 * @param string|ExpressiveStringPiece $piece
 	 * @param Parser $parser
-	 * @return SemExExpressiveStringPiece[]|false
+	 * @return ExpressiveStringPiece[]|false
 	 */
 	public final static function examinePiece( $piece, Parser $parser ) {
 		if( ! $piece->isExpressive() ) {
@@ -265,11 +267,11 @@ class SemExExpressiveStringPiece {
 	/**
 	 * Examines a string for expressive meaning matching this piece type and returns an array
 	 * with this type of piece detected and non-expressive information as normal
-	 * SemExExpressiveStringPiece objects. Returns false if nothing detected.
+	 * ExpressiveStringPiece objects. Returns false if nothing detected.
 	 * 
 	 * @param string $string
 	 * @param Parser $parser
-	 * @return SemExExpressiveStringPiece[]|false
+	 * @return ExpressiveStringPiece[]|false
 	 */
 	protected static function examineString( $string, Parser $parser ) {
 		return false;
@@ -280,11 +282,11 @@ class SemExExpressiveStringPiece {
 	 * matching this type and returns an array of detected pieces. Returns false if nothing
 	 * detected.
 	 * 
-	 * @param SemExExpressiveStringPiece $piece
+	 * @param ExpressiveStringPiece $piece
 	 * @param Parser $parser
-	 * @return SemExExpressiveStringPiece[]|false
+	 * @return ExpressiveStringPiece[]|false
 	 */
-	protected static function examineExpressivePiece( SemExExpressiveStringPiece $piece, Parser $parser ) {
+	protected static function examineExpressivePiece( ExpressiveStringPiece $piece, Parser $parser ) {
 		return false;
 	}
 }

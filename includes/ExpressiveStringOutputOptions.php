@@ -1,18 +1,19 @@
 <?php
+namespace SemEx;
 
 /**
  * Class for defining options for expressive strings output.
- * SemExExpressiveString::getOutput() can be used to get the formatted output in the form defined by
- * a SemExExpressiveStringOutputOptions object.
+ * ExpressiveString::getOutput() can be used to get the formatted output in the form defined by
+ * a ExpressiveStringOutputOptions object.
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveStringOutputOptions.php
+ * @file ExpressiveStringOutputOptions.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExExpressiveStringOutputOptions extends SemExPFParamsBasedFactory {
+class ExpressiveStringOutputOptions extends PFParamsBasedFactory {
 	
 	protected static $pfParamsValidatorElement = 'expressive string output options';
 	
@@ -67,14 +68,14 @@ class SemExExpressiveStringOutputOptions extends SemExPFParamsBasedFactory {
 	protected $format = self::FORMAT_WIKITEXT;
 	
 	/**
-	 * Merges options of another SemExExpressiveStringOutputOptions object with this objects options.
+	 * Merges options of another ExpressiveStringOutputOptions object with this objects options.
 	 * 
 	 * @note This is only save when merging the object with an ancestor or equal instance but should
 	 *       not be done with objects of a descendant option class.
 	 * 
-	 * @param SemExExpressiveStringOutputOptions $options 
+	 * @param ExpressiveStringOutputOptions $options
 	 */
-	public function mergeOptions( SemExExpressiveStringOutputOptions $options ) {
+	public function mergeOptions( ExpressiveStringOutputOptions $options ) {
 		$options = get_object_vars( $options );
 		foreach( $options as $var => $val ) {
 			$this->{ $var } = $val;
@@ -201,7 +202,7 @@ class SemExExpressiveStringOutputOptions extends SemExPFParamsBasedFactory {
 	
 	
 	/**
-	 * @see SemExPFParamsBasedFactory::newFromValidatedParams()
+	 * @see PFParamsBasedFactory::newFromValidatedParams()
 	 */
 	public static function newFromValidatedParams( array $params ) {
 		$sqOpt = new static();
@@ -274,7 +275,7 @@ class SemExExpressiveStringOutputOptions extends SemExPFParamsBasedFactory {
 	}
 	
 	/**
-	 * Returns a description of all allowed function Parameters representing SemExShortQueryResultOptions.
+	 * Returns a description of all allowed function Parameters representing ShortQueryResultOptions.
 	 * 
 	 * @return array
 	 */

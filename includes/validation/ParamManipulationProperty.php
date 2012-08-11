@@ -1,17 +1,18 @@
 <?php
+namespace SemEx;
 
 /**
 * Parameter manipulation converting the value to a SMWPropertyValue.
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryResult.php
+ * @file ShortQueryResult.php
  * @ingroup SemanticExpressiveness
  * @ingroup ParameterManipulations
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExParamManipulationProperty extends ItemParameterManipulation {
+class ParamManipulationProperty extends ItemParameterManipulation {
 	
 	/**
 	 * Constructor.

@@ -1,16 +1,17 @@
 <?php
+namespace SemEx;
 
 /**
  * Class representing the result of a 'Semantic Expressiveness' short query as abstract value.
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryAbstractResult.php
+ * @file ShortQueryAbstractResult.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExShortQueryAbstractResult extends SemExShortQueryResult {
+class ShortQueryAbstractResult extends ShortQueryResult {
 	
 	public function getAbstractResult() {
 		// this is the abstract result already
@@ -24,18 +25,18 @@ class SemExShortQueryAbstractResult extends SemExShortQueryResult {
 	 * getWikiText() instead.
 	 * 
 	 * @param mixed $linked Allows one of
-	 *        SemExShortQueryOutputOptions::LINK_NONE
-	 *        SemExShortQueryOutputOptions::LINK_ALL
-	 *        SemExShortQueryOutputOptions::LINK_TOPIC
+	 *        ShortQueryOutputOptions::LINK_NONE
+	 *        ShortQueryOutputOptions::LINK_ALL
+	 *        ShortQueryOutputOptions::LINK_TOPIC
 	 * @param bool $showErrors can be set to true to show errors. Off by default.
 	 * 
 	 * @return string
 	 */
 	public function getShortWikiText(
-			$linked = SemExShortQueryOutputOptions::LINK_ALL,
+			$linked = ShortQueryOutputOptions::LINK_ALL,
 			$showErrors = false
 	) {
-		$parts = $this->getAbstractParts( false, $linked === SemExShortQueryOutputOptions::LINK_ALL );
+		$parts = $this->getAbstractParts( false, $linked === ShortQueryOutputOptions::LINK_ALL );
 		$source = $parts['source'];
 		$fromRef = $parts['fromref'];
 		$property = $parts['property'];
@@ -47,7 +48,7 @@ class SemExShortQueryAbstractResult extends SemExShortQueryResult {
 		
 		$out = "<span class=\"abstractShortQueryValue\">$out</span>";
 		
-		if( $linked === SemExShortQueryOutputOptions::LINK_TOPIC ) {
+		if( $linked === ShortQueryOutputOptions::LINK_TOPIC ) {
 			// wrap whole result in one link to the source
 			$topic = $this->getSource();
 			$out = "[[:{$topic}|{$out}]]";
@@ -62,7 +63,7 @@ class SemExShortQueryAbstractResult extends SemExShortQueryResult {
 	}
 	
 	public function getWikiText(
-			$linked = SemExShortQueryOutputOptions::LINK_ALL,
+			$linked = ShortQueryOutputOptions::LINK_ALL,
 			$showErrors = true
 	) {
 		return $this->getWikiText_internal( $linked, $showErrors, true );
@@ -131,7 +132,7 @@ class SemExShortQueryAbstractResult extends SemExShortQueryResult {
 			// query from current page
 			$parts['source'] = null;
 		}
-		elseif( $this->query->getSourceType() === SemExShortQuery::SOURCE_FROM_REF ) {
+		elseif( $this->query->getSourceType() === ShortQuery::SOURCE_FROM_REF ) {
 			// query 'from ref'
 			$parts['fromref'] = true;
 			$parts['source'] = $this->query->getSource()->getDataItem()->getLabel();			
@@ -142,10 +143,10 @@ class SemExShortQueryAbstractResult extends SemExShortQueryResult {
 		else {
 			if( $this->getSource() === null ) {
 				if( $this->sourceResult !== null ) {
-					// source from SemExShortQuery object. Put it into an expressive string so we can get
+					// source from ShortQuery object. Put it into an expressive string so we can get
 					// the expressive representation without troubles
-					$source = new SemExExpressiveString( '', $this->parser, SEMEX_EXPR_PIECE_SQRESULT );
-					$source->addPieces( new SemExExpressiveStringPieceSQResult(
+					$source = new ExpressiveString( '', $this->parser, SEMEX_EXPR_PIECE_SQRESULT );
+					$source->addPieces( new ExpressiveStringPieceSQResult(
 							$this->sourceResult // take cached version so we don't have to query again
 					) );
 				}

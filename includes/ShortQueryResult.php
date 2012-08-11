@@ -1,4 +1,7 @@
 <?php
+namespace SemEx;
+use Parser, Title, HTML;
+use SMWDataValueFactory;
 
 /**
  * Class describing the result of a 'Semantic Expressiveness' short query. The result can be a
@@ -8,16 +11,16 @@
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryResult.php
+ * @file ShortQueryResult.php
  * @ingroup SemanticExpressiveness
  *
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExShortQueryResult {
+class ShortQueryResult {
 	
 	/**
-	 * @var SemExShortQuery
+	 * @var ShortQuery
 	 */
 	protected $query;
 	/**
@@ -25,7 +28,7 @@ class SemExShortQueryResult {
 	 */
 	protected $parser;
 	
-	protected $errors = array();	
+	protected $errors = array();
 	protected $result = null;
 	protected $source = false; // null means missing source, false means not yet datermined	
 	protected $sourceResult = null; // in case the source is another query, this is its cached result
@@ -33,7 +36,7 @@ class SemExShortQueryResult {
 	/**
 	 * Constructor
 	 * 
-	 * @param SemExShortQuery $query the short query the result should be datermined for. Once a
+	 * @param ShortQuery $query the short query the result should be datermined for. Once a
 	 *        result is datermined, the query itself must not be modified.
 	 * @param Parser $parser specifies the Parser context in which the result will be released as
 	 *        a more human readable final output over various output functions of the object.
@@ -41,7 +44,7 @@ class SemExShortQueryResult {
 	 *        result of the query will be queried on demand. To start the query the result
 	 *        immediately, getRawResult() can be called after construction.
 	 */
-	function __construct( SemExShortQuery $query, Parser $parser, $result = null ) {
+	function __construct( ShortQuery $query, Parser $parser, $result = null ) {
 		$this->query = $query;
 		$this->parser = $parser;
 		$this->result = $result;
@@ -60,12 +63,12 @@ class SemExShortQueryResult {
 	}
 	
 	/**
-	 * Returns an SemExShortQueryAbstractResult object representing the same query.
+	 * Returns an ShortQueryAbstractResult object representing the same query.
 	 * 
-	 * @return SemExShortQueryAbstractResult
+	 * @return ShortQueryAbstractResult
 	 */
 	public function getAbstractResult() {
-		return new SemExShortQueryAbstractResult( $this->query, $this->parser, $this->result );
+		return new ShortQueryAbstractResult( $this->query, $this->parser, $this->result );
 	}
 	
 	/**
@@ -87,7 +90,7 @@ class SemExShortQueryResult {
 		}
 		
 		$result = null;
-		$subject = SMWDIWikiPage::newFromTitle( $source );
+		$subject = \SMWDIWikiPage::newFromTitle( $source );
 		$property = $this->query->getProperty()->getDataItem();
 		
 		// @ToDo: bad idea to use cache AND query, is the cache even needed after recent SMW changes?
@@ -114,7 +117,7 @@ class SemExShortQueryResult {
 	}
 	
 	/**
-	 * Same as SemExShortQuery::getSource() except this will resolve 'by ref' and current page source
+	 * Same as ShortQuery::getSource() except this will resolve 'by ref' and current page source
 	 * types. In case the source is an invalid 'by ref' source null will be returned.
 	 * 
 	 * @return Title|null
@@ -126,18 +129,18 @@ class SemExShortQueryResult {
 		
 		$q = $this->query;
 		switch( $q->getSourceType() ) {
-			case SemExShortQuery::SOURCE_IS_TITLE:
+			case ShortQuery::SOURCE_IS_TITLE:
 				$source = $q->getSource();
 				break;
 			
-			case SemExShortQuery::SOURCE_FROM_REF:
+			case ShortQuery::SOURCE_FROM_REF:
 				// query the source properties value which is the actual source:
 				$subQ = clone( $q ); // use same options for caching and store
 				$subQ->setProperty( $q->getSource() );
 				$subQ->setSource( null ); // current page is source
 				/*  NO BREAK! */
 				
-			case SemExShortQuery::SOURCE_IS_SHORTQUERY:
+			case ShortQuery::SOURCE_IS_SHORTQUERY:
 				if( ! isset( $subQ ) ) {
 					$subQ = $q->getSource();
 				}
@@ -165,7 +168,7 @@ class SemExShortQueryResult {
 				$source = $di->getTitle();
 				break;
 				
-			case SemExShortQuery::SOURCE_IS_ESTRING:
+			case ShortQuery::SOURCE_IS_ESTRING:
 				// expressive string as source, e.g. "<?a::<?b::c>>"
 				$expressiveSrc = $q->getSource();
 				
@@ -179,7 +182,7 @@ class SemExShortQueryResult {
 				}
 				break;
 
-			case SemExShortQuery::SOURCE_FROM_CONTEXT:
+			case ShortQuery::SOURCE_FROM_CONTEXT:
 				$source = $this->parser->getTitle();
 				break;
 		}
@@ -277,7 +280,7 @@ class SemExShortQueryResult {
 			return '';
 		}
 		$values = array();
-		foreach( $this->getRawResult() as $dataItem ) {			
+		foreach( $this->getRawResult() as $dataItem ) {
 			$dataValue = SMWDataValueFactory::newDataItemValue( $dataItem, null );
 			$values[] = trim( $dataValue->getWikiValue() );
 		}
@@ -290,28 +293,28 @@ class SemExShortQueryResult {
 	 * getWikiText() can be used to get the completely formatted wiki markup
 	 * 
 	 * @param mixed $linked Allows one of
-	 *        SemExShortQueryOutputOptions::LINK_NONE
-	 *        SemExShortQueryOutputOptions::LINK_ALL
-	 *        SemExShortQueryOutputOptions::LINK_TOPIC
+	 *        ShortQueryOutputOptions::LINK_NONE
+	 *        ShortQueryOutputOptions::LINK_ALL
+	 *        ShortQueryOutputOptions::LINK_TOPIC
 	 * @param bool $showErrors can be set to true to show errors. Off by default.
 	 * 
 	 * @return string
 	 */
 	public function getShortWikiText(
-			$linked = SemExShortQueryOutputOptions::LINK_ALL,
+			$linked = ShortQueryOutputOptions::LINK_ALL,
 			$showErrors = false
 	) {
 		if( $this->isEmpty() ) {
 			return '';
 		}
 		$values = array();
-		foreach( $this->getRawResult() as $dataItem ) {			
+		foreach( $this->getRawResult() as $dataItem ) {
 			$dataValue = SMWDataValueFactory::newDataItemValue( $dataItem, null );
-			$values[] = trim( $dataValue->getShortWikiText( $linked === SemExShortQueryOutputOptions::LINK_ALL ) );
+			$values[] = trim( $dataValue->getShortWikiText( $linked === ShortQueryOutputOptions::LINK_ALL ) );
 		}
 		$out = implode( ', ', $values );
 		
-		if( $out !== '' && $linked === SemExShortQueryOutputOptions::LINK_TOPIC ) {
+		if( $out !== '' && $linked === ShortQueryOutputOptions::LINK_TOPIC ) {
 			// wrap whole result in one link to the source
 			$topic = $this->getSource();
 			$out = "[[:{$topic}|{$out}]]";
@@ -333,9 +336,9 @@ class SemExShortQueryResult {
 	 * use with '?to?!' parser function.
 	 * 
 	 * @param mixed $linked Allows one of
-	 *        SemExShortQueryOutputOptions::LINK_NONE
-	 *        SemExShortQueryOutputOptions::LINK_ALL
-	 *        SemExShortQueryOutputOptions::LINK_TOPIC
+	 *        ShortQueryOutputOptions::LINK_NONE
+	 *        ShortQueryOutputOptions::LINK_ALL
+	 *        ShortQueryOutputOptions::LINK_TOPIC
 	 * @param bool $showErrors
 	 * 
 	 * @return string
@@ -343,18 +346,18 @@ class SemExShortQueryResult {
 	 * @todo: rename 'value' in 'rawResult' and 'abstractValue' in 'abstractResult'
 	 */
 	public function getWikiText(
-			$linked = SemExShortQueryOutputOptions::LINK_ALL,
+			$linked = ShortQueryOutputOptions::LINK_ALL,
 			$showErrors = true
 	) {
 		return $this->getWikiText_internal( $linked, $showErrors, false );
 	}
 	
-	// $enforceAbstract parameter to reduce code in 'SemExShortQueryAbstractResult' sub-class
+	// $enforceAbstract parameter to reduce code in 'ShortQueryAbstractResult' sub-class
 	protected function getWikiText_internal( $linked, $showErrors, $enforceAbstract = false ) {
 		$out = '';
 		
 		// if abstract is enforced, we won't query at all!
-		$showAbstract = $enforceAbstract || $this->isEmpty();		
+		$showAbstract = $enforceAbstract || $this->isEmpty();
 		$sqClasses = array( 'shortQuery' );
 		
 		if( $showAbstract ) {
@@ -430,21 +433,21 @@ class SemExShortQueryResult {
 	}
 	
 	/**
-	 * Returns the output in a pre-defined exactly specified way by a SemExShortQueryResultOptions
+	 * Returns the output in a pre-defined exactly specified way by a ShortQueryResultOptions
 	 * object.
 	 * 
-	 * @ToDo: implement SemExShortQueryOutputOptions::getFormat() if required
+	 * @ToDo: implement ShortQueryOutputOptions::getFormat() if required
 	 * 
 	 * @return string
 	 */
-	public function getOutput( SemExShortQueryOutputOptions $options ) {
-		$useRaw   = $options->getFormat() === SemExShortQueryOutputOptions::FORMAT_RAW;
+	public function getOutput( ShortQueryOutputOptions $options ) {
+		$useRaw   = $options->getFormat() === ShortQueryOutputOptions::FORMAT_RAW;
 		$showInfo = $options->getShowInfo();
 		$linked   = $options->getLink();
 		$errors   = $options->getShowErrors();
 		$abstract = $options->getShowAbstract();
 		
-		if(	$abstract === SemExShortQueryOutputOptions::NO_ABSTRACT
+		if(	$abstract === ShortQueryOutputOptions::NO_ABSTRACT
 			&& $this->isEmpty()
 		) {
 			// don't display abstract values, so nothing to display except...
@@ -458,8 +461,8 @@ class SemExShortQueryResult {
 		
 		// if only abstract info is required, get this results abstract representation		
 		$abstractInUse =
-				$abstract === SemExShortQueryOutputOptions::ABSTRACT_ONLY
-				|| ( $this->isEmpty() && $abstract === SemExShortQueryOutputOptions::ABSTRACT_IF_FAILURE );
+				$abstract === ShortQueryOutputOptions::ABSTRACT_ONLY
+				|| ( $this->isEmpty() && $abstract === ShortQueryOutputOptions::ABSTRACT_IF_FAILURE );
 		
 		$result = $abstractInUse
 				? $this->getAbstractResult()
@@ -488,7 +491,7 @@ class SemExShortQueryResult {
 	 * @param bool $refreshData whether the result should be re-queried even though the original result
 	 *        is available from the given DOM information.
 	 * 
-	 * @return SemExShortQueryResult
+	 * @return ShortQueryResult
 	 */
 	public static function newFromDOM( DOMNode $node, Parser $parser, $refreshData = false ) {
 		$prop = self::extractInfoFromDOM( $node, 'type' );
@@ -496,10 +499,10 @@ class SemExShortQueryResult {
 		
 		if( $prop === null || $source === null ) {
 			// ERROR
-			throw new SemExShortQueryResultException( 'Insufficient input data.' );
+			throw new ShortQueryResultException( 'Insufficient input data.' );
 		}
 		
-		$origQuery = SemExShortQuery::newFromParamsArray( array(
+		$origQuery = ShortQuery::newFromParamsArray( array(
 				'property' => $prop,
 				'from' => $source,
 				'source' => self::extractInfoFromDOM( $node, 'storeSource' ),
@@ -536,13 +539,13 @@ class SemExShortQueryResult {
 	}
 	
 	/**
-	 * Creates a new SemExShortQueryResult from a serialized string given by
-	 * SemExShortQueryResult::getSerialization().
+	 * Creates a new ShortQueryResult from a serialized string given by
+	 * ShortQueryResult::getSerialization().
 	 * 
 	 * @param string $serialization
 	 * @param Parser $parser
 	 * 
-	 * @return SemExShortQueryResult
+	 * @return ShortQueryResult
 	 */
 	public static function newFromSerialization( $serialization, Parser $parser ) {
 		$strHtml = "<body>$serialization</body>";
@@ -556,10 +559,10 @@ class SemExShortQueryResult {
 		
 		if( ! $validDom ) {
 			// ERROR
-			throw new SemExShortQueryResultException( "Invalid serialized string '$serialization' given." );
+			throw new ShortQueryResultException( "Invalid serialized string '$serialization' given." );
 		}
 		
-		return SemExShortQueryResult::newFromDOM( $xmlDoc->documentElement, $parser );
+		return ShortQueryResult::newFromDOM( $xmlDoc->documentElement, $parser );
 	}
 	
 	/**
@@ -599,5 +602,5 @@ class SemExShortQueryResult {
 /**
  * Exception to be thrown when short query result creation fails due to bad input.
  */
-class SemExShortQueryResultException extends MWException {
+class ShortQueryResultException extends \MWException {
 }

@@ -12,4 +12,4 @@
      pages fact box or any other content. Might need some configuration for custom wiki adjustment.
    - "?to?!" (might be renamed later) parser function allowing to parse the short query syntax early
      to give template programmers full control.
-   - "SemExExpressiveString" class, extendable parser for the new syntax, also recognizes wikilinks.
+   - "SemEx\ExpressiveString" class, extendable parser for the new syntax, also recognizes wikilinks.

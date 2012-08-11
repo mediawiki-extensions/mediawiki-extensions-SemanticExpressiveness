@@ -1,17 +1,18 @@
 <?php
+namespace SemEx;
 
 /**
  * Factory class to generate and execute 'Semantic Expressiveness' short queries and return their
- * result as SemExShortQueryResult object or in directly in a serialized form.
+ * result as ShortQueryResult object or in directly in a serialized form.
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryProcessor.php
+ * @file ShortQueryProcessor.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExShortQueryProcessor {
+class ShortQueryProcessor {
 	
 	/**
 	 * Processes a 'Semantic Expressiveness' Short Qery as given by an array of parameters as usually
@@ -22,10 +23,10 @@ class SemExShortQueryProcessor {
 	 * 
 	 * @return array
 	 */
-	public static function getResultFromFunctionParams( Parser $parser, array $rawParams ) {
+	public static function getResultFromFunctionParams( \Parser $parser, array $rawParams ) {
 		
-		$query = SemExShortQuery::newFromPFParams( $rawParams );
-		$options = SemExShortQueryOutputOptions::newFromPFParams( $rawParams );
+		$query = ShortQuery::newFromPFParams( $rawParams );
+		$options = ShortQueryOutputOptions::newFromPFParams( $rawParams );
 		
 		// @ToDo: Check for validation errors at some point
 		
@@ -35,21 +36,21 @@ class SemExShortQueryProcessor {
 	/**
 	 * Processes a 'Semantic Expressiveness' Short Query and returns the result which can contain
 	 * either a valid result or an abstract value.
-	 * Optionally there can be a SemExShortQueryResultOptions object passed to retain a certain
+	 * Optionally there can be a ShortQueryResultOptions object passed to retain a certain
 	 * kind of output from the short query.
 	 *
 	 * @param Parser $parser
-	 * @param SemExShortQuery $query
-	 * @param SemExShortQueryOutputOptions $options
+	 * @param ShortQuery $query
+	 * @param ShortQueryOutputOptions $options
 	 * 
-	 * @return SemExShortQueryResult|String
+	 * @return ShortQueryResult|String
 	 */
 	public static function getResultFromQuery(
-			Parser $parser,
-			SemExShortQuery $query,
+			\Parser $parser,
+			ShortQuery $query,
 			$options = null
 	) {
-		$result = new SemExShortQueryResult( $query, $parser );
+		$result = new ShortQueryResult( $query, $parser );
 		
 		if( $options !== null ) {
 			return $result->getOutput( $options );

@@ -1,4 +1,6 @@
 <?php
+namespace SemEx;
+
 /**
  * Internationalisation file for 'SemanticExpressiveness' extension.
  *

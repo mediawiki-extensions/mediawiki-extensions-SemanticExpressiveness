@@ -1,16 +1,17 @@
 <?php
+namespace SemEx;
 
 /**
  * Class for '?' short query parser function
  * 
  * @since 0.1
  * 
- * @file SemExQueryPF.php
+ * @file QueryPF.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExQueryPF {
+class QueryPF {
 	
 	public static function render( Parser &$parser ) {
 		global $smwgQEnabled, $smwgIQRunningNumber;
@@ -22,15 +23,15 @@ class SemExQueryPF {
 			array_shift( $params ); // remove $parser			
 			$params = static::validateParams( $params );
 			
-			$query = SemExShortQuery::newFromValidatedParams( $params );
-			$options = SemExShortQueryOutputOptions::newFromValidatedParams( $params );
+			$query = ShortQuery::newFromValidatedParams( $params );
+			$options = ShortQueryOutputOptions::newFromValidatedParams( $params );
 			
 			if( ! $query || ! $options ) {
 				// @ToDo: real error message (anyway, in what case can this happen?)
 				return 'FALSE';
 			}
 			
-			$result = SemExShortQueryProcessor::getResultFromQuery( $parser, $query, $options );
+			$result = ShortQueryProcessor::getResultFromQuery( $parser, $query, $options );
 			
 			if( $result === '' ) {
 				$result = $params['default'];
@@ -80,8 +81,8 @@ class SemExQueryPF {
 		// add function parameters describing the querry and its options:
 		$params = array_merge(
 			$params,
-			SemExShortQuery::getPFParams(),
-			SemExShortQueryOutputOptions::getPFParams()
+			ShortQuery::getPFParams(),
+			ShortQueryOutputOptions::getPFParams()
 		);
 		
 		return $params;

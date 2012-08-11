@@ -1,4 +1,5 @@
 <?php
+namespace SemEx;
 
 /**
  * Parameter criterion for 'Validator' stating that the value must be a SMW property.
@@ -6,13 +7,13 @@
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryResult.php
+ * @file ShortQueryResult.php
  * @ingroup SemanticExpressiveness
  * @ingroup Criteria
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExCriterionIsProperty extends ItemParameterCriterion {
+class CriterionIsProperty extends ItemParameterCriterion {
 	
 	protected $allowedTypes;
 	

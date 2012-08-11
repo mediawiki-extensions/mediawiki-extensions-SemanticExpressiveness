@@ -1,20 +1,21 @@
 <?php
+namespace SemEx;
 
 /**
  * Class for defining options for a 'Semantic Expressiveness' short query.
- * SemExShortQueryProcessor::getResultFromQuery() can be used to get a short queries result using
- * a SemExShortQuery and these options.
- * SemExShortQueryResult::getOutput() can also be used to get the formatted output specified by a
- * SemExShortQuery object.
+ * ShortQueryProcessor::getResultFromQuery() can be used to get a short queries result using
+ * a ShortQuery and these options.
+ * ShortQueryResult::getOutput() can also be used to get the formatted output specified by a
+ * ShortQuery object.
  * 
  * @since 0.1
  * 
- * @file SemExShortQueryResultOptions.php
+ * @file ShortQueryResultOptions.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExShortQueryOutputOptions extends SemExExpressiveStringOutputOptions {
+class ShortQueryOutputOptions extends ExpressiveStringOutputOptions {
 	
 	protected static $pfParamsValidatorElement = 'short query output options';
 	
@@ -55,7 +56,7 @@ class SemExShortQueryOutputOptions extends SemExExpressiveStringOutputOptions {
 	}
 	
 	/**
-	 * @see SemExPFParamsBasedFactory::newFromValidatedParams()
+	 * @see PFParamsBasedFactory::newFromValidatedParams()
 	 */
 	public static function newFromValidatedParams( array $params ) {
 		$sqOpt = parent::newFromValidatedParams( $params );
@@ -69,7 +70,7 @@ class SemExShortQueryOutputOptions extends SemExExpressiveStringOutputOptions {
 	}
 	
 	/**
-	 * @see SemExExpressiveStringOutputOptions::getPFParams()
+	 * @see ExpressiveStringOutputOptions::getPFParams()
 	 * 
 	 * @return array
 	 */

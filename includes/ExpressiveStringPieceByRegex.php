@@ -1,17 +1,19 @@
 <?php
+namespace SemEx;
+use Parser;
 
 /**
- * Abstract class representing one piece of a SemExExpressiveString with abstract features to
+ * Abstract class representing one piece of a ExpressiveString with abstract features to
  * initialize pieces of a type by a matching regular expression.
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveStringPiece.php
+ * @file ExpressiveStringPiece.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-abstract class SemExExpressiveStringPieceByRegex extends SemExExpressiveStringPiece {
+abstract class ExpressiveStringPieceByRegex extends ExpressiveStringPiece {
 	
 	/**
 	 * The regular expression to match pieces which will be considered candidates for being pieces of
@@ -84,7 +86,7 @@ abstract class SemExExpressiveStringPieceByRegex extends SemExExpressiveStringPi
 			if( is_string( $part ) ) {
 				// only each second element can be a regex match
 				if( $part !== '' ) {
-					$result[] = new SemExExpressiveStringPiece( $part );
+					$result[] = new ExpressiveStringPiece( $part );
 				}
 				continue;
 			}
@@ -93,7 +95,7 @@ abstract class SemExExpressiveStringPieceByRegex extends SemExExpressiveStringPi
 			
 			if( $piece === false ) {
 				// not a piece of this type, consider it a meaningless string
-				$piece = new SemExExpressiveStringPiece( $part[0], $parser );
+				$piece = new ExpressiveStringPiece( $part[0], $parser );
 			}
 			
 			$result[] = $piece;
@@ -110,7 +112,7 @@ abstract class SemExExpressiveStringPieceByRegex extends SemExExpressiveStringPi
 	 *        by static::$regex_essentials. The index 0 contains the whole match.
 	 * @param Parser $parser
 	 * 
-	 * @return SemExExpressiveStringPiece|false
+	 * @return ExpressiveStringPiece|false
 	 */
 	protected static function examineRegexMatch( array $backRefs, Parser $parser ) {
 		return false;

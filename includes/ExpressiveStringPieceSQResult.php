@@ -1,18 +1,20 @@
 <?php
+namespace SemEx;
+use Parser;
 
 /**
- * Class representing one short query result piece of a SemExExpressiveString.
- * Similar to SemExExpressiveStringPieceSQ with the difference that the initialization routines for
+ * Class representing one short query result piece of a ExpressiveString.
+ * Similar to ExpressiveStringPieceSQ with the difference that the initialization routines for
  * this type search for the result of an already queried short query within a string.
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveStringPieceSQResult.php
+ * @file ExpressiveStringPieceSQResult.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExExpressiveStringPieceSQResult extends SemExExpressiveStringPieceByRegex {
+class ExpressiveStringPieceSQResult extends ExpressiveStringPieceByRegex {
 	
 	// [1] match <span> with 'shortQuery' class if we can make sure...
 	// [2] ... no further <span>-pairs inside...
@@ -29,15 +31,15 @@ class SemExExpressiveStringPieceSQResult extends SemExExpressiveStringPieceByReg
 		| (?P<innerDOM> <span(?:\s+[^>]*|)>(?: (?>(?!<span(?:\s+[^>]*|)>|<\/span>).)* | (?&innerDOM) )*?<\/span> )*
 		)* <\/span>';
 	
-	protected static $regex_modifiers = 'sx';	
+	protected static $regex_modifiers = 'sx';
 	protected static $regex_essentials = array( false, false );
 	
 	/**
-	 * @var SemExShortQueryResult
+	 * @var ShortQueryResult
 	 */
 	protected $value;
 	
-	function __construct( SemExShortQueryResult $value ) {		
+	function __construct( ShortQueryResult $value ) {
 		parent::__construct( $value );
 	}
 	
@@ -46,7 +48,7 @@ class SemExExpressiveStringPieceSQResult extends SemExExpressiveStringPieceByReg
 	}
 	
 	public function getWikiText(
-		$linked = SemExExpressiveStringOutputOptions::LINK_ALL,
+		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		return $this->value->getWikiText( $linked, $showErrors );
@@ -57,7 +59,7 @@ class SemExExpressiveStringPieceSQResult extends SemExExpressiveStringPieceByReg
 	}
 	
 	public function getAbstractWikiText(
-		$linked = SemExExpressiveStringOutputOptions::LINK_ALL,
+		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
 		return $this->value->getAbstractResult()->getWikiText( $linked, $showErrors );
@@ -75,15 +77,15 @@ class SemExExpressiveStringPieceSQResult extends SemExExpressiveStringPieceByReg
 		return $this->value->getErrors();
 	}
 	
-	protected function getOutputByOptions( SemExExpressiveStringOutputOptions $options ) {
+	protected function getOutputByOptions( ExpressiveStringOutputOptions $options ) {
 		return $this->value->getOutput( $options );
 	}
 	
 	/**
-	 * @return SemExShortQueryOutputOptions
+	 * @return ShortQueryOutputOptions
 	 */
 	public static function getDefaultOutputOptions() {
-		return new SemExShortQueryOutputOptions();
+		return new ShortQueryOutputOptions();
 	}
 	
 	protected static function examineRegexMatch( array $backRefs, Parser $parser ) {
@@ -106,7 +108,7 @@ class SemExExpressiveStringPieceSQResult extends SemExExpressiveStringPieceByReg
 		
 		try {
 			// try to re-fabricate short query result from DOM:
-			$sqResult = SemExShortQueryResult::newFromDOM( $xmlDoc->documentElement, $parser );
+			$sqResult = ShortQueryResult::newFromDOM( $xmlDoc->documentElement, $parser );
 		} catch( Exception $exc ) {
 			// invalid, insert as plain string
 			return false;

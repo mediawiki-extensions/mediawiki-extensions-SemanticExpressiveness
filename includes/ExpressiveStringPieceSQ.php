@@ -1,8 +1,10 @@
 <?php
+namespace SemEx;
+use Parser;
 
 /**
- * Class representing one short query (sq) piece of a SemExExpressiveString.
- * Similar to SemExExpressiveStringPieceSQResult with the difference that this piece represents a
+ * Class representing one short query (sq) piece of a ExpressiveString.
+ * Similar to ExpressiveStringPieceSQResult with the difference that this piece represents a
  * syntax for short to be executed instead of their actual results.
  * 
  * Basically, this is the parser for the "<?property::page>" syntax which gets more complicated with
@@ -10,12 +12,12 @@
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveStringPieceSQ.php
+ * @file ExpressiveStringPieceSQ.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
+class ExpressiveStringPieceSQ extends ExpressiveStringPieceSQResult {
 	
 	/* using:
 	 * $origLimit = ini_set( 'pcre.recursion_limit', 8 );	
@@ -34,10 +36,10 @@ class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
 				$backRefs[0], $matches
 		);
 		$matches += array( 3 => false, 4 => false );
-		$isPlain = ( $matches[1] == '?!' );			
+		$isPlain = ( $matches[1] == '?!' );
 		$pageSrcExplicit = ( $matches[3] == ':' );
 
-		$property = SMWPropertyValue::makeUserProperty( $matches[2] );
+		$property = \SMWPropertyValue::makeUserProperty( $matches[2] );
 
 		$source = $matches[4];
 		if( $source === false ) {
@@ -45,7 +47,7 @@ class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
 		}
 		else {
 			// (recursivelly) examine the source for further short query syntax within:
-			$source = new SemExExpressiveString( $source, $parser, static::getType() );
+			$source = new ExpressiveString( $source, $parser, static::getType() );
 			$source = static::resolveDeepOneLinerNotation( $source );
 
 			if( $source === false ) {
@@ -56,9 +58,9 @@ class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
 
 		// set the source of the query to a Title or another expressive string which
 		// can contain several short queries all over again
-		$query = new SemExShortQuery( $property, $source );			
+		$query = new ShortQuery( $property, $source );
 		return new static(
-				new SemExShortQueryResult( $query, $parser )
+				new ShortQueryResult( $query, $parser )
 		);
 	}
 	
@@ -68,10 +70,10 @@ class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
 	 * the other hand are all properties which do not support a short query or expressive string
 	 * source at the time.
 	 * 
-	 * @param SemExExpressiveString $eSrc
-	 * @return Title|SemExExpressiveString|false
+	 * @param ExpressiveString $eSrc
+	 * @return \Title|ExpressiveString|false
 	 */
-	protected static function resolveDeepOneLinerNotation( SemExExpressiveString $eSrc ) {
+	protected static function resolveDeepOneLinerNotation( ExpressiveString $eSrc ) {
 		if( $eSrc->getPiece( 0 )->isExpressive() ) {
 			// whole meaning examined already and behind an expressive there can't be any "::" as
 			// separator between property and source unless we'd allow expressive property sources.
@@ -92,7 +94,7 @@ class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
 		$eSrc->addString( array_pop( $sources ), 0 );		
 		
 		if( ! $eSrc->hasExpressiveness() ) {			
-			$eSrc = Title::newFromText( $eSrc->getRawText() );
+			$eSrc = \Title::newFromText( $eSrc->getRawText() );
 			if( $eSrc === null ) {
 				return false;
 			}
@@ -107,11 +109,11 @@ class SemExExpressiveStringPieceSQ extends SemExExpressiveStringPieceSQResult {
 		$sources = array_reverse( $sources ); //last item first
 		
 		foreach( $sources as $property ) {
-			$property = SMWPropertyValue::makeUserProperty( $property );
+			$property = \SMWPropertyValue::makeUserProperty( $property );
 			if( ! $property->isValid() ) {
 				return false;
 			}
-			$lastSrc = new SemExShortQuery( $property, $lastSrc );			
+			$lastSrc = new ShortQuery( $property, $lastSrc );
 		}
 		
 		return $lastSrc;

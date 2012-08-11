@@ -1,18 +1,19 @@
 <?php
+namespace SemEx;
 
 /**
- * Class representing one piece of a SemExExpressiveString representing a wiki link.
+ * Class representing one piece of a ExpressiveString representing a wiki link.
  * This represents all kinds of wiki links, also category links and SMW property declarations.
  * This implementation is rather shallow and mainly serves to filter Links.
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveStringPiece.php
+ * @file ExpressiveStringPiece.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExExpressiveStringPieceWikiLink extends SemExExpressiveStringPieceByRegex {
+class ExpressiveStringPieceWikiLink extends ExpressiveStringPieceByRegex {
 	
 	// Search all kind of wiki links (including category and SMW)
 	// $1: ":" if this is a normal link explicitly
@@ -48,10 +49,10 @@ class SemExExpressiveStringPieceWikiLink extends SemExExpressiveStringPieceByReg
 	}
 	
 	public function getWikiText(
-		$linked = SemExExpressiveStringOutputOptions::LINK_ALL,
+		$linked = ExpressiveStringOutputOptions::LINK_ALL,
 		$showErrors = false
 	) {
-		if( $linked === SemExExpressiveStringOutputOptions::LINK_ALL ) {
+		if( $linked === ExpressiveStringOutputOptions::LINK_ALL ) {
 			return $this->getRawLink();
 		} else {
 			return $this->linkText;
@@ -66,7 +67,7 @@ class SemExExpressiveStringPieceWikiLink extends SemExExpressiveStringPieceByReg
 		return false;
 	}
 		
-	protected static function examineRegexMatch( array $backRefs, Parser $parser ) {
+	protected static function examineRegexMatch( array $backRefs, \Parser $parser ) {
 		$result = array();
 		
 		$result['explicit'] = $backRefs[1] === ':';

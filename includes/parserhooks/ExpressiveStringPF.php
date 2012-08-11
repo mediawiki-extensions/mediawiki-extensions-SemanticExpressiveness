@@ -1,16 +1,18 @@
 <?php
+namespace SemEx;
+use ParserHook, Validator, ListParameter;
 
 /**
  * Class for the '?to?!' parser function, basically a limited converter for expressive strings.
  * 
  * @since 0.1
  * 
- * @file SemExExpressiveStringPF.php
+ * @file ExpressiveStringPF.php
  * @ingroup SemanticExpressiveness
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class SemExExpressiveStringPF extends ParserHook {
+class ExpressiveStringPF extends ParserHook {
 		
 	public function __construct() {
 		// make this a parser function extension (no tag extension) only:
@@ -20,7 +22,7 @@ class SemExExpressiveStringPF extends ParserHook {
 	/**
 	 * No LSB in pre-5.3 PHP, to be refactored later
 	 */	
-	public static function staticInit( Parser &$parser ) {		
+	public static function staticInit( \Parser &$parser ) {
 		$instance = new self;
 		$instance->init( $parser );
 		return true;
@@ -43,14 +45,14 @@ class SemExExpressiveStringPF extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		$params = SemExExpressiveStringOutputOptions::getPFParams();
+		$params = ExpressiveStringOutputOptions::getPFParams();
 		
 		# input text.
 		# since 0.1
 		$params['text'] = new Parameter( 'text' );
 		
 		$pieceTypesCriteria = new CriterionInArray(
-				array_values( SemExExpressiveString::getRegisteredPieceTypeNames() )
+				array_values( ExpressiveString::getRegisteredPieceTypeNames() )
 		);
 		
 		$params['detect'] = new ListParameter( 'detect' );
@@ -88,7 +90,7 @@ class SemExExpressiveStringPF extends ParserHook {
 			'isHTML' => false
 		);
 	}
-		
+
 	/**
 	 * Renders and returns the output.
 	 * @see ParserHook::renderTag
@@ -102,7 +104,7 @@ class SemExExpressiveStringPF extends ParserHook {
 		
 		if( implode( '', $parameters['detect'] ) !== '' ) { // '' counts as if parameter not set
 			foreach( $parameters['detect'] as $typeName ) {
-				$type = SemExExpressiveString::getRegisteredPieceTypeByName( $typeName );
+				$type = ExpressiveString::getRegisteredPieceTypeByName( $typeName );
 				if( $type !== null ) {
 					$enabledTypes[] = $type;
 				}
@@ -110,23 +112,22 @@ class SemExExpressiveStringPF extends ParserHook {
 		} elseif( empty( $parameters['ignore'] ) ) {
 			$enabledTypes = null; // same as next but constructor will process this faster
 		} else {
-			$enabledTypes = SemExExpressiveString::getRegisteredPieceTypeNames();
+			$enabledTypes = ExpressiveString::getRegisteredPieceTypeNames();
 		}
 		
 		if( $enabledTypes !== null ) {
 			$enabledTypes = array_flip( $enabledTypes );
 			foreach( $parameters['ignore'] as $typeName ) {
-				unset( $enabledTypes[ SemExExpressiveString::getRegisteredPieceTypeByName( $typeName ) ] );
+				unset( $enabledTypes[ ExpressiveString::getRegisteredPieceTypeByName( $typeName ) ] );
 			}
 			$enabledTypes = array_flip( $enabledTypes );
 		}
 		
 		// build expressive string from input with enabled types:
-		$exprString = new SemExExpressiveString( $parameters['text'], $this->parser, $enabledTypes );
+		$exprString = new ExpressiveString( $parameters['text'], $this->parser, $enabledTypes );
 		
 		/** @ToDo: Make it possible to define options per piece type per parameter prefixes */
-		$options = SemExExpressiveStringOutputOptions::newFromValidatedParams( $parameters );
+		$options = ExpressiveStringOutputOptions::newFromValidatedParams( $parameters );
 		return $exprString->getOutput( $options );
 	}
-	
 }
