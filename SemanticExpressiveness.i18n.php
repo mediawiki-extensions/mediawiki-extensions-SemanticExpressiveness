@@ -101,6 +101,15 @@ $messages['fr'] = array(
 	'semex-expressivestring-unresolvable' => 'Balisage insoluble',
 );
 
+/** Franco-Provençal (arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title-from-ref' => '$1 refèrenciê per $2',
+	'semex-shortquery-hover-loading' => 'Chargement',
+);
+
 /** Galician (galego)
  * @author Toliño
  */
@@ -185,7 +194,9 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'semex-desc' => '表現力豊かな短いクエリーの構文を追加する',
+	'semex-shortquery-title' => '$1 ($2 より)',
 	'semex-shortquery-hover-loading' => '読み込み中',
+	'semex-shortquery-error-missing-property' => '問い合わせされたプロパティの値は定義されていません。',
 	'semex-shortquery-error-failed-nested-queries' => '入れ子の短いクエリーに失敗したため、短いクエリーを実行できません。',
 	'semex-expressivestring-unresolvable' => '解決できないマークアップ',
 );
