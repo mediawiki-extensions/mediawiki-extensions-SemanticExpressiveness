@@ -279,3 +279,10 @@ $messages['tl'] = array(
 	'semex-expressivestring-unresolvable' => 'Hindi malulutasang pagmamarka',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['vi'] = array(
+	'semex-shortquery-hover-loading' => 'Đang tải...',
+);
+
