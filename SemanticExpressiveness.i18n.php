@@ -279,6 +279,13 @@ $messages['tl'] = array(
 	'semex-expressivestring-unresolvable' => 'Hindi malulutasang pagmamarka',
 );
 
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'semex-shortquery-hover-loading' => 'لوڈ ہو رہا ہے',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author පසිඳු කාවින්ද
  */
