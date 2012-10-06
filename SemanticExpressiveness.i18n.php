@@ -263,6 +263,22 @@ $messages['ro'] = array(
 	'semex-shortquery-hover-loading' => 'Se încarcă',
 );
 
+/** Swedish (svenska)
+ * @author Martinwiss
+ */
+$messages['sv'] = array(
+	'semex-desc' => 'Lägger till en syntax för mer uttrycksfylla korta frågor',
+	'semex-shortquery-title' => '$1 från $2',
+	'semex-shortquery-title-from-ref' => '$1 från ref $2',
+	'semex-shortquery-hover-loading' => 'Läser in...',
+	'semex-shortquery-hover-loading-failed' => 'Det gick inte att läsa in de korta frågornas målsidor.',
+	'semex-shortquery-error-missing-property' => 'Inget värde har definierats för den efterfrågade egenskapen.',
+	'semex-shortquery-error-byref-has-many-values' => 'Den givna referensegenskapen har mer en ett värde, endast den första valdes som mål för frågan.',
+	'semex-shortquery-error-byref-has-wrong-type' => 'Den givna referensegenskapen ska vara av typen "Sida".',
+	'semex-shortquery-error-failed-nested-queries' => 'Den korta frågan kunde inte köras eftersom ihopkopplade korta frågor fungerade inte.',
+	'semex-expressivestring-unresolvable' => 'Kodning som inte går att klara upp',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
