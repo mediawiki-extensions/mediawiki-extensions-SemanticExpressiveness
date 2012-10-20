@@ -249,6 +249,13 @@ $messages['nl'] = array(
 	'semex-expressivestring-unresolvable' => 'De opmaak wordt niet begrepen',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'semex-shortquery-hover-loading' => 'برسېرېدنې کې دی',
+);
+
 /** Portuguese (português)
  * @author SandroHc
  */
