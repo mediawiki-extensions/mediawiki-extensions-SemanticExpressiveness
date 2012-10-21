@@ -3,7 +3,8 @@ namespace SemEx;
 use Parser;
 
 /**
- * Class representing one piece of a ExpressiveString.
+ * Class representing one piece of an ExpressiveString.
+ * This base class for all other pieces represents a pure string with no deeper 'expressive meaning'.
  * 
  * @since 0.1
  * 
@@ -105,7 +106,7 @@ class ExpressiveStringPiece {
 	 * This is the function handling getOutput() internally, receiving ab appropriate instance of
 	 * 'ExpressiveStringOutputOptions' or rather of the subclass describing all options for
 	 * the piece type.
-	 * It is datermined by getDefaultOutputOptions() which one would be the most suitable
+	 * It is determined by getDefaultOutputOptions() which one would be the most suitable
 	 * 'ExpressiveStringOutputOptions' subclass for this type.
 	 * 
 	 * @param ExpressiveStringOutputOptions $options

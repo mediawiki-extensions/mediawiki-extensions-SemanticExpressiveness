@@ -117,7 +117,7 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 
 		$property = $this->query->getProperty()->getDataItem()->getLabel();
 		if( $linked ) {
-			$propTitle = Title::makeTitle( SMW_NS_PROPERTY, $property );
+			$propTitle = \Title::makeTitle( SMW_NS_PROPERTY, $property );
 			$property = "[[:{$propTitle->getPrefixedText()}|$property]]";
 		}
 		if( ! $raw ) {

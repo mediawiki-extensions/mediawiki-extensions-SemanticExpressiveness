@@ -70,6 +70,7 @@ class ExpressiveStringPieceSQResult extends ExpressiveStringPieceByRegex {
 	}
 
 	public function isUnresolvable() {
+		// unresolvable if faulty short query or no result
 		return $this->value->isEmpty();
 	}
 
