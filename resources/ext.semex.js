@@ -1,16 +1,15 @@
 /**
- * JavasSript for the 'Semantic Expresiveness' extension.
+ * JavasScript for the 'Semantic Expressiveness' extension.
  * @see https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
  * 
  * @since 0.1
- * @ingroup Semantic Expresiveness
+ * @ingroup Semantic Expressiveness
  * 
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
-( function( $, mw, undefined ) { "use strict";
-
-	window.semanticExpresiveness = new( function() {} )();
+var semanticExpressiveness = new ( function( mw, $, undefined ) {
+	'use strict';
 
 	// make sure rest of the module is loaded first
 	mw.loader.using( 'ext.semex', function() {
@@ -18,8 +17,8 @@
 		$( document ).ready( function() {
 
 			// add popup ui functionality to short query results:
-			var globalShortQueryInfoCache = new window.semanticExpresiveness.ui.ShortQueryHover.Cache;
-			window.semanticExpresiveness.ui.ShortQueryHover.initialize(
+			var globalShortQueryInfoCache = new semanticExpressiveness.ui.ShortQueryHover.Cache();
+			semanticExpressiveness.ui.ShortQueryHover.initialize(
 				$( 'body' ),
 				function( queryHover ) { // configuration per ShortQueryHover element
 					queryHover.queryInfoCache = globalShortQueryInfoCache;
@@ -29,4 +28,4 @@
 		} );
 	} );
 
-} )( jQuery, mediaWiki );
+} )( mediaWiki, jQuery );

@@ -1,16 +1,19 @@
 /**
- * JavasSript for context popup of the 'Semantic Expresiveness' extension.
+ * JavasScript for context popup of the 'Semantic Expressiveness' extension.
  * @see https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
  * 
  * @since 0.1
- * @ingroup Semantic Expresiveness
+ * @ingroup Semantic Expressiveness
  * 
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
-"use strict";
+( function( mw, semEx, $, undefined ) {
+	'use strict';
 
-/**
- * Module for 'Semantic Expresiveness' extensions user interface elements.
- */
-window.semanticExpresiveness.ui = {};
+	/**
+	 * Module for 'Semantic Expressiveness' extensions user interface elements.
+	 */
+	semEx.ui = {};
+
+}( mediaWiki, semanticExpressiveness, jQuery ) );

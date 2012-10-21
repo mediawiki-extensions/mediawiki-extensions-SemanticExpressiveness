@@ -1,48 +1,54 @@
 /**
- * JavasSript for context popup of the 'Semantic Expresiveness' extension.
+ * JavasScript for context popup of the 'Semantic Expressiveness' extension.
  * @see https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
- * 
- * @since 0.1
- * @ingroup Semantic Expresiveness
- * 
+ *
+ * @ingroup Semantic Expressiveness
+ *
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
-"use strict";
+( function( mw, semEx, $, undefined ) {
+'use strict';
+
+var PARENT = semEx.ui.ContextPopup;
 
 /**
  * Constructor for context popup container which allows to display some title section
  * next to the subject but within the context popup box. This means if the popup gets
  * displayed above its triggering subject, the title will be displayed at the popups
  * bottom, if the popup will be beyond the subject, the title will be displayed on top.
+ * @constructor
+ * @extends semEx.ui.ContextPopup
+ * @since 0.1
  */
-window.semanticExpresiveness.ui.TitledContextPopup = function( subject ){
-	window.semanticExpresiveness.ui.ContextPopup.call( this, subject );
+semEx.ui.TitledContextPopup = function( subject ){
+	PARENT.call( this, subject );
 };
 
 /*
  * Inherit and overwrite base class members:
  */
-window.semanticExpresiveness.ui.TitledContextPopup.prototype = new window.semanticExpresiveness.ui.ContextPopup();
-$.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
+semEx.ui.TitledContextPopup.prototype = new PARENT();
+$.extend( semEx.ui.TitledContextPopup.prototype, {
 
 	/**
 	 * Title which should be displayed next to the popups content.
-	 * @var jQuery
+	 * @type jQuery
 	 */
 	_title: null,
 
 	/**
-	 * @see semanticExpresiveness.ui.TitledContextPopup.POPUP_STORE_ID
+	 * @see semEx.ui.TitledContextPopup.POPUP_STORE_ID
 	 */
 	//POPUP_STORE_ID: 'ui-titledcontextpopup-store',
 
 	/**
 	 * Allows to set the content of the title.
-	 * @param $content jQuery|String
+	 *
+	 * @param {jQuery|String} content
 	 */
 	setTitle: function( content ) {
-		if( typeof content == 'undefined' ) {
+		if( content === undefined ) {
 			content = null;
 		}
 		if( content instanceof String ) {
@@ -60,7 +66,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 	},
 
 	/**
-	 * @see semanticExpresiveness.ui.ContextPopup._draw_buildPopup()
+	 * @see semEx.ui.ContextPopup._draw_buildPopup()
 	 */
 	_draw_buildPopup: function() {
 		// call parent function...
@@ -103,7 +109,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 	},
 
 	/**
-	 * @see semanticExpresiveness.ui.TitledContextPopup._draw_doPositioning()
+	 * @see semEx.ui.TitledContextPopup._draw_doPositioning()
 	 */
 	_draw_doPositioning: function() {
 		// we have positioned the title on top before, check whether it should be at the bottom:
@@ -118,7 +124,7 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 	/**
 	 * Returns the designated position of the title part of the popup. If the popup is not visible
 	 * at the moment or no title is set, null will be returned.
-	 * @return integer|null
+	 * @return Number|null
 	 */
 	getTitlePosition: function() {
 		if( this._orientation == null || this._title == null ) {
@@ -132,3 +138,5 @@ $.extend( window.semanticExpresiveness.ui.TitledContextPopup.prototype, {
 	}
 
 } );
+
+}( mediaWiki, semanticExpressiveness, jQuery ) );

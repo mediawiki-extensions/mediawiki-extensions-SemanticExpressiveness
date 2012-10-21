@@ -1,21 +1,28 @@
 /**
- * JavasSript for representing some short query result
+ * JavasScript for representing some short query result
  * @see https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
- * 
- * @since 0.1
- * @ingroup Semantic Expresiveness
+ *
+ * @ingroup Semantic Expressiveness
  * 
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
+( function( semEx, $, undefined ) {
 "use strict";
 
 /**
  * Constructor for short query result representation within JavaScript.
- * @param Node element representing the short Query.
- * @throws Error in case the Short Query Result structure is invalid.
+ * @constructor
+ * @since 0.1
+ *
+ * @param {jQuery} Node representing the short Query.
+ * @throws Error In case the Short Query Result structure is invalid.
+ *
+ * TODO: this shouldn't necessarily relate to a DOM node. Create a factory method to get a new
+ *       result from a DOM node instead.
+ *
  */
-window.semanticExpresiveness.ShortQueryResult = function( element ) {
+semEx.ShortQueryResult = function( element ) {
 	this._elem = $( element );
 
 	// validation for the short query result:
@@ -28,9 +35,9 @@ window.semanticExpresiveness.ShortQueryResult = function( element ) {
 		throw new Error( 'Invalid Short Query Result structure detected' );
 	}
 };
-window.semanticExpresiveness.ShortQueryResult.prototype = {
+semEx.ShortQueryResult.prototype = {
 	/**
-	 * @var jQuery
+	 * @type jQuery
 	 */
 	_elem: null,
 	_querySource: null,
@@ -39,7 +46,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 
 	/**
 	 * Returns the node in the DOM representing this short query result.
-	 * @return Node
+	 * @return jQuery
 	 */
 	getDOMNode: function() {
 		return this._elem;
@@ -48,7 +55,8 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 	/**
 	 * Returns whether this short query result is an abstract result for some reason, most likely
 	 * the query failed in this case.
-	 * @return bool
+	 *
+	 * @return Boolean
 	 */
 	isAbstractResult: function() {
 		return this._elem.hasClass( 'abstractShortQuery' );
@@ -58,7 +66,8 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 	 * Returns the local page name of the page the displayed query information was taken from.
 	 * In case this is an abstract short query result, it is possible that the source was another
 	 * unsuccessful short query. In this case, null will be returned.
-	 * @return string|null
+	 *
+	 * @return String|null
 	 */
 	getSource: function() {
 		if( this._querySource !== null ) {
@@ -68,7 +77,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 
 		if( this._querySource === false
 			&& this.isAbstractResult()
-			&& this._elem.children( '.source' ).length == 1
+			&& this._elem.children( '.source' ).length === 1
 		) {
 			// abstract result and another short query as source!
 			this._querySource = null;
@@ -78,7 +87,8 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 
 	/**
 	 * Returns the property name of the queried value.
-	 * @return string
+	 *
+	 * @return String
 	 */
 	getProperty: function() {
 		if( this._queryProperty !== null ) {
@@ -105,7 +115,7 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		}
 
 		// put all values into an array:
-		var titles = new Array( values.length );
+		var titles = [ values.length ];
 
 		values.each( function( index, elem ) {
 			titles[index] = $( elem ).attr( 'title' );
@@ -118,11 +128,12 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 	/**
 	 * Returns the DOM elements which are part of the formatted result. Returns null in case the query
 	 * went wrong. For unformatted result see getRawResult() function.
+	 *
 	 * @return jQuery|null
 	 */
 	getResult: function() {
 		var result = this._elem.children( '.result' );
-		if( result.length != 1 ) {
+		if( result.length !== 1 ) {
 			return null;
 		}
 		return result.contents();
@@ -130,11 +141,12 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 
 	/**
 	 * Generic helper to get attached information from the short queries DOM.
-	 * @param info string class name of the element where the information lays within the 'title'
+	 *
+	 * @param {String} info Class name of the element where the information lays within the 'title'
 	 */
 	_getShortQueryInfo: function( info ) {
 		var title = this._elem.children( '.' + info + '[title]' );
-		if( title.length != 1 ) {
+		if( title.length !== 1 ) {
 			return false;
 		}
 		title = $.trim( title.attr( 'title' ) );
@@ -144,3 +156,5 @@ window.semanticExpresiveness.ShortQueryResult.prototype = {
 		return title;
 	}
 };
+
+}( semanticExpressiveness, jQuery ) );

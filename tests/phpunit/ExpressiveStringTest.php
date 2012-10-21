@@ -17,9 +17,6 @@ use SemEx\ExpressiveString, \Parser;
  * @author Daniel Werner < danweetz@web.de >
  */
 class ExpressiveStringTest extends \MediaWikiTestCase {
-
-	protected static $num = -1;
-
 	/**
 	 * Tests several aspects of the expressive string. First gets all pieces of the string and tests
 	 * whether they are recognized as expressive or normal strings. Then it tests a few general

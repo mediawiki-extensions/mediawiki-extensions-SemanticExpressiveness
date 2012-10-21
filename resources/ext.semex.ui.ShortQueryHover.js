@@ -1,31 +1,35 @@
 /**
- * JavasSript for context popup of the 'Semantic Expresiveness' extension.
+ * JavasScript for context popup of the 'Semantic Expressiveness' extension.
  * @see https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
- * 
- * @since 0.1
- * @ingroup Semantic Expresiveness
+ *
+ * @ingroup Semantic Expressiveness
  * 
  * @licence GNU GPL v3+
  * @author Daniel Werner < danweetz at web dot de >
  */
-"use strict";
+( function( mw, semEx, $, undefined ) {
+'use strict';
+
+var PARENT = semEx.ui.TitledContextPopup;
 
 /**
  * Constructor for context Popup container adjusted for 'Semantic Expressiveness' extension needs
- * 
- * @param subject semanticExpresiveness.ShortQueryResult
+ * @constructor
+ * @since 0.1
+ *
+ * @param {semEx.ShortQueryResult} subject
  */
-window.semanticExpresiveness.ui.ShortQueryHover = function( subject ) {
-	window.semanticExpresiveness.ui.TitledContextPopup.call( this, subject );
+semEx.ui.ShortQueryHover = function( subject ) {
+	PARENT.call( this, subject );
 };
 
 /*
  * Inherit and overwrite base class members:
  */
-window.semanticExpresiveness.ui.ShortQueryHover.prototype = new window.semanticExpresiveness.ui.TitledContextPopup();
-$.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
+semEx.ui.ShortQueryHover.prototype = new PARENT();
+$.extend( semEx.ui.ShortQueryHover.prototype, {
 
-	constructor: window.semanticExpresiveness.ui.ShortQueryHover,
+	constructor: semEx.ui.ShortQueryHover,
 
 	// overwrite original content:
 	_content: $(
@@ -36,19 +40,21 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 
 	/**
 	 * Associated short query result which belongs to the popups subject.
-	 * @var: semanticExpresiveness.ShortQueryResult
+	 *
+	 * @type: semEx.ShortQueryResult
 	 */
 	_queryResult: null,
 
 	/**
 	 * Whether the query information has been dynamically loaded or taken from cache (if in use).
 	 * If that is the case, this._content contains the information.
-	 * @var boolean
+	 *
+	 * @type Boolean
 	 */
 	_queryInfoLoaded: false,
 
 	_init: function( subject ) {
-		if( ! ( subject instanceof window.semanticExpresiveness.ShortQueryResult ) ) {
+		if( ! ( subject instanceof semEx.ShortQueryResult ) ) {
 			throw new Error(
 					'"' + this.constructor +
 					'" initialization expects an instance of "ShortQueryResult" as first parameter.'
@@ -66,7 +72,7 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	},
 
 	/**
-	 * @see semanticExpresiveness.ui.TitledContextPopup._draw_buildPopup()
+	 * @see semEx.ui.TitledContextPopup._draw_buildPopup()
 	 */
 	_draw_buildPopup: function() {
 		// call parent function...
@@ -81,7 +87,8 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	 * destroys the short query hover popup and creates and initializes a simple TitledContextPopup
 	 * with basic information about the short query target and without AJAX functionality instead.
 	 * The new popup will be returned.
-	 * @return semanticExpresiveness.ui.TitledContextPopup
+	 *
+	 * @return semEx.ui.TitledContextPopup
 	 */
 	initializeSimilarTitledPopup: function() {
 		var oldTitle = this.getTitle().clone();
@@ -89,7 +96,7 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 		this.destroy(); // destroy old popup before initializing any new one!
 
 		// create new popup with same values but with title only:
-		var newPopup = new window.semanticExpresiveness.ui.TitledContextPopup( subject );
+		var newPopup = new semEx.ui.TitledContextPopup( subject );
 		newPopup.setTitle( oldTitle );
 		newPopup.setContent( null );
 
@@ -115,7 +122,7 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	},
 
 	/**
-	 * @see window.semanticExpresiveness.ui.ContextPopup.setContent()
+	 * @see semEx.ui.ContextPopup.setContent()
 	 */
 	setContent: function( content ) {
 		// Initialize short query popups within inserted code:
@@ -128,7 +135,7 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	},
 
 	/**
-	 * @see window.semanticExpresiveness.ui.ContextPopup.show()
+	 * @see semEx.ui.ContextPopup.show()
 	 */
 	show: function() {
 		if( ! this.$package.TitledContextPopup.prototype.show.call( this ) ) {
@@ -151,7 +158,8 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 
 	/**
 	 * Returns the link from where the popup should get its information.
-	 * @return string
+	 *
+	 * @return String
 	 */
 	getQueryInfoSource: function() {
 		var source = this._queryResult.getSource();
@@ -209,7 +217,8 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 
 	/**
 	 * Checks new popup content for further short queries and initializes their ui functionality.
-	 * @param content jQuery
+	 *
+	 * @param {jQuery} content
 	 */
 	_doRecursiveInitialization: function( content ) {
 		var self = this;
@@ -233,7 +242,8 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 
 	/**
 	 * Returns the associated Querry Result object
-	 * @returns semanticExpresiveness.ShortQueryResult
+	 *
+	 * @returns semEx.ShortQueryResult
 	 */
 	getQueryResult: function() {
 		return this._queryResult;
@@ -246,38 +256,42 @@ $.extend( window.semanticExpresiveness.ui.ShortQueryHover.prototype, {
 	/**
 	 * Callback called once after the information from the short queries source page has been loaded,
 	 * just before the information will be set as the context popups content. The return value of the
-	 * callback allows to return a modified jQuery object which will be set as the popups content then.
-	 * If false is returned, it indicates that no information was found.
-	 * @param data jQuery|false the original extracted information from the short queries target page.
-	 *        If set to false, this implies that loading the information has failed.
+	 * callback allows to return a modified jQuery object which will be set as the popups content
+	 * then. If false is returned, it indicates that no information was found.
+	 *
+	 * @param {jQuery|false} data The original extracted information from the short queries target
+	 *        page. If set to false, this implies that loading the information has failed.
 	 * @return jQuery|false
 	 */
 	beforeApplyQueryInfo: null,
+
 
 	/////////////////
 	// CONFIGURABLE:
 	/////////////////
 
 	/**
-	 * If set to false, there is no cache and each displaying of a short query popup will lead to loading
-	 * the required information again. If set to an Cache object, the information will be stored within.
-	 * This allows a global cache to share information once retrieved between short queries which have the
-	 * same target page.
-	 * @var false|semanticExpresiveness.ui.ShortQueryHover.Cache
+	 * If set to false, there is no cache and each displaying of a short query popup will lead to
+	 * loading the required information again. If set to an Cache object, the information will be
+	 * stored within. This allows a global cache to share information once retrieved between short
+	 * queries which have the same target page.
+	 * @type semEx.ui.ShortQueryHover.Cache|false
 	 */
 	queryInfoCache: false,
 
 	/**
 	 * A valid jQuery selector to choose which elements from the short query target page should be
 	 * selected as popup content.
-	 * @var string
+	 * @type String
 	 */
 	queryInfoSelector: '.NavFrame, .freeInfoBox',
 
 	/**
 	 * If set to true, any content displayed within the popup will be checked for further short queries which
 	 * will then be initialized as well.
-	 * @var boolean
+	 * @type Boolean
 	 */
 	recursiveInitialization: true
 } );
+
+}( mediaWiki, semanticExpressiveness, jQuery ) );
