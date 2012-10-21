@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use Parameter;
+
 /**
 * Parameter manipulation converting the value to a SMWStore listed within the global
  * $smwgQuerySources config variable.
@@ -13,7 +15,7 @@ namespace SemEx;
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class ParamManipulationQuerySource extends ItemParameterManipulation {
+class ParamManipulationQuerySource extends \ItemParameterManipulation {
 
 	/**
 	 * Constructor.

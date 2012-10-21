@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use \Parameter, \CriterionInArray;
+
 /**
  * Class for defining options for expressive strings output.
  * ExpressiveString::getOutput() can be used to get the formatted output in the form defined by

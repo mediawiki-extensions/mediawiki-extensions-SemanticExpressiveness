@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use \Parameter, \SMWPropertyValue;
+
 /**
  * Parameter criterion for 'Validator' stating that the value must be a SMW property.
  * Optionally this will only allow properties of certain types.
@@ -13,7 +15,7 @@ namespace SemEx;
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class CriterionIsProperty extends ItemParameterCriterion {
+class CriterionIsProperty extends \ItemParameterCriterion {
 
 	protected $allowedTypes;
 

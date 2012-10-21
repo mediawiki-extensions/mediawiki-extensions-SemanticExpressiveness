@@ -1,6 +1,6 @@
 <?php
 namespace SemEx;
-use SMWPropertyValue, Title;
+use SMWPropertyValue, SMWStore, Title, Parameter;
 
 /**
  * Class describing a 'Semantic Expressiveness' short query.

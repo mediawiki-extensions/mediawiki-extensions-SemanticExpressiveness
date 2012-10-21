@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use \Parameter, \Validator;
+
 /**
  * Class for '?' short query parser function
  * 
@@ -13,7 +15,7 @@ namespace SemEx;
  */
 class QueryPF {
 
-	public static function render( Parser &$parser ) {
+	public static function render( \Parser &$parser ) {
 		global $smwgQEnabled, $smwgIQRunningNumber;
 
 		if ( $smwgQEnabled ) {

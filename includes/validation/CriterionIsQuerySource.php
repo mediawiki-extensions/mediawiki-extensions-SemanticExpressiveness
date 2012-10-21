@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use Parameter;
+
 /**
  * Parameter criterion for 'Validator' stating that the value must be the key of a registered
  * SMWDataStore instance.
@@ -13,7 +15,7 @@ namespace SemEx;
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class CriterionIsQuerySource extends ItemParameterCriterion {
+class CriterionIsQuerySource extends \ItemParameterCriterion {
 
 	/**
 	 * Constructor.

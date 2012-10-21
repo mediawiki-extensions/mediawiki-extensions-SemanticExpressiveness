@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use \Parameter, \CriterionInArray;
+
 /**
  * Class for defining options for a 'Semantic Expressiveness' short query.
  * ShortQueryProcessor::getResultFromQuery() can be used to get a short queries result using

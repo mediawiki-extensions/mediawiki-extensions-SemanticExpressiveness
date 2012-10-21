@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use \Parameter, \SMWPropertyValue;
+
 /**
 * Parameter manipulation converting the value to a SMWPropertyValue.
  * 
@@ -12,7 +14,7 @@ namespace SemEx;
  *
  * @author Daniel Werner < danweetz@web.de >
  */
-class ParamManipulationProperty extends ItemParameterManipulation {
+class ParamManipulationProperty extends \ItemParameterManipulation {
 
 	/**
 	 * Constructor.

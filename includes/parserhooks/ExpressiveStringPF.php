@@ -1,6 +1,6 @@
 <?php
 namespace SemEx;
-use ParserHook, Validator, ListParameter;
+use ParserHook, Validator, ListParameter, CriterionInArray, Parameter;
 
 /**
  * Class for the '?to?!' parser function, basically a limited converter for expressive strings.
