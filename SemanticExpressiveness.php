@@ -5,11 +5,11 @@ namespace SemEx;
  * 'Semantic Expressiveness' introduces a short hand query syntax to query single values from the
  * same or another page. It aims to further reduce redundancy and to make wikitext and query
  * outputs more expressive by adding information where queried values come from.
- * 
+ *
  * Documentation: https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
  * Support:       https://www.mediawiki.org/wiki/Extension_talk:Semantic_Expressiveness
  * Source code:   https://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SemanticExpressiveness
- * 
+ *
  * @version: 0.1 alpha
  * @license: ISC License
  * @author: Daniel Werner < danweetz@web.de >
@@ -46,6 +46,7 @@ $wgResourceModules = array_merge( $wgResourceModules, include( Ext::getDir() . '
 $wgAutoloadClasses['SemEx\Hooks'] = Ext::getDir() . '/SemanticExpressiveness.hooks.php';
 $wgHooks['OutputPageParserOutput'][]      = 'SemEx\Hooks::onOutputPageParserOutput';
 $wgHooks['InternalParseBeforeSanitize'][] = 'SemEx\Hooks::onInternalParseBeforeSanitize';
+$wgHooks['UnitTestsList'][]               = 'SemEx\Hooks::registerUnitTests';
 
 
 $incDir = Ext::getDir() . '/includes/';
