@@ -34,7 +34,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 	// overwrite original content:
 	_content: $(
 		'<div class="semex-shortqueryinfo-loading">' +
-		mw.msg( 'semex-shortquery-hover-loading' ) + '...' +
+		mw.message( 'semex-shortquery-hover-loading' ).escaped() +
 		'</div>'
 	),
 
@@ -116,6 +116,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 		source = '<a href="' + mw.util.wikiGetlink( source ) + '">' + source + '</a>';
 
 		// put links into the message:
+		// TODO: escape this properly!
 		this.setTitle(
 			$( mw.msg( 'semex-shortquery-title', prop, source ) )
 		);
@@ -162,9 +163,13 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 	 * @return String
 	 */
 	getQueryInfoSource: function() {
-		var source = this._queryResult.getSource();
+		var source = this._queryResult.getSource(),
+			link = mw.util.wikiGetlink( source );
+
 		// NOTE: adding action=purge will not work if user not logged in (because of "really want to purge?" message)
-		return mw.util.wikiGetlink( source ) + '?action=render';
+
+		link += ( link.indexOf( '?' ) === -1 ? '?' : '&' ) + 'action=render';
+		return link;
 	},
 
 	/**
@@ -180,7 +185,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 		dummy.load(
 			request,
 			function( rawData, status, jqXHR ) {
-				if( jqXHR.status == 0 ) {
+				if( jqXHR.status === 0 ) {
 					dummy = false;
 				}
 				self._applyQueryInfo( dummy, rawData, jqXHR );
@@ -202,7 +207,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 			 */
 			data = $(
 					'<div class="semex-shortqueryinfo-loading-failed">' +
-					mw.msg( 'semex-shortquery-hover-loading-failed' ) + '</div>'
+					mw.message( 'semex-shortquery-hover-loading-failed' ).escaped() + '</div>'
 			);
 		}
 
@@ -249,6 +254,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 		return this._queryResult;
 	},
 
+
 	///////////
 	// EVENTS:
 	///////////
@@ -272,7 +278,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 
 	/**
 	 * If set to false, there is no cache and each displaying of a short query popup will lead to
-	 * loading the required information again. If set to an Cache object, the information will be
+	 * loading the required information again. If set to a Cache object, the information will be
 	 * stored within. This allows a global cache to share information once retrieved between short
 	 * queries which have the same target page.
 	 * @type semEx.ui.ShortQueryHover.Cache|false

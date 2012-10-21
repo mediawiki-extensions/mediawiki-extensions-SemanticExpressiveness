@@ -15,7 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'semex-desc' => 'Adds a syntax for more expressive short queries',
-	'semex-shortquery-title' => '$1 from $2',
+	'semex-shortquery-title' => '$1 of $2',
 	'semex-shortquery-title-from-ref' => '$1 from ref $2',
 	'semex-shortquery-hover-loading' => 'Loading',
 	'semex-shortquery-hover-loading-failed' => 'Loading the short queries target pages content failed.',
@@ -32,10 +32,10 @@ $messages['en'] = array(
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'semex-shortquery-title' => 'Parameters:
+	'semex-shortquery-title' => 'Description of a simple query. Says which property got queried from which page. Parameters:
 * $1: semantic property name
 * $2: page the query got the property value from',
-	'semex-shortquery-title-from-ref' => 'Parameters:
+	'semex-shortquery-title-from-ref' => 'Description of a query by a reference. Says which property got queried from which reference (a reference is a property of type "Page" defined on the same page) Parameters:
 * $1: semantic property name
 * $2: another semantic property name of the same page',
 	'semex-shortquery-error-missing-property' => '{{identical|Property}}',
