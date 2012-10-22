@@ -34,7 +34,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'semex-shortquery-title' => 'Description of a simple query. Says which property got queried from which page. Parameters:
 * $1: semantic property name
-* $2: page the query got the property value from',
+* $2: page the query got the property value from', # Fuzzy
 	'semex-shortquery-title-from-ref' => 'Description of a query by a reference. Says which property got queried from which reference (a reference is a property of type "Page" defined on the same page) Parameters:
 * $1: semantic property name
 * $2: another semantic property name of the same page',
@@ -57,7 +57,7 @@ $messages['br'] = array(
  */
 $messages['de'] = array(
 	'semex-desc' => 'Ermöglicht eine Syntax für aussagekräftigere Kurzabfragen',
-	'semex-shortquery-title' => '$1 von $2',
+	'semex-shortquery-title' => '$1 von $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 von Referenz $2',
 	'semex-shortquery-hover-loading' => 'Lädt …',
 	'semex-shortquery-hover-loading-failed' => 'Das Laden der Inhalte, der mit der Kurzabfrage abgefragten Seiten, schlug fehl.',
@@ -74,7 +74,7 @@ $messages['de'] = array(
  */
 $messages['es'] = array(
 	'semex-desc' => 'Agrega una sintaxis para consultas cortas más expresivas',
-	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title' => '$1 de $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 de la referencia $2',
 	'semex-shortquery-hover-loading' => 'Cargando',
 	'semex-shortquery-hover-loading-failed' => 'Error al cargar el contenido de las páginas encontradas mediante consultas cortas.',
@@ -90,7 +90,7 @@ $messages['es'] = array(
  */
 $messages['fr'] = array(
 	'semex-desc' => 'Ajoute une syntaxe pour des requêtes courtes plus expressives',
-	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title' => '$1 de $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 référencé par $2',
 	'semex-shortquery-hover-loading' => 'Chargement',
 	'semex-shortquery-hover-loading-failed' => 'Le chargement du contenu des pages trouvées par la requête courte a échoué.',
@@ -105,7 +105,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title' => '$1 de $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 refèrenciê per $2',
 	'semex-shortquery-hover-loading' => 'Chargement',
 );
@@ -115,7 +115,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'semex-desc' => 'Engade unha sintaxe para posibilitar unhas pescudas breves máis expresivas',
-	'semex-shortquery-title' => '$1 de "$2"',
+	'semex-shortquery-title' => '$1 de "$2"', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 da referencia $2',
 	'semex-shortquery-hover-loading' => 'Cargando',
 	'semex-shortquery-hover-loading-failed' => 'Erro ao cargar os contidos das páxinas atopadas polas pescudas breves.',
@@ -131,7 +131,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'semex-desc' => 'Přidawa syntaksu za bóle wuprajiwe krótke naprašowanja',
-	'semex-shortquery-title' => '$1 z $2',
+	'semex-shortquery-title' => '$1 z $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 z referency $2',
 	'semex-shortquery-hover-loading' => 'Začituje so',
 	'semex-shortquery-hover-loading-failed' => 'Začitowanje wobsaha cilowych stronow krótkich naprašowanjow je so njeporadźiło.',
@@ -147,7 +147,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'semex-desc' => 'Szintaxist hoz létre a rövid lekérdezések kifejezőbbé tevéséhez',
-	'semex-shortquery-title' => '$1 a(z) $2 lapról',
+	'semex-shortquery-title' => '$1 a(z) $2 lapról', # Fuzzy
 	'semex-shortquery-hover-loading' => 'Betöltés',
 	'semex-shortquery-hover-loading-failed' => 'A rövid lekérdezés céloldalai tartalmának betöltése nem sikerült.',
 	'semex-shortquery-error-missing-property' => 'A lekérdezett tulajdonsághoz nincs megadva érték.',
@@ -162,7 +162,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'semex-desc' => 'Adde un syntaxe pro curte consultas plus expressive',
-	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title' => '$1 de $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 ab ref $2',
 	'semex-shortquery-hover-loading' => 'Cargamento',
 	'semex-shortquery-hover-loading-failed' => 'Le cargamento del contento del paginas de destination de consultas curte ha fallite.',
@@ -178,7 +178,7 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'semex-desc' => 'Aggiunge una sintassi per interrogazioni brevi più espressive.',
-	'semex-shortquery-title' => '$1 da $2',
+	'semex-shortquery-title' => '$1 da $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 da riferimento $2',
 	'semex-shortquery-hover-loading' => 'Caricamento',
 	'semex-shortquery-hover-loading-failed' => "Caricamento non riuscito della pagina di destinazione dell'interrogazione breve.",
@@ -194,7 +194,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'semex-desc' => '表現力豊かな短いクエリーの構文を追加する',
-	'semex-shortquery-title' => '$1 ($2 より)',
+	'semex-shortquery-title' => '$2 の $1',
 	'semex-shortquery-hover-loading' => '読み込み中',
 	'semex-shortquery-error-missing-property' => '問い合わせされたプロパティの値は定義されていません。',
 	'semex-shortquery-error-failed-nested-queries' => '入れ子の短いクエリーに失敗したため、短いクエリーを実行できません。',
@@ -205,7 +205,7 @@ $messages['ja'] = array(
  * @author David1010
  */
 $messages['ka'] = array(
-	'semex-shortquery-title' => '$1 $2-დან',
+	'semex-shortquery-title' => '$1 $2-დან', # Fuzzy
 	'semex-shortquery-hover-loading' => 'იტვირთება',
 );
 
@@ -213,7 +213,7 @@ $messages['ka'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'semex-shortquery-title' => '$1 vun $2',
+	'semex-shortquery-title' => '$1 vun $2', # Fuzzy
 	'semex-shortquery-hover-loading' => 'Lueden',
 );
 
@@ -222,7 +222,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'semex-desc' => 'Додава синтакса за поизразливи кратки барања (пребарувања)',
-	'semex-shortquery-title' => '$1 од $2',
+	'semex-shortquery-title' => '$1 од $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 од наводот $2',
 	'semex-shortquery-hover-loading' => 'Вчитувам',
 	'semex-shortquery-hover-loading-failed' => 'Вчитувањето на содржината на целните страници од краткото пребарување не успеа.',
@@ -238,7 +238,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'semex-desc' => 'Voegt syntaxis toe voor meer expressieve korte zoekopdrachten',
-	'semex-shortquery-title' => '$1 van $2',
+	'semex-shortquery-title' => '$1 van $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 van referentie $2',
 	'semex-shortquery-hover-loading' => 'Bezig met laden...',
 	'semex-shortquery-hover-loading-failed' => "Het laden van de inhoud van de doelpagina's voor de korte zoekopdrachten is mislukt.",
@@ -275,7 +275,7 @@ $messages['ro'] = array(
  */
 $messages['sv'] = array(
 	'semex-desc' => 'Lägger till en syntax för mer uttrycksfylla korta frågor',
-	'semex-shortquery-title' => '$1 från $2',
+	'semex-shortquery-title' => '$1 från $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 från ref $2',
 	'semex-shortquery-hover-loading' => 'Läser in...',
 	'semex-shortquery-hover-loading-failed' => 'Det gick inte att läsa in de korta frågornas målsidor.',
@@ -291,7 +291,7 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'semex-desc' => 'Nagdaragdag ng isang palaugnayan para sa mas mapagpahayag na maiikling mga pagtatanong',
-	'semex-shortquery-title' => '$1 mula sa $2',
+	'semex-shortquery-title' => '$1 mula sa $2', # Fuzzy
 	'semex-shortquery-title-from-ref' => '$1 mula sa sangguniang $2',
 	'semex-shortquery-hover-loading' => 'Ikinakarga',
 	'semex-shortquery-hover-loading-failed' => 'Nabigo ang pagkakarga ng nilalaman ng mga pahinang puntirya ng maiiksing mga pagtatanong.',
@@ -315,4 +315,3 @@ $messages['ur'] = array(
 $messages['vi'] = array(
 	'semex-shortquery-hover-loading' => 'Đang tải...',
 );
-
