@@ -34,7 +34,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'semex-shortquery-title' => 'Description of a simple query. Says which property got queried from which page. Parameters:
 * $1: semantic property name
-* $2: page the query got the property value from', # Fuzzy
+* $2: page the query got the property value from',
 	'semex-shortquery-title-from-ref' => 'Description of a query by a reference. Says which property got queried from which reference (a reference is a property of type "Page" defined on the same page) Parameters:
 * $1: semantic property name
 * $2: another semantic property name of the same page',
