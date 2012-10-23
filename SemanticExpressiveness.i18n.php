@@ -131,7 +131,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'semex-desc' => 'Přidawa syntaksu za bóle wuprajiwe krótke naprašowanja',
-	'semex-shortquery-title' => '$1 z $2', # Fuzzy
+	'semex-shortquery-title' => '$1 wot $2',
 	'semex-shortquery-title-from-ref' => '$1 z referency $2',
 	'semex-shortquery-hover-loading' => 'Začituje so',
 	'semex-shortquery-hover-loading-failed' => 'Začitowanje wobsaha cilowych stronow krótkich naprašowanjow je so njeporadźiło.',
@@ -178,7 +178,7 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'semex-desc' => 'Aggiunge una sintassi per interrogazioni brevi più espressive.',
-	'semex-shortquery-title' => '$1 da $2', # Fuzzy
+	'semex-shortquery-title' => '$1 di $2',
 	'semex-shortquery-title-from-ref' => '$1 da riferimento $2',
 	'semex-shortquery-hover-loading' => 'Caricamento',
 	'semex-shortquery-hover-loading-failed' => "Caricamento non riuscito della pagina di destinazione dell'interrogazione breve.",
