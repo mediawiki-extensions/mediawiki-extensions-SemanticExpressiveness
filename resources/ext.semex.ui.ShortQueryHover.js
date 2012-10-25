@@ -132,7 +132,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 		) {
 			this._doRecursiveInitialization( content );
 		}
-		this.$package.TitledContextPopup.prototype.setContent.call( this, content )
+		this.$package.TitledContextPopup.prototype.setContent.call( this, content );
 	},
 
 	/**
@@ -199,7 +199,7 @@ $.extend( semEx.ui.ShortQueryHover.prototype, {
 	 */
 	_applyQueryInfo: function( data, rawData, jqXHR ) {
 		if( this.beforeApplyQueryInfo !== null ) {
-			data = this.beforeApplyQueryInfo( data )
+			data = this.beforeApplyQueryInfo( data );
 		}
 		if( data === false ) {
 			/** @ToDo: right now the message gets treated as if it were the right value, might be

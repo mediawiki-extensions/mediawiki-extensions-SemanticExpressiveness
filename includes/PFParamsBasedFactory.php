@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use Validator;
+
 /**
  * Interface for classes offering a factory method for creating a new instance from parser function
  * parameters.

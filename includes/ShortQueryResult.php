@@ -1,6 +1,6 @@
 <?php
 namespace SemEx;
-use Parser, Title, HTML;
+use Parser, Title, HTML, DOMNode;
 use SMWDataValueFactory;
 
 /**
@@ -516,7 +516,7 @@ class ShortQueryResult {
 			// fill result from DOM information:
 			$origResultContainer = self::extractInfoFromDOM( $node, 'value', true );
 
-			if( $origResultContainer->hasChildNodes() ) {
+			if( $origResultContainer !== null && $origResultContainer->hasChildNodes() ) {
 				$propDi = $origQuery->getProperty()->getDataItem();
 
 				// each DataValue inside its own <span title="data" />
@@ -528,9 +528,12 @@ class ShortQueryResult {
 					if( $result === '' ) {
 						continue;
 					}
+					// TODO: check this functionality
+					/*
 					$sqResult->result[] = SMWDataValueFactory::newPropertyObjectValue(
 							$propDi, $result, $caption
 					);
+					*/
 				}
 			}
 		}
@@ -554,7 +557,7 @@ class ShortQueryResult {
 		$xmlDoc->strictErrorChecking = false;
 
 		wfSuppressWarnings();
-		$validDom = $xmlDoc->loadXML( $part );
+		$validDom = $xmlDoc->loadXML( $strHtml );
 		wfRestoreWarnings();
 
 		if( ! $validDom ) {
@@ -571,7 +574,7 @@ class ShortQueryResult {
 	 * @param DOMNode $node
 	 * @param string $info
 	 * @param bool $getNode if set to true, this will return the DOMNode containing the
-	 *        requested information instead of just returning the 'title' attribute content.
+	 *        requested information instead of just returning the 'title' attributes content.
 	 * 
 	 * @return string|DOMNodeList|null
 	 */
@@ -579,7 +582,9 @@ class ShortQueryResult {
 		if( ! $node->hasChildNodes() ) {
 			return null;
 		}
-		$xpath = new DOMXpath( $node );
+		$domDoc = new \DomDocument; // have to use a DomDocument for xpath
+		$domDoc->appendChild( $domDoc->importNode( $node, true ) );
+		$xpath = new \DOMXpath( $domDoc );
 		$nodes = $xpath->query( "/*/*[@class=\"{$info}\"][@title][1]" );
 
 		if( $nodes->length < 1 ) {
@@ -591,7 +596,7 @@ class ShortQueryResult {
 			return $node;
 		}
 
-		$result = trim( $node->attributes->getNamedItem( 'title' ) );
+		$result = trim( $node->attributes->getNamedItem( 'title' )->nodeValue );
 		if( $result === '' ) {
 			return null;
 		}

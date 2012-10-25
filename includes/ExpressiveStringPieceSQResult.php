@@ -1,6 +1,6 @@
 <?php
 namespace SemEx;
-use Parser;
+use Parser, DOMDocument;
 
 /**
  * Class representing one short query result piece of a ExpressiveString.

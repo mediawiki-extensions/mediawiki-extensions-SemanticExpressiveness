@@ -20,9 +20,11 @@ namespace SemEx;
 
 if( !defined( 'MEDIAWIKI' ) ) { die(); }
 
+/**
 if ( version_compare( $wgVersion, '1.20a', '<' ) ) {
 	die( '<b>Error:</b> SemanticExpressiveness requires MediaWiki 1.20 or above.' );
 }
+*/
 
 $wgExtensionCredits[ defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other' ][] = array(
 	'path'           => __FILE__,
