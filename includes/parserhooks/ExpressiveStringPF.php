@@ -47,6 +47,8 @@ class ExpressiveStringPF extends ParserHook {
 	protected function getParameterInfo( $type ) {
 		$params = ExpressiveStringOutputOptions::getPFParams();
 
+		$params['format']->setDefault( 'raw' );
+
 		# input text.
 		# since 0.1
 		$params['text'] = new Parameter( 'text' );
