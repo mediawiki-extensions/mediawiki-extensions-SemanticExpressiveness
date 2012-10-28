@@ -57,7 +57,7 @@ $messages['br'] = array(
  */
 $messages['de'] = array(
 	'semex-desc' => 'Ermöglicht eine Syntax für aussagekräftigere Kurzabfragen',
-	'semex-shortquery-title' => '$1 von $2', # Fuzzy
+	'semex-shortquery-title' => '$1 von $2',
 	'semex-shortquery-title-from-ref' => '$1 von Referenz $2',
 	'semex-shortquery-hover-loading' => 'Lädt …',
 	'semex-shortquery-hover-loading-failed' => 'Das Laden der Inhalte, der mit der Kurzabfrage abgefragten Seiten, schlug fehl.',
@@ -74,7 +74,7 @@ $messages['de'] = array(
  */
 $messages['es'] = array(
 	'semex-desc' => 'Agrega una sintaxis para consultas cortas más expresivas',
-	'semex-shortquery-title' => '$1 de $2', # Fuzzy
+	'semex-shortquery-title' => '$1 de $2',
 	'semex-shortquery-title-from-ref' => '$1 de la referencia $2',
 	'semex-shortquery-hover-loading' => 'Cargando',
 	'semex-shortquery-hover-loading-failed' => 'Error al cargar el contenido de las páginas encontradas mediante consultas cortas.',
@@ -115,7 +115,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'semex-desc' => 'Engade unha sintaxe para posibilitar unhas pescudas breves máis expresivas',
-	'semex-shortquery-title' => '$1 de "$2"', # Fuzzy
+	'semex-shortquery-title' => '$1 de "$2"',
 	'semex-shortquery-title-from-ref' => '$1 da referencia $2',
 	'semex-shortquery-hover-loading' => 'Cargando',
 	'semex-shortquery-hover-loading-failed' => 'Erro ao cargar os contidos das páxinas atopadas polas pescudas breves.',
@@ -222,7 +222,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'semex-desc' => 'Додава синтакса за поизразливи кратки барања (пребарувања)',
-	'semex-shortquery-title' => '$1 од $2', # Fuzzy
+	'semex-shortquery-title' => '$1 од $2',
 	'semex-shortquery-title-from-ref' => '$1 од наводот $2',
 	'semex-shortquery-hover-loading' => 'Вчитувам',
 	'semex-shortquery-hover-loading-failed' => 'Вчитувањето на содржината на целните страници од краткото пребарување не успеа.',
@@ -238,7 +238,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'semex-desc' => 'Voegt syntaxis toe voor meer expressieve korte zoekopdrachten',
-	'semex-shortquery-title' => '$1 van $2', # Fuzzy
+	'semex-shortquery-title' => '$1 van $2',
 	'semex-shortquery-title-from-ref' => '$1 van referentie $2',
 	'semex-shortquery-hover-loading' => 'Bezig met laden...',
 	'semex-shortquery-hover-loading-failed' => "Het laden van de inhoud van de doelpagina's voor de korte zoekopdrachten is mislukt.",
