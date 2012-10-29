@@ -87,10 +87,11 @@ $messages['es'] = array(
 
 /** French (français)
  * @author DavidL
+ * @author Nicolas NALLET
  */
 $messages['fr'] = array(
 	'semex-desc' => 'Ajoute une syntaxe pour des requêtes courtes plus expressives',
-	'semex-shortquery-title' => '$1 de $2', # Fuzzy
+	'semex-shortquery-title' => '$1 sur $2',
 	'semex-shortquery-title-from-ref' => '$1 référencé par $2',
 	'semex-shortquery-hover-loading' => 'Chargement',
 	'semex-shortquery-hover-loading-failed' => 'Le chargement du contenu des pages trouvées par la requête courte a échoué.',
@@ -213,7 +214,7 @@ $messages['ka'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'semex-shortquery-title' => '$1 vun $2', # Fuzzy
+	'semex-shortquery-title' => '$1 vu(n) $2',
 	'semex-shortquery-hover-loading' => 'Lueden',
 );
 
