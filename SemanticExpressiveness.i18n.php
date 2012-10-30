@@ -68,6 +68,15 @@ $messages['de'] = array(
 	'semex-expressivestring-unresolvable' => 'Die Abfragesyntax konnte nicht verarbeitet werden.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'semex-shortquery-title' => '$1 het de $2',
+	'semex-shortquery-title-from-ref' => '$1 ra $2',
+	'semex-shortquery-hover-loading' => 'Barêno...',
+);
+
 /** Spanish (español)
  * @author Armando-Martin
  * @author Mr.Ajedrez
