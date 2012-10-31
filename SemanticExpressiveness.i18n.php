@@ -70,11 +70,12 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Mirzali
  */
 $messages['diq'] = array(
-	'semex-shortquery-title' => '$1 het de $2',
-	'semex-shortquery-title-from-ref' => '$1 ra $2',
-	'semex-shortquery-hover-loading' => 'Barêno...',
+	'semex-shortquery-title' => '$2 ra $1',
+	'semex-shortquery-title-from-ref' => '$2ref ra $1',
+	'semex-shortquery-hover-loading' => 'Bar beno...',
 );
 
 /** Spanish (español)
