@@ -32,6 +32,7 @@ $messages['en'] = array(
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'semex-desc' => '{{desc}}',
 	'semex-shortquery-title' => 'Description of a simple query. Says which property got queried from which page. Parameters:
 * $1: semantic property name
 * $2: page the query got the property value from',
@@ -56,7 +57,7 @@ $messages['br'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'semex-desc' => 'Ermöglicht eine Syntax für aussagekräftigere Kurzabfragen',
+	'semex-desc' => 'Ermöglicht eine vereinfachte Syntax für eingebettete Abfragen',
 	'semex-shortquery-title' => '$1 von $2',
 	'semex-shortquery-title-from-ref' => '$1 von Referenz $2',
 	'semex-shortquery-hover-loading' => 'Lädt …',
