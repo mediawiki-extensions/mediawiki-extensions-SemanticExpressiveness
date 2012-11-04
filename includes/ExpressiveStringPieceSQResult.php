@@ -110,7 +110,7 @@ class ExpressiveStringPieceSQResult extends ExpressiveStringPieceByRegex {
 		try {
 			// try to re-fabricate short query result from DOM:
 			$sqResult = ShortQueryResult::newFromDOM( $xmlDoc->documentElement, $parser );
-		} catch( Exception $exc ) {
+		} catch( \Exception $exc ) {
 			// invalid, insert as plain string
 			return false;
 		}

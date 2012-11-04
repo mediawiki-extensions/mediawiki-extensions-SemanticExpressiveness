@@ -20,8 +20,8 @@ Class Hooks {
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
 	 *
-	 * @param OutputPage &$out
-	 * @param ParserOutput $parseroutput
+	 * @param \OutputPage &$out
+	 * @param \ParserOutput $parseroutput
 	 * @return bool true
 	 */
 	public static function onOutputPageParserOutput( \OutputPage &$out, \ParserOutput $parseroutput ) {

@@ -435,7 +435,7 @@ semEx.ui.ContextPopup.prototype = {
 		if( this._orientation.horizontal === this.ORIENTATION.LEFT ) {
 			// expand to left
 			divPopup.addClass( this.POPUP_CLASS + '-fromleft' );
-			posX += this._subject.offset().left + this._subject.outerWidth() - divPopup.outerWidth() // <<left
+			posX += this._subject.offset().left + this._subject.outerWidth() - divPopup.outerWidth(); // <<left
 		} else {
 			// expand to right
 			divPopup.addClass( this.POPUP_CLASS + '-fromright' );

@@ -18,7 +18,7 @@ class ShortQueryProcessor {
 	 * Processes a 'Semantic Expressiveness' Short Qery as given by an array of parameters as usually
 	 * given by the '?' and '?!' parser functions.
 	 * 
-	 * @param parser Parser
+	 * @param parser \Parser
 	 * @param rawParams array unprocessed parameters
 	 * 
 	 * @return array
@@ -39,7 +39,7 @@ class ShortQueryProcessor {
 	 * Optionally there can be a ShortQueryResultOptions object passed to retain a certain
 	 * kind of output from the short query.
 	 *
-	 * @param Parser $parser
+	 * @param \Parser $parser
 	 * @param ShortQuery $query
 	 * @param ShortQueryOutputOptions $options
 	 * 

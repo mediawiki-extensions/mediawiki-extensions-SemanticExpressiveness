@@ -1,6 +1,6 @@
 <?php
 namespace SemEx;
-use Parser, Title, HTML, DOMNode;
+use Parser, Title, HTML, DOMNode, DOMDocument, SMWDataItem;
 use SMWDataValueFactory;
 
 /**
@@ -40,7 +40,7 @@ class ShortQueryResult {
 	 *        result is datermined, the query itself must not be modified.
 	 * @param Parser $parser specifies the Parser context in which the result will be released as
 	 *        a more human readable final output over various output functions of the object.
-	 * @param SMWDataItem[] $result optionally allows to pre-define the result. If not set, the
+	 * @param \SMWDataItem[] $result optionally allows to pre-define the result. If not set, the
 	 *        result of the query will be queried on demand. To start the query the result
 	 *        immediately, getRawResult() can be called after construction.
 	 */
@@ -77,7 +77,7 @@ class ShortQueryResult {
 	 * 
 	 * @param bool $forceRefresh if set to true, the result will be queried even though it was queried
 	 *        before. Once queried, the result will be cached.
-	 * @return SMWDataItem[]|null
+	 * @return \SMWDataItem[]|null
 	 */
 	public function getRawResult( $forceRefresh = false ) {
 		if( ! $forceRefresh && $this->queryExecuted() ) {
@@ -576,7 +576,7 @@ class ShortQueryResult {
 	 * @param bool $getNode if set to true, this will return the DOMNode containing the
 	 *        requested information instead of just returning the 'title' attributes content.
 	 * 
-	 * @return string|DOMNodeList|null
+	 * @return string|\DOMNodeList|null
 	 */
 	protected static function extractInfoFromDOM( DOMNode $node, $info, $getNode = false ) {
 		if( ! $node->hasChildNodes() ) {

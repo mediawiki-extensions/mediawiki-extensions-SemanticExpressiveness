@@ -50,8 +50,8 @@ abstract class PFParamsBasedFactory {
 	 * accessed by the $validator parameter.
 	 * 
 	 * @param array $params raw parameters as values, parameter names as keys
-	 * @param type $validator
-	 * @param type $unknownInvalid
+	 * @param Validator $validator
+	 * @param bool $unknownInvalid
 	 * @return __CLASS__ 
 	 */
 	public static function newFromParamsArray(

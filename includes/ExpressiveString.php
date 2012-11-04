@@ -1,6 +1,8 @@
 <?php
 namespace SemEx;
 
+use Parser;
+
 /**
  * Instances of this can process a string which potentially contains one or several ShortQueryResult
  * representations. Once initialized, this will offer access to all failed and successful short query
@@ -32,7 +34,7 @@ class ExpressiveString {
 	 * @param array|string $enabledPieceTypes allows to define which expressive types should be
 	 *        detected. See static::getRegisteredPieceTypes() for all possible types.
 	 */
-	function __construct( $string, \Parser $parser, $enabledPieceTypes = null ) {
+	function __construct( $string, Parser $parser, $enabledPieceTypes = null ) {
 		if( $enabledPieceTypes === null ) {
 			$enabledPieceTypes = static::getRegisteredPieceTypes();
 		}
