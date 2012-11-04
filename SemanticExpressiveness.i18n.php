@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'semex-shortquery-hover-loading' => 'Loading',
 	'semex-shortquery-hover-loading-failed' => 'Loading the content of the short query\'s target page has failed.',
 	'semex-shortquery-error-missing-property' => 'No value defined for the queried property.',
-	'semex-shortquery-error-byref-has-many-values' => 'The given reference property has more than one value, only the first one was taken as the queries target.',
+	'semex-shortquery-error-byref-has-many-values' => 'The given reference property has more than one value, only the first one was taken as the query\'s target.',
 	'semex-shortquery-error-byref-has-wrong-type' => 'The given reference property should be one of type "Page".',
 	'semex-shortquery-error-failed-nested-queries' => 'Short query can not be executed because nested short query failed.',
 	'semex-expressivestring-unresolvable' => 'Unresolvable markup',
@@ -39,7 +39,8 @@ $messages['qqq'] = array(
 	'semex-shortquery-title-from-ref' => 'Description of a query by a reference. Says which property got queried from which reference (a reference is a property of type "Page" defined on the same page) Parameters:
 * $1: semantic property name
 * $2: another semantic property name of the same page',
-	'semex-shortquery-error-missing-property' => '{{identical|Property}}',
+	'semex-shortquery-hover-loading-failed' => 'When hovering over a short query result, a tooltip will appear. This tooltip will try to load the content of the short queries target page. If this loading fails for some reason, this message will be displayed.',
+	'semex-shortquery-error-missing-property' => 'Message displayed in a tooltip when hovering over a failed short query where the reason for the failure is that the queried property has no value on the query\'s target page.',
 	'semex-shortquery-error-byref-has-many-values' => '{{Identical|Property}}',
 	'semex-shortquery-error-byref-has-wrong-type' => '{{Identical|Property}}
 {{Identical|Type}}',
@@ -61,7 +62,7 @@ $messages['de'] = array(
 	'semex-shortquery-title' => '$1 von $2',
 	'semex-shortquery-title-from-ref' => '$1 von Referenz $2',
 	'semex-shortquery-hover-loading' => 'Lädt …',
-	'semex-shortquery-hover-loading-failed' => 'Das Laden der Inhalte, der mit der Kurzabfrage abgefragten Seiten, schlug fehl.',
+	'semex-shortquery-hover-loading-failed' => 'Das Laden des Inhaltes, der mit der Kurzabfrage abgefragten Seite, schlug fehl.',
 	'semex-shortquery-error-missing-property' => 'Für das abgefragte Attribut wurde kein Wert angegeben.',
 	'semex-shortquery-error-byref-has-many-values' => 'Das angegebene Referenzattribut verfügt über mehr als einen Wert. Lediglich der erste Wert wurde als Abfrageziel genutzt.',
 	'semex-shortquery-error-byref-has-wrong-type' => 'Das angegebene Referenzattribut sollte vom Datentyp „Seite“ sein.',
