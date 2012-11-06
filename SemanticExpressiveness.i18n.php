@@ -39,9 +39,9 @@ $messages['qqq'] = array(
 	'semex-shortquery-title-from-ref' => 'Description of a query by a reference. Says which property got queried from which reference (a reference is a property of type "Page" defined on the same page) Parameters:
 * $1: semantic property name
 * $2: another semantic property name of the same page',
-	'semex-shortquery-hover-loading-failed' => 'When hovering over a short query result, a tooltip will appear. This tooltip will try to load the content of the short queries target page. If this loading fails for some reason, this message will be displayed.',
-	'semex-shortquery-error-missing-property' => 'Message displayed in a tooltip when hovering over a failed short query where the reason for the failure is that the queried property has no value on the query\'s target page.',
-	'semex-shortquery-error-byref-has-many-values' => '{{Identical|Property}}',
+	'semex-shortquery-hover-loading-failed' => 'When hovering over a short query result, a tooltip will appear. This tooltip will try to load the content of the short queries target page. If this loading fails for some reason, this message will be displayed.', # Fuzzy
+	'semex-shortquery-error-missing-property' => "Message displayed in a tooltip when hovering over a failed short query where the reason for the failure is that the queried property has no value on the query's target page.",
+	'semex-shortquery-error-byref-has-many-values' => '{{Identical|Property}}', # Fuzzy
 	'semex-shortquery-error-byref-has-wrong-type' => '{{Identical|Property}}
 {{Identical|Type}}',
 );
@@ -106,9 +106,9 @@ $messages['fr'] = array(
 	'semex-shortquery-title' => '$1 sur $2',
 	'semex-shortquery-title-from-ref' => '$1 référencé par $2',
 	'semex-shortquery-hover-loading' => 'Chargement',
-	'semex-shortquery-hover-loading-failed' => 'Le chargement du contenu des pages trouvées par la requête courte a échoué.',
+	'semex-shortquery-hover-loading-failed' => 'Le chargement du contenu des pages trouvées par la requête courte a échoué.', # Fuzzy
 	'semex-shortquery-error-missing-property' => 'Aucune valeur définie pour la propriété interrogée.',
-	'semex-shortquery-error-byref-has-many-values' => "La propriété de référence donnée a plus d'une valeur, seule la première a été prise comme cible des requêtes.",
+	'semex-shortquery-error-byref-has-many-values' => "La propriété de référence donnée a plus d'une valeur, seule la première a été prise comme cible des requêtes.", # Fuzzy
 	'semex-shortquery-error-byref-has-wrong-type' => 'La propriété de référence donnée doit être de type « Page ».',
 	'semex-shortquery-error-failed-nested-queries' => 'La requête courte ne peut être exécutée parce que la requête courte imbriquée a échoué.',
 	'semex-expressivestring-unresolvable' => 'Balisage insoluble',
