@@ -99,6 +99,7 @@ $messages['es'] = array(
 
 /** French (français)
  * @author DavidL
+ * @author Gomoko
  * @author Nicolas NALLET
  */
 $messages['fr'] = array(
@@ -106,9 +107,9 @@ $messages['fr'] = array(
 	'semex-shortquery-title' => '$1 sur $2',
 	'semex-shortquery-title-from-ref' => '$1 référencé par $2',
 	'semex-shortquery-hover-loading' => 'Chargement',
-	'semex-shortquery-hover-loading-failed' => 'Le chargement du contenu des pages trouvées par la requête courte a échoué.', # Fuzzy
+	'semex-shortquery-hover-loading-failed' => 'Le chargement du contenu de la page des résultats de la requête courte a échoué.',
 	'semex-shortquery-error-missing-property' => 'Aucune valeur définie pour la propriété interrogée.',
-	'semex-shortquery-error-byref-has-many-values' => "La propriété de référence donnée a plus d'une valeur, seule la première a été prise comme cible des requêtes.", # Fuzzy
+	'semex-shortquery-error-byref-has-many-values' => "La propriété de référence fournie a plus d'une valeur, seule la première a été prise comme cible de la requête.",
 	'semex-shortquery-error-byref-has-wrong-type' => 'La propriété de référence donnée doit être de type « Page ».',
 	'semex-shortquery-error-failed-nested-queries' => 'La requête courte ne peut être exécutée parce que la requête courte imbriquée a échoué.',
 	'semex-expressivestring-unresolvable' => 'Balisage insoluble',
@@ -209,7 +210,10 @@ $messages['ja'] = array(
 	'semex-desc' => '表現力豊かな短いクエリーの構文を追加する',
 	'semex-shortquery-title' => '$2 の $1',
 	'semex-shortquery-hover-loading' => '読み込み中',
+	'semex-shortquery-hover-loading-failed' => '短いクエリの対象ページの内容の読み込みに失敗しました。',
 	'semex-shortquery-error-missing-property' => '問い合わせされたプロパティの値は定義されていません。',
+	'semex-shortquery-error-byref-has-many-values' => '指定した参照プロパティには複数の値があります。最初の値のみをクエリの対象として使用します。',
+	'semex-shortquery-error-byref-has-wrong-type' => '指定した参照プロパティは「ページ」型のいずれかである必要があります。',
 	'semex-shortquery-error-failed-nested-queries' => '入れ子の短いクエリーに失敗したため、短いクエリーを実行できません。',
 	'semex-expressivestring-unresolvable' => '解決できないマークアップ',
 );
