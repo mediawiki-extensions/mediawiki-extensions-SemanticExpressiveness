@@ -40,3 +40,9 @@ $magicWords['mk'] = array(
 $magicWords['nl'] = array(
 	'?to?!' => array( 0, '?naar?!' ),
 );
+
+/** Uzbek (oʻzbekcha) */
+$magicWords['uz'] = array(
+	'?' => array( 0, '?' ),
+	'?!' => array( 0, '?!' ),
+);
