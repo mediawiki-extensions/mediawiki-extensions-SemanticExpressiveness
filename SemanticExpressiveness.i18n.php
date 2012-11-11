@@ -29,10 +29,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Daniel Werner
  * @author Kghbln
+ * @author Shirayuki
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'semex-desc' => '{{desc}}',
+	'semex-desc' => '{{desc|name=Semantic Expressiveness|url=http://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness}}',
 	'semex-shortquery-title' => 'Description of a simple query. Says which property got queried from which page. Parameters:
 * $1: semantic property name
 * $2: page the query got the property value from',
