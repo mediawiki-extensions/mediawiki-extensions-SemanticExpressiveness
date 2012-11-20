@@ -57,13 +57,14 @@ $messages['br'] = array(
 /** German (Deutsch)
  * @author Daniel Werner
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
 	'semex-desc' => 'Ermöglicht eine vereinfachte Syntax für eingebettete Abfragen',
 	'semex-shortquery-title' => '$1 von $2',
 	'semex-shortquery-title-from-ref' => '$1 von Referenz $2',
 	'semex-shortquery-hover-loading' => 'Lädt …',
-	'semex-shortquery-hover-loading-failed' => 'Das Laden des Inhaltes, der mit der Kurzabfrage abgefragten Seite, schlug fehl.',
+	'semex-shortquery-hover-loading-failed' => 'Das Laden des Inhaltes der mit der Kurzabfrage abgefragten Seite schlug fehl.',
 	'semex-shortquery-error-missing-property' => 'Für das abgefragte Attribut wurde kein Wert angegeben.',
 	'semex-shortquery-error-byref-has-many-values' => 'Das angegebene Referenzattribut verfügt über mehr als einen Wert. Lediglich der erste Wert wurde als Abfrageziel genutzt.',
 	'semex-shortquery-error-byref-has-wrong-type' => 'Das angegebene Referenzattribut sollte vom Datentyp „Seite“ sein.',
@@ -225,6 +226,14 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'semex-shortquery-title' => '$1 $2-დან', # Fuzzy
 	'semex-shortquery-hover-loading' => 'იტვირთება',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'semex-shortquery-hover-loading' => 'Ben am Lade&nbsp;…',
+	'semex-shortquery-hover-loading-failed' => 'Wat bei dä koote Aanfroor_erus kohm kunnte mer nit afroofe.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
