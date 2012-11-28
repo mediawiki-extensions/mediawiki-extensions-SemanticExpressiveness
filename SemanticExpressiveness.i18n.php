@@ -99,6 +99,14 @@ $messages['es'] = array(
 	'semex-expressivestring-unresolvable' => 'Marcado irresoluble',
 );
 
+/** Finnish (suomi)
+ * @author Nedergard
+ */
+$messages['fi'] = array(
+	'semex-shortquery-title' => '$1 sivulta $2',
+	'semex-shortquery-hover-loading' => 'Ladataan',
+);
+
 /** French (français)
  * @author DavidL
  * @author Gomoko
