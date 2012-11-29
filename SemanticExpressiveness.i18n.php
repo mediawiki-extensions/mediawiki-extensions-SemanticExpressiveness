@@ -105,6 +105,8 @@ $messages['es'] = array(
 $messages['fi'] = array(
 	'semex-shortquery-title' => '$1 sivulta $2',
 	'semex-shortquery-hover-loading' => 'Ladataan',
+	'semex-shortquery-error-byref-has-many-values' => 'Valitulla viiteominaisuudella on monta arvoa, kysely otti huomioon vain ensimmäisen.',
+	'semex-shortquery-error-byref-has-wrong-type' => 'Valitun viiteominaisuuden tyypin pitäisi olla "Sivu".',
 );
 
 /** French (français)
