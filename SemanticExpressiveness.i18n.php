@@ -240,7 +240,7 @@ $messages['ja'] = array(
  * @author David1010
  */
 $messages['ka'] = array(
-	'semex-shortquery-title' => '$1 $2-დან', # Fuzzy
+	'semex-shortquery-title' => '$1 $2-თვის',
 	'semex-shortquery-hover-loading' => 'იტვირთება',
 );
 
