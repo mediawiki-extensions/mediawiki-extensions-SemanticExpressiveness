@@ -321,6 +321,14 @@ $messages['ro'] = array(
 	'semex-shortquery-hover-loading' => 'Se încarcă',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'semex-shortquery-title' => '$1 න් $2',
+	'semex-shortquery-hover-loading' => 'ප්‍රවේශනය වෙමින්',
+);
+
 /** Swedish (svenska)
  * @author Martinwiss
  */
@@ -351,6 +359,14 @@ $messages['tl'] = array(
 	'semex-shortquery-error-byref-has-wrong-type' => 'Ang ibinigay na katangiang-ari ng sanggunian ay dapat na isang may uring "Pahina".',
 	'semex-shortquery-error-failed-nested-queries' => 'Hindi maisasakatuparan ang maiksing pagtatanong dahil nabigo ang nakapugad na maiksing pagtatanong.',
 	'semex-expressivestring-unresolvable' => 'Hindi malulutasang pagmamarka',
+);
+
+/** Ukrainian (українська)
+ * @author Steve.rusyn
+ */
+$messages['uk'] = array(
+	'semex-shortquery-title' => '$1 з $2',
+	'semex-shortquery-hover-loading' => 'Завантаження',
 );
 
 /** Urdu (اردو)
