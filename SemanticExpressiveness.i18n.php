@@ -300,6 +300,22 @@ $messages['nl'] = array(
 	'semex-expressivestring-unresolvable' => 'De opmaak wordt niet begrepen',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'semex-desc' => 'A gionta na sintass për anterogassion curte pi espressive',
+	'semex-shortquery-title' => '$1 ëd $2',
+	'semex-shortquery-title-from-ref' => '$1 da ref $2',
+	'semex-shortquery-hover-loading' => 'A caria',
+	'semex-shortquery-hover-loading-failed' => "Carié ël contnù dla pagina ëd destinassion dl'anterogassion curta a l'ha falì.",
+	'semex-shortquery-error-missing-property' => 'Gnun valor definì për la propietà ciamà.',
+	'semex-shortquery-error-byref-has-many-values' => "La propietà d'arferiment ciamà a l'ha pi d'un valor, mach ël prim a l'é stait pijà com destinassion dl'anterogassion.",
+	'semex-shortquery-error-byref-has-wrong-type' => 'La propietà d\'arferiment dàita a dovrìa esse un-a ëd sòrt "Pagina".',
+	'semex-shortquery-error-failed-nested-queries' => "J'anterogassion curte a peulo pa esse fàite përchè l'anterogassion curta anidà a l'ha falì.",
+	'semex-expressivestring-unresolvable' => 'Marcadura pa arzolvìbil.',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -343,6 +359,13 @@ $messages['sv'] = array(
 	'semex-shortquery-error-byref-has-wrong-type' => 'Den givna referensegenskapen ska vara av typen "Sida".',
 	'semex-shortquery-error-failed-nested-queries' => 'Den korta frågan kunde inte köras eftersom ihopkopplade korta frågor fungerade inte.',
 	'semex-expressivestring-unresolvable' => 'Kodning som inte går att klara upp',
+);
+
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'semex-shortquery-hover-loading' => 'ஏற்றப்படுகிறது',
 );
 
 /** Tagalog (Tagalog)
