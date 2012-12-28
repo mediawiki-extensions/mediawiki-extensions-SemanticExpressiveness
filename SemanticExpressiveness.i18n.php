@@ -337,6 +337,14 @@ $messages['ro'] = array(
 	'semex-shortquery-hover-loading' => 'Se încarcă',
 );
 
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-hover-loading' => 'Stoche a careche',
+);
+
 /** Sinhala (සිංහල)
  * @author පසිඳු කාවින්ද
  */
