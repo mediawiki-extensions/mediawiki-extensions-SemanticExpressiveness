@@ -350,7 +350,9 @@ $messages['roa-tara'] = array(
  */
 $messages['si'] = array(
 	'semex-shortquery-title' => '$1 න් $2',
+	'semex-shortquery-title-from-ref' => '$1 ගෙන් ref $2',
 	'semex-shortquery-hover-loading' => 'ප්‍රවේශනය වෙමින්',
+	'semex-expressivestring-unresolvable' => 'නොවිසඳිය හැකි අධිකය',
 );
 
 /** Swedish (svenska)
