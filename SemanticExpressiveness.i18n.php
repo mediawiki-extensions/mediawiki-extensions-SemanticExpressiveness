@@ -52,9 +52,11 @@ Parameters:
 );
 
 /** Breton (brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
+	'semex-shortquery-title' => '$1 diwar $2',
 	'semex-shortquery-hover-loading' => 'O kargañ...',
 );
 
