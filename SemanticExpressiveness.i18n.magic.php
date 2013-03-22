@@ -31,6 +31,11 @@ $magicWords['as'] = array(
 	'?to?!' => array( 0, '?_লৈ_?_!' ),
 );
 
+/** Esperanto (Esperanto) */
+$magicWords['eo'] = array(
+	'?to?!' => array( 0, '?al?!' ),
+);
+
 /** Korean (한국어) */
 $magicWords['ko'] = array(
 	'?to?!' => array( 0, '?에서?!로' ),
