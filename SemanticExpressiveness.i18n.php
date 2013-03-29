@@ -274,6 +274,15 @@ $messages['lb'] = array(
 	'semex-shortquery-hover-loading' => 'Lueden',
 );
 
+/** Mizo (Mizo ţawng)
+ * @author RMizo
+ */
+$messages['lus'] = array(
+	'semex-shortquery-title' => '$2-a $1',
+	'semex-shortquery-title-from-ref' => 'Kawhna $2 aṭanga $1',
+	'semex-shortquery-hover-loading' => 'Nghak lawks...',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
