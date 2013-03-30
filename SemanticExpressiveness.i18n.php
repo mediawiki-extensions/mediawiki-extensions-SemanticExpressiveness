@@ -431,3 +431,12 @@ $messages['ur'] = array(
 $messages['vi'] = array(
 	'semex-shortquery-hover-loading' => 'Đang tải...',
 );
+
+/** Simplified Chinese (中文（简体）‎)
+ * @author Yfdyh000
+ */
+$messages['zh-hans'] = array(
+	'semex-desc' => '添加一个更富有表现力的短查询语法',
+	'semex-shortquery-hover-loading' => '正在载入',
+	'semex-shortquery-error-missing-property' => '查询的属性没有定义的值。',
+);
