@@ -24,7 +24,7 @@ $magicWords['ar'] = array(
 	'?to?!' => array( 0, '؟إلى؟!' ),
 );
 
-/** Assamese (অসমীয়া) */
+/** Assamese (অসমীয়া) */
 $magicWords['as'] = array(
 	'?' => array( 0, '?' ),
 	'?!' => array( 0, '?_!' ),
