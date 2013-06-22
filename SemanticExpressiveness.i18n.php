@@ -271,6 +271,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'semex-shortquery-title' => '$1 vu(n) $2',
+	'semex-shortquery-title-from-ref' => '$1 referenzéiert vu(n) $2',
 	'semex-shortquery-hover-loading' => 'Lueden',
 );
 
