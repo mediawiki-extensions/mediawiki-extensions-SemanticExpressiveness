@@ -359,6 +359,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title-from-ref' => '$1 da rif $2',
 	'semex-shortquery-hover-loading' => 'Stoche a careche',
 );
 
