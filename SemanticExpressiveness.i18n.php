@@ -44,6 +44,7 @@ Parameters:
 Parameters:
 * $1 - semantic property name
 * $2 - another semantic property name of the same page',
+	'semex-shortquery-hover-loading' => '{{Identical|Loading}}',
 	'semex-shortquery-hover-loading-failed' => 'When hovering over a short query result, a tooltip will appear. This tooltip will try to load the content of the short queries target page. If this loading fails for some reason, this message will be displayed.',
 	'semex-shortquery-error-missing-property' => "Message displayed in a tooltip when hovering over a failed short query where the reason for the failure is that the queried property has no value on the query's target page.",
 	'semex-shortquery-error-byref-has-many-values' => '',
