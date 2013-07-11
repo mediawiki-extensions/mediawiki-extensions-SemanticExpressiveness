@@ -36,6 +36,13 @@ $magicWords['eo'] = array(
 	'?to?!' => array( 0, '?al?!' ),
 );
 
+/** Persian (فارسی) */
+$magicWords['fa'] = array(
+	'?' => array( 0, '؟' ),
+	'?!' => array( 0, '؟!' ),
+	'?to?!' => array( 0, '؟به؟!' ),
+);
+
 /** Korean (한국어) */
 $magicWords['ko'] = array(
 	'?to?!' => array( 0, '?에서?!로' ),
