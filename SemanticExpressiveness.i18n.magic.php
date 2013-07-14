@@ -43,6 +43,11 @@ $magicWords['fa'] = array(
 	'?to?!' => array( 0, '؟به؟!' ),
 );
 
+/** French (français) */
+$magicWords['fr'] = array(
+	'?to?!' => array( 0, '?à?!' ),
+);
+
 /** Korean (한국어) */
 $magicWords['ko'] = array(
 	'?to?!' => array( 0, '?에서?!로' ),
