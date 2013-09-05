@@ -52,6 +52,22 @@ Parameters:
 {{Identical|Type}}',
 );
 
+/** Asturian (asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'semex-desc' => 'Amiesta una sintaxis para consultes curties más espresives',
+	'semex-shortquery-title' => '$1 de $2',
+	'semex-shortquery-title-from-ref' => '$1 de la ref $2',
+	'semex-shortquery-hover-loading' => 'Cargando',
+	'semex-shortquery-hover-loading-failed' => 'Falló la carga del conteníu de la páxina de destín de la consulta curtia.',
+	'semex-shortquery-error-missing-property' => 'Nun se definió nengún valor pa la propiedá consultada.',
+	'semex-shortquery-error-byref-has-many-values' => "La propiedá de la referencia dada tien más d'un valor, tomóse namái el primeru como destín de la consulta.",
+	'semex-shortquery-error-byref-has-wrong-type' => 'La propiedá de la referencia dada tien de ser de tipu "Páxina".',
+	'semex-shortquery-error-failed-nested-queries' => 'No se pue executar la consulta curtia porque falló la consulta curtia añerada.',
+	'semex-expressivestring-unresolvable' => 'Nun se pue resolver el llinguax de marques',
+);
+
 /** Breton (brezhoneg)
  * @author Fohanno
  * @author Fulup
