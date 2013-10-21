@@ -470,10 +470,14 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (中文（简体）‎)
+ * @author Liuxinyu970226
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'semex-desc' => '添加一个更富有表现力的短查询语法',
+	'semex-shortquery-title' => '$2的$1',
+	'semex-shortquery-title-from-ref' => '从ref$2的$1',
 	'semex-shortquery-hover-loading' => '正在载入',
 	'semex-shortquery-error-missing-property' => '查询的属性没有定义的值。',
+	'semex-expressivestring-unresolvable' => '无法解析的标记',
 );
