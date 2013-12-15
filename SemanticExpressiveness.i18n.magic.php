@@ -31,6 +31,11 @@ $magicWords['as'] = array(
 	'?to?!' => array( 0, '?_লৈ_?_!' ),
 );
 
+/** Zazaki (Zazaki) */
+$magicWords['diq'] = array(
+	'?to?!' => array( 0, '?ra?!' ),
+);
+
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'?to?!' => array( 0, '?al?!' ),
