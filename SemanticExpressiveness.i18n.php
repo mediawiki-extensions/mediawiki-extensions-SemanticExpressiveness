@@ -494,6 +494,10 @@ $messages['zh-hans'] = array(
 	'semex-shortquery-title' => '$2的$1',
 	'semex-shortquery-title-from-ref' => '从ref$2的$1',
 	'semex-shortquery-hover-loading' => '正在载入',
+	'semex-shortquery-hover-loading-failed' => '加载短查询的目标页面内容已失败。',
 	'semex-shortquery-error-missing-property' => '查询的属性没有定义的值。',
+	'semex-shortquery-error-byref-has-many-values' => '提供的参考属性有多个值，只采用了第一个作为查询目标。',
+	'semex-shortquery-error-byref-has-wrong-type' => '提供的参考属性的类型应该为“页面”。',
+	'semex-shortquery-error-failed-nested-queries' => '由于嵌套短查询失败，不能进行短查询。',
 	'semex-expressivestring-unresolvable' => '无法解析的标记',
 );
