@@ -122,6 +122,13 @@ $messages['es'] = array(
 	'semex-expressivestring-unresolvable' => 'Marcado irresoluble',
 );
 
+/** Persian (فارسی)
+ * @author Reza1615
+ */
+$messages['fa'] = array(
+	'semex-shortquery-hover-loading' => 'بارگیری',
+);
+
 /** Finnish (suomi)
  * @author Nedergard
  */
