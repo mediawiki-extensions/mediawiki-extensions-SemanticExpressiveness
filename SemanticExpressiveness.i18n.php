@@ -274,6 +274,13 @@ $messages['ka'] = array(
 	'semex-shortquery-hover-loading' => 'იტვირთება',
 );
 
+/** Korean (한국어)
+ * @author Priviet
+ */
+$messages['ko'] = array(
+	'semex-shortquery-hover-loading' => '불러오는 중',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
