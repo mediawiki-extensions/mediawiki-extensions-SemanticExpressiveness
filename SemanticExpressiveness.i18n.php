@@ -278,7 +278,10 @@ $messages['ka'] = array(
  * @author Priviet
  */
 $messages['ko'] = array(
+	'semex-shortquery-title' => '$2의 $1',
+	'semex-shortquery-title-from-ref' => '$2 참조에서 $1',
 	'semex-shortquery-hover-loading' => '불러오는 중',
+	'semex-expressivestring-unresolvable' => '해결할 수 없는 마크업',
 );
 
 /** Colognian (Ripoarisch)
