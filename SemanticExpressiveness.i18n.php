@@ -278,6 +278,7 @@ $messages['ka'] = array(
  * @author Priviet
  */
 $messages['ko'] = array(
+	'semex-desc' => '구체적이고 짧은 쿼리 구문을 추가',
 	'semex-shortquery-title' => '$2의 $1',
 	'semex-shortquery-title-from-ref' => '$2 참조에서 $1',
 	'semex-shortquery-hover-loading' => '불러오는 중',
