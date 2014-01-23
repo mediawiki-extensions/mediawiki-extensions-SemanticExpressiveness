@@ -282,6 +282,11 @@ $messages['ko'] = array(
 	'semex-shortquery-title' => '$2의 $1',
 	'semex-shortquery-title-from-ref' => '$2 참조에서 $1',
 	'semex-shortquery-hover-loading' => '불러오는 중',
+	'semex-shortquery-hover-loading-failed' => '쿼리의 대상 문서의 내용을 불러오는 데 실패했습니다.',
+	'semex-shortquery-error-missing-property' => '쿼리된 속성에 정의된 값이 없습니다.',
+	'semex-shortquery-error-byref-has-many-values' => '주어진 참조 속성이 하나 이상의 값을 가지고 첫 번째 속성을 쿼리의 대상으로 가져야 합니다.',
+	'semex-shortquery-error-byref-has-wrong-type' => '주어진 참조 속성은 "문서"의 형태 중 하나여야 합니다.',
+	'semex-shortquery-error-failed-nested-queries' => '중첩된 단순 쿼리가 실패하여 단순 쿼리를 실행할 수 없습니다.',
 	'semex-expressivestring-unresolvable' => '해결할 수 없는 마크업',
 );
 
