@@ -123,9 +123,11 @@ $messages['es'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Armin1392
  * @author Reza1615
  */
 $messages['fa'] = array(
+	'semex-shortquery-title' => '$1 از $2',
 	'semex-shortquery-hover-loading' => 'بارگیری',
 );
 
