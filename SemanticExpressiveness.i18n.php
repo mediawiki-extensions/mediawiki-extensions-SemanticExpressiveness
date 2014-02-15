@@ -358,6 +358,13 @@ $messages['nl'] = array(
 	'semex-expressivestring-unresolvable' => 'De opmaak wordt niet begrepen',
 );
 
+/** Polish (polski)
+ * @author Chrumps
+ */
+$messages['pl'] = array(
+	'semex-shortquery-title' => '$1 z $2',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
