@@ -24,6 +24,13 @@ $magicWords['ar'] = array(
 	'?to?!' => array( 0, '؟إلى؟!' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$magicWords['arz'] = array(
+	'?' => array( 0, '؟' ),
+	'?!' => array( 0, '؟!' ),
+	'?to?!' => array( 0, '؟ل؟!' ),
+);
+
 /** Assamese (অসমীয়া) */
 $magicWords['as'] = array(
 	'?' => array( 0, '?' ),
@@ -72,4 +79,14 @@ $magicWords['nl'] = array(
 $magicWords['uz'] = array(
 	'?' => array( 0, '?' ),
 	'?!' => array( 0, '?!' ),
+);
+
+/** Simplified Chinese (中文（简体）‎) */
+$magicWords['zh-hans'] = array(
+	'?to?!' => array( 0, '?至?!' ),
+);
+
+/** Traditional Chinese (中文（繁體）‎) */
+$magicWords['zh-hant'] = array(
+	'?to?!' => array( 0, '?至?!' ),
 );
