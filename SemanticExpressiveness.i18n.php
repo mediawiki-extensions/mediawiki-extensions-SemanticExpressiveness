@@ -128,6 +128,7 @@ $messages['es'] = array(
  */
 $messages['fa'] = array(
 	'semex-shortquery-title' => '$1 از $2',
+	'semex-shortquery-title-from-ref' => '$1از منبع $2',
 	'semex-shortquery-hover-loading' => 'بارگیری',
 );
 
