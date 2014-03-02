@@ -127,9 +127,16 @@ $messages['es'] = array(
  * @author Reza1615
  */
 $messages['fa'] = array(
+	'semex-desc' => 'افزودن یک نحو برای صف‌های کوتاه گویاتر',
 	'semex-shortquery-title' => '$1 از $2',
 	'semex-shortquery-title-from-ref' => '$1از منبع $2',
 	'semex-shortquery-hover-loading' => 'بارگیری',
+	'semex-shortquery-hover-loading-failed' => 'بارگذاری محتوای هدف صف کوتاه صفحه انجام نشد.',
+	'semex-shortquery-error-missing-property' => 'هیچ مقداری برای خاصیت پرسیدن تعریف تعریف نشده‌است.',
+	'semex-shortquery-error-byref-has-many-values' => 'خاصیت منبع داده شده بیش از یک مقدار دارد، فقط اولی به عنوان هدف سوال قرار گرفته شده‌بود.',
+	'semex-shortquery-error-byref-has-wrong-type' => 'خاصیت منبع داد شده باید یک نوع "صفحه" باشد.',
+	'semex-shortquery-error-failed-nested-queries' => 'سوال کوتاه نمی‌تواند اجرا شود زیرا ساختن سوال کوتاه انجام نشد.',
+	'semex-expressivestring-unresolvable' => 'نشانه‌گذاری نشدنى',
 );
 
 /** Finnish (suomi)
