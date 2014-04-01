@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Purodha"
+        ]
+    },
+    "semex-desc": "Brängk en eijfache Schprooch för enjeboute koote Affroore för et Söhke.",
+    "semex-shortquery-title": "$1 vun $2",
+    "semex-shortquery-title-from-ref": "„$1“ mem Bezoch op „$2“",
+    "semex-shortquery-hover-loading": "Ben am Lade&nbsp;…",
+    "semex-shortquery-hover-loading-failed": "Wat bei dä koote Aanfroor_erus kohm kunnte mer nit afroofe.",
+    "semex-shortquery-error-missing-property": "För di Eijeschaff es op dä Sigg keine Wäät aanjejovve.",
+    "semex-shortquery-error-byref-has-many-values": "Di aanjejovve Bezochs_Eijeschaff hät mieh wi eine Wäät. Mer han bloß der eezde dervun als e Ziel för di Frooch jenumme.",
+    "semex-shortquery-error-byref-has-wrong-type": "De Eijeschaff för dä Bezoch sullt vun dä Zoot „Sigg“ sin.",
+    "semex-shortquery-error-failed-nested-queries": "Di koote Frooch kunnt nit beärbeit wääde, weil dren änthallde koote Froore dernävve jejange sin.",
+    "semex-expressivestring-unresolvable": "Di Keu_Befähle kam_mer nit verschtonn."
+}

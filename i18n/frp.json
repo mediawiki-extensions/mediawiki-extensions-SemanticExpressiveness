@@ -1,0 +1,10 @@
+{
+    "@metadata": {
+        "authors": [
+            "ChrisPtDe"
+        ]
+    },
+    "semex-shortquery-title": "$1 de $2",
+    "semex-shortquery-title-from-ref": "$1 refèrenciê per $2",
+    "semex-shortquery-hover-loading": "Chargement"
+}

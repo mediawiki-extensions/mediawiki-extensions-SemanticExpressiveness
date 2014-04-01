@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "Erdemaslancan",
+            "Mirzali"
+        ]
+    },
+    "semex-shortquery-title": "$2 ra $1",
+    "semex-shortquery-title-from-ref": "$2ref ra $1",
+    "semex-shortquery-hover-loading": "Bar beno..."
+}

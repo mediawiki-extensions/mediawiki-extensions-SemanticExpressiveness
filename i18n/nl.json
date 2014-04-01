@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Siebrand"
+        ]
+    },
+    "semex-desc": "Voegt syntaxis toe voor meer expressieve korte zoekopdrachten",
+    "semex-shortquery-title": "$1 van $2",
+    "semex-shortquery-title-from-ref": "$1 van referentie $2",
+    "semex-shortquery-hover-loading": "Bezig met laden...",
+    "semex-shortquery-hover-loading-failed": "Het laden van de inhoud van de doelpagina's voor de korte zoekopdrachten is mislukt.",
+    "semex-shortquery-error-missing-property": "Er is geen waarde ingesteld voor de opgegeven eigenschap.",
+    "semex-shortquery-error-byref-has-many-values": "De opgegeven referentie-eigenschap heeft meer dan één waarde. Alleen de eerst is genomen als het doel voor de zoekopdracht.",
+    "semex-shortquery-error-byref-has-wrong-type": "De opgegeven referentie-eigenschap hoort van het type \"Page\" te zijn.",
+    "semex-shortquery-error-failed-nested-queries": "Korte zoekopdracht kan niet uitgevoerd worden omdat de geneste korte zoekopdracht is mislukt.",
+    "semex-expressivestring-unresolvable": "De opmaak wordt niet begrepen"
+}

@@ -1,0 +1,16 @@
+{
+    "@metadata": {
+        "authors": [
+            "Shirayuki"
+        ]
+    },
+    "semex-desc": "より表現力豊かな短いクエリのための構文を追加する",
+    "semex-shortquery-title": "$2 の $1",
+    "semex-shortquery-hover-loading": "読み込み中",
+    "semex-shortquery-hover-loading-failed": "短いクエリの対象ページの内容の読み込みに失敗しました。",
+    "semex-shortquery-error-missing-property": "問い合わせされたプロパティの値は定義されていません。",
+    "semex-shortquery-error-byref-has-many-values": "指定した参照プロパティには複数の値があります。最初の値のみをクエリの対象として使用します。",
+    "semex-shortquery-error-byref-has-wrong-type": "指定した参照プロパティは「ページ」型のいずれかである必要があります。",
+    "semex-shortquery-error-failed-nested-queries": "入れ子の短いクエリに失敗したため、短いクエリを実行できません。",
+    "semex-expressivestring-unresolvable": "解決できないマークアップ"
+}

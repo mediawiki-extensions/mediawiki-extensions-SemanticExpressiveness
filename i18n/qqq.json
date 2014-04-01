@@ -1,0 +1,18 @@
+{
+    "@metadata": {
+        "authors": [
+            "Daniel Werner",
+            "Kghbln",
+            "Shirayuki",
+            "Siebrand"
+        ]
+    },
+    "semex-desc": "{{desc|name=Semantic Expressiveness|url=http://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness}}",
+    "semex-shortquery-title": "Description of a simple query. Says which property got queried from which page.\n\nParameters:\n* $1 - semantic property name\n* $2 - page the query got the property value from",
+    "semex-shortquery-title-from-ref": "Description of a query by a reference. Says which property got queried from which reference (a reference is a property of type \"Page\" defined on the same page).\n\nParameters:\n* $1 - semantic property name\n* $2 - another semantic property name of the same page",
+    "semex-shortquery-hover-loading": "{{Identical|Loading}}",
+    "semex-shortquery-hover-loading-failed": "When hovering over a short query result, a tooltip will appear. This tooltip will try to load the content of the short queries target page. If this loading fails for some reason, this message will be displayed.",
+    "semex-shortquery-error-missing-property": "Message displayed in a tooltip when hovering over a failed short query where the reason for the failure is that the queried property has no value on the query's target page.",
+    "semex-shortquery-error-byref-has-many-values": "",
+    "semex-shortquery-error-byref-has-wrong-type": "{{Identical|Property}}\n{{Identical|Type}}"
+}

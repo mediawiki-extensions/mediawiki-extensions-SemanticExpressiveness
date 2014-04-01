@@ -10,7 +10,6 @@ namespace SemEx;
  * Support:       https://www.mediawiki.org/wiki/Extension_talk:Semantic_Expressiveness
  * Source code:   https://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SemanticExpressiveness
  *
- * @version: 0.1 alpha
  * @license: ISC License
  * @author: Daniel Werner < danweetz@web.de >
  *
@@ -38,7 +37,8 @@ $wgExtensionCredits[ defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'
 $wgHooks['ParserFirstCallInit'][] = 'SemEx\Ext::init';
 
 // language files:
-$wgExtensionMessagesFiles['SemEx'     ] = Ext::getDir() . '/SemanticExpressiveness.i18n.php';
+$wgMessagesDirs['SemanticExpressiveness'] = __DIR__ . '/i18n';
+$wgExtensionMessagesFiles['SemanticExpressiveness'] = Ext::getDir() . '/SemanticExpressiveness.i18n.php';
 $wgExtensionMessagesFiles['SemExMagic'] = Ext::getDir() . '/SemanticExpressiveness.i18n.magic.php';
 
 // Resource Loader Modules:
@@ -92,7 +92,7 @@ define( 'SEMEX_EXPR_PIECE_WIKILINK', ExpressiveStringPieceWikiLink::getType() );
 
 class Ext {
 
-	const VERSION = '0.1 alpha';
+	const VERSION = '0.2.0 alpha';
 
 	static function init( &$parser ) {
 		$parser->setFunctionHook( '?',  array( 'SemEx\QueryPF', 'render' ), SFH_NO_HASH );

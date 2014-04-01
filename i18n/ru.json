@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Okras"
+        ]
+    },
+    "semex-desc": "Добавляет синтаксис для более выразительных коротких запросов",
+    "semex-shortquery-title": "$1 из $2",
+    "semex-shortquery-title-from-ref": "$1 из ссылки $2",
+    "semex-shortquery-hover-loading": "Загрузка",
+    "semex-shortquery-hover-loading-failed": "Загрузка содержимого целевой страницы короткого запроса не удалась.",
+    "semex-shortquery-error-missing-property": "Значение для запрашиваемого свойства не определено.",
+    "semex-shortquery-error-byref-has-many-values": "Данное ссылочное свойство имеется более одного значения, только первое из них было взято в качестве цели запроса.",
+    "semex-shortquery-error-byref-has-wrong-type": "Заданное ссылочное свойство должно быть одним из имеющих тип «Страница».",
+    "semex-shortquery-error-failed-nested-queries": "Короткий запрос не может быть выполнен, поскольку вложенный короткий запрос завершился неудачно.",
+    "semex-expressivestring-unresolvable": "Неразрешимая разметка"
+}

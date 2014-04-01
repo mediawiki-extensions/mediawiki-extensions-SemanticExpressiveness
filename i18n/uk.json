@@ -1,0 +1,19 @@
+{
+    "@metadata": {
+        "authors": [
+            "Andriykopanytsia",
+            "Steve.rusyn",
+            "SteveR"
+        ]
+    },
+    "semex-desc": "Додає синтаксис для виразніших коротких запитів",
+    "semex-shortquery-title": "$1 з $2",
+    "semex-shortquery-title-from-ref": "$1 від посилання $2",
+    "semex-shortquery-hover-loading": "Завантаження",
+    "semex-shortquery-hover-loading-failed": "Не вдалося завантажити вміст цільової сторінки короткого запиту.",
+    "semex-shortquery-error-missing-property": "Значення не визначено для запитаних властивості.",
+    "semex-shortquery-error-byref-has-many-values": "Властивість поданого посилання має більше одного значення, тому тільки перше значення взяте як ціль запиту.",
+    "semex-shortquery-error-byref-has-wrong-type": "Властивість даного посилання має бути типу „Сторінка“.",
+    "semex-shortquery-error-failed-nested-queries": "Короткий запит не може бути виконаний, бо короткий вкладений запит провалився.",
+    "semex-expressivestring-unresolvable": "Невирішена розмітка"
+}

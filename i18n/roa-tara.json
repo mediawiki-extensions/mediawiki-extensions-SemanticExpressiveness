@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Joetaras"
+        ]
+    },
+    "semex-desc": "Aggiunge 'na sindasse pe 'nderrogaziune cchiù corte e espressive",
+    "semex-shortquery-title": "$1 de $2",
+    "semex-shortquery-title-from-ref": "$1 da rif $2",
+    "semex-shortquery-hover-loading": "Stoche a careche",
+    "semex-shortquery-hover-loading-failed": "'U carecamende d'u condenute d'a pàgene de destinazione de l'inderrogazione corte ave fallite.",
+    "semex-shortquery-error-missing-property": "Nisciune valore definite pa probbietà 'nderrogate.",
+    "semex-shortquery-error-byref-has-many-values": "'A probbietà de refèrimende date ave cchiù de 'nu valore, sulamende 'u prime avène pigghiate cumme destinazione de l'inderrogazione.",
+    "semex-shortquery-error-byref-has-wrong-type": "'A probbietà de refèrimende date avessa essere de tipe \"Pàgene\".",
+    "semex-shortquery-error-failed-nested-queries": "L'inderrogazione corte non ge pò essere eseguite purcé l'inderrogazione nidificate ave fallite.",
+    "semex-expressivestring-unresolvable": "Marcatore irrisolvibbile"
+}

@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Toliño"
+        ]
+    },
+    "semex-desc": "Engade unha sintaxe para posibilitar unhas pescudas breves máis expresivas",
+    "semex-shortquery-title": "$1 de \"$2\"",
+    "semex-shortquery-title-from-ref": "$1 da referencia $2",
+    "semex-shortquery-hover-loading": "Cargando",
+    "semex-shortquery-hover-loading-failed": "Erro ao cargar os contidos das páxinas de destino atopadas polas pescudas breves.",
+    "semex-shortquery-error-missing-property": "Non hai definido ningún valor para a propiedade pescudada.",
+    "semex-shortquery-error-byref-has-many-values": "A propiedade de referencia achegada ten máis dun valor; cóllese unicamente o primeiro como obxectivo da pescuda.",
+    "semex-shortquery-error-byref-has-wrong-type": "A propiedade de referencia achegada debe ser do tipo \"Páxina\".",
+    "semex-shortquery-error-failed-nested-queries": "Non se pode executar a pescuda breve porque houbo un erro na pescuda breve aniñada.",
+    "semex-expressivestring-unresolvable": "Formato irresoluble"
+}

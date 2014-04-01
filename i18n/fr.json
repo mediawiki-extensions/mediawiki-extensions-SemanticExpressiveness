@@ -1,0 +1,19 @@
+{
+    "@metadata": {
+        "authors": [
+            "DavidL",
+            "Gomoko",
+            "Nicolas NALLET"
+        ]
+    },
+    "semex-desc": "Ajoute une syntaxe pour des requêtes courtes plus expressives",
+    "semex-shortquery-title": "$1 sur $2",
+    "semex-shortquery-title-from-ref": "$1 référencé par $2",
+    "semex-shortquery-hover-loading": "Chargement",
+    "semex-shortquery-hover-loading-failed": "Le chargement du contenu de la page des résultats de la requête courte a échoué.",
+    "semex-shortquery-error-missing-property": "Aucune valeur définie pour la propriété interrogée.",
+    "semex-shortquery-error-byref-has-many-values": "La propriété de référence fournie a plus d'une valeur, seule la première a été prise comme cible de la requête.",
+    "semex-shortquery-error-byref-has-wrong-type": "La propriété de référence donnée doit être de type « Page ».",
+    "semex-shortquery-error-failed-nested-queries": "La requête courte ne peut être exécutée parce que la requête courte imbriquée a échoué.",
+    "semex-expressivestring-unresolvable": "Balisage insoluble"
+}
