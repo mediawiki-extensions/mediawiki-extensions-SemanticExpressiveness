@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Fohanno",
-            "Fulup"
-        ]
-    },
-    "semex-shortquery-title": "$1 diwar $2",
-    "semex-shortquery-hover-loading": "O kargañ..."
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Fulup"
+		]
+	},
+	"semex-shortquery-title": "$1 diwar $2",
+	"semex-shortquery-hover-loading": "O kargañ..."
 }

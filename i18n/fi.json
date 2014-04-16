@@ -1,17 +1,17 @@
 {
-    "@metadata": {
-        "authors": [
-            "Nedergard"
-        ]
-    },
-    "semex-desc": "Lisää yksinkertaistetun syntaksin lyhyille kyselyille",
-    "semex-shortquery-title": "$1 sivulta $2",
-    "semex-shortquery-title-from-ref": "$1 käyttää viitettä $2",
-    "semex-shortquery-hover-loading": "Ladataan",
-    "semex-shortquery-hover-loading-failed": "Lyhyen kyselyn kohdesivun sisällön lataus epäonnistui.",
-    "semex-shortquery-error-missing-property": "Kyselyn ominaisuudella ei ole arvoja.",
-    "semex-shortquery-error-byref-has-many-values": "Valitulla viiteominaisuudella on monta arvoa, kysely otti huomioon vain ensimmäisen.",
-    "semex-shortquery-error-byref-has-wrong-type": "Valitun viiteominaisuuden tyypin pitäisi olla \"Sivu\".",
-    "semex-shortquery-error-failed-nested-queries": "Lyhyttä kyselyä ei voida suorittaa, koska sisäkkäinen lyhyt kysely epäonnistui.",
-    "semex-expressivestring-unresolvable": "Kooditusta oli mahdoton tulkita"
+	"@metadata": {
+		"authors": [
+			"Nedergard"
+		]
+	},
+	"semex-desc": "Lisää yksinkertaistetun syntaksin lyhyille kyselyille",
+	"semex-shortquery-title": "$1 sivulta $2",
+	"semex-shortquery-title-from-ref": "$1 käyttää viitettä $2",
+	"semex-shortquery-hover-loading": "Ladataan",
+	"semex-shortquery-hover-loading-failed": "Lyhyen kyselyn kohdesivun sisällön lataus epäonnistui.",
+	"semex-shortquery-error-missing-property": "Kyselyn ominaisuudella ei ole arvoja.",
+	"semex-shortquery-error-byref-has-many-values": "Valitulla viiteominaisuudella on monta arvoa, kysely otti huomioon vain ensimmäisen.",
+	"semex-shortquery-error-byref-has-wrong-type": "Valitun viiteominaisuuden tyypin pitäisi olla \"Sivu\".",
+	"semex-shortquery-error-failed-nested-queries": "Lyhyttä kyselyä ei voida suorittaa, koska sisäkkäinen lyhyt kysely epäonnistui.",
+	"semex-expressivestring-unresolvable": "Kooditusta oli mahdoton tulkita"
 }

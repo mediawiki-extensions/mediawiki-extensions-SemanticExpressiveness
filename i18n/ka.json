@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "David1010"
-        ]
-    },
-    "semex-shortquery-title": "$1 $2-თვის",
-    "semex-shortquery-hover-loading": "იტვირთება"
+	"@metadata": {
+		"authors": [
+			"David1010"
+		]
+	},
+	"semex-shortquery-title": "$1 $2-თვის",
+	"semex-shortquery-hover-loading": "იტვირთება"
 }

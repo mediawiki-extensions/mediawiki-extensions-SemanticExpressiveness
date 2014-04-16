@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Chrumps"
-        ]
-    },
-    "semex-shortquery-title": "$1 z $2"
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"semex-shortquery-title": "$1 z $2"
 }

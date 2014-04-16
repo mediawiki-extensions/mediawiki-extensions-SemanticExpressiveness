@@ -1,18 +1,18 @@
 {
-    "@metadata": {
-        "authors": [
-            "Borichèt",
-            "Dragonòt"
-        ]
-    },
-    "semex-desc": "A gionta na sintassi për dj'anterogassion curte pi espressive",
-    "semex-shortquery-title": "$1 ëd $2",
-    "semex-shortquery-title-from-ref": "$1 da la corëspondensa $2",
-    "semex-shortquery-hover-loading": "A caria",
-    "semex-shortquery-hover-loading-failed": "La caria dël contnù dla pàgina dj'arzultà dl'anterogassion curta a l'ha falì.",
-    "semex-shortquery-error-missing-property": "Gnun valor definì për la propietà ciamà.",
-    "semex-shortquery-error-byref-has-many-values": "La propietà d'arferiment ciamà a l'ha pi d'un valor, mach ël prim a l'é stàit pijà com destinassion dl'anterogassion.",
-    "semex-shortquery-error-byref-has-wrong-type": "La propietà d'arferiment dàita a dovrìa esse ëd sòrt «Pàgina».",
-    "semex-shortquery-error-failed-nested-queries": "J'anterogassion curte a peulo pa esse fàite përchè l'anterogassion curta anidà a l'ha falì.",
-    "semex-expressivestring-unresolvable": "Marcadura pa arzolvìbil."
+	"@metadata": {
+		"authors": [
+			"Borichèt",
+			"Dragonòt"
+		]
+	},
+	"semex-desc": "A gionta na sintassi për dj'anterogassion curte pi espressive",
+	"semex-shortquery-title": "$1 ëd $2",
+	"semex-shortquery-title-from-ref": "$1 da la corëspondensa $2",
+	"semex-shortquery-hover-loading": "A caria",
+	"semex-shortquery-hover-loading-failed": "La caria dël contnù dla pàgina dj'arzultà dl'anterogassion curta a l'ha falì.",
+	"semex-shortquery-error-missing-property": "Gnun valor definì për la propietà ciamà.",
+	"semex-shortquery-error-byref-has-many-values": "La propietà d'arferiment ciamà a l'ha pi d'un valor, mach ël prim a l'é stàit pijà com destinassion dl'anterogassion.",
+	"semex-shortquery-error-byref-has-wrong-type": "La propietà d'arferiment dàita a dovrìa esse ëd sòrt «Pàgina».",
+	"semex-shortquery-error-failed-nested-queries": "J'anterogassion curte a peulo pa esse fàite përchè l'anterogassion curta anidà a l'ha falì.",
+	"semex-expressivestring-unresolvable": "Marcadura pa arzolvìbil."
 }

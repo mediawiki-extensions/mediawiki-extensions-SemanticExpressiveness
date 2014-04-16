@@ -1,17 +1,17 @@
 {
-    "@metadata": {
-        "authors": [
-            "AnakngAraw"
-        ]
-    },
-    "semex-desc": "Nagdaragdag ng isang palaugnayan para sa mas mapagpahayag na maiikling mga pagtatanong",
-    "semex-shortquery-title": "$1 mula sa $2",
-    "semex-shortquery-title-from-ref": "$1 mula sa sangguniang $2",
-    "semex-shortquery-hover-loading": "Ikinakarga",
-    "semex-shortquery-hover-loading-failed": "Nabigo ang pagkakarga ng nilalaman ng mga pahinang puntirya ng maiiksing mga pagtatanong.",
-    "semex-shortquery-error-missing-property": "Walang inilarawang halaga para sa itinatanong na katangiang-ari.",
-    "semex-shortquery-error-byref-has-many-values": "Ang ibinigay na katangiang-ari ng sanggunian ay mas mahigit kaysa sa isang halaga, tanging ang nauna lamang ang kinuha bilang pinupukol ng mga pagtatanong.",
-    "semex-shortquery-error-byref-has-wrong-type": "Ang ibinigay na katangiang-ari ng sanggunian ay dapat na isang may uring \"Pahina\".",
-    "semex-shortquery-error-failed-nested-queries": "Hindi maisasakatuparan ang maiksing pagtatanong dahil nabigo ang nakapugad na maiksing pagtatanong.",
-    "semex-expressivestring-unresolvable": "Hindi malulutasang pagmamarka"
+	"@metadata": {
+		"authors": [
+			"AnakngAraw"
+		]
+	},
+	"semex-desc": "Nagdaragdag ng isang palaugnayan para sa mas mapagpahayag na maiikling mga pagtatanong",
+	"semex-shortquery-title": "$1 mula sa $2",
+	"semex-shortquery-title-from-ref": "$1 mula sa sangguniang $2",
+	"semex-shortquery-hover-loading": "Ikinakarga",
+	"semex-shortquery-hover-loading-failed": "Nabigo ang pagkakarga ng nilalaman ng mga pahinang puntirya ng maiiksing mga pagtatanong.",
+	"semex-shortquery-error-missing-property": "Walang inilarawang halaga para sa itinatanong na katangiang-ari.",
+	"semex-shortquery-error-byref-has-many-values": "Ang ibinigay na katangiang-ari ng sanggunian ay mas mahigit kaysa sa isang halaga, tanging ang nauna lamang ang kinuha bilang pinupukol ng mga pagtatanong.",
+	"semex-shortquery-error-byref-has-wrong-type": "Ang ibinigay na katangiang-ari ng sanggunian ay dapat na isang may uring \"Pahina\".",
+	"semex-shortquery-error-failed-nested-queries": "Hindi maisasakatuparan ang maiksing pagtatanong dahil nabigo ang nakapugad na maiksing pagtatanong.",
+	"semex-expressivestring-unresolvable": "Hindi malulutasang pagmamarka"
 }
