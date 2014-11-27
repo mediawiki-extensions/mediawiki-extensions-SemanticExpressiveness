@@ -95,9 +95,9 @@ class Ext {
 	const VERSION = '0.2.0 alpha';
 
 	static function init( &$parser ) {
-		$parser->setFunctionHook( '?',  array( 'SemEx\QueryPF', 'render' ), SFH_NO_HASH );
-		$parser->setFunctionHook( '?!', array( 'SemEx\PlainQueryPF', 'render' ), SFH_NO_HASH );
-		//$parser->setFunctionHook( '?to?!', array( __CLASS__, 'parserFunc_QueryToPlainQuery' ), SFH_NO_HASH );
+		$parser->setFunctionHook( '?',  array( 'SemEx\QueryPF', 'render' ), Parser::SFH_NO_HASH );
+		$parser->setFunctionHook( '?!', array( 'SemEx\PlainQueryPF', 'render' ), Parser::SFH_NO_HASH );
+		//$parser->setFunctionHook( '?to?!', array( __CLASS__, 'parserFunc_QueryToPlainQuery' ), Parser::SFH_NO_HASH );
 		return true;
 	}
 
