@@ -45,7 +45,7 @@ class QueryPF {
 			}
 		}
 		else {
-			$result = smwfEncodeMessages( array( wfMsgForContent( 'smw_iq_disabled' ) ) );
+			$result = smwfEncodeMessages( array( wfMessage( 'smw_iq_disabled' )->inContentLanguage()->text() ) );
 		}
 
 		 return $result;
