@@ -75,7 +75,7 @@ $magicWords['nl'] = array(
 	'?to?!' => array( 0, '?naar?!' ),
 );
 
-/** Uzbek (oʻzbekcha) */
+/** Uzbek (oʻzbekcha/ўзбекча) */
 $magicWords['uz'] = array(
 	'?' => array( 0, '?' ),
 	'?!' => array( 0, '?!' ),
