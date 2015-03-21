@@ -64,6 +64,7 @@ $wgAutoloadClasses['SemEx\ExpressiveStringOutputOptions'] = $incDir . 'Expressiv
 $wgAutoloadClasses['SemEx\ShortQuery'                   ] = $incDir . 'ShortQuery.php';
 $wgAutoloadClasses['SemEx\ShortQueryProcessor'          ] = $incDir . 'ShortQueryProcessor.php';
 $wgAutoloadClasses['SemEx\ShortQueryResult'             ] = $incDir . 'ShortQueryResult.php';
+$wgAutoloadClasses['SemEx\ShortQueryResultException'    ] = $incDir . 'ShortQueryResult.php';
 $wgAutoloadClasses['SemEx\ShortQueryAbstractResult'     ] = $incDir . 'ShortQueryAbstractResult.php';
 $wgAutoloadClasses['SemEx\ShortQueryOutputOptions'      ] = $incDir . 'ShortQueryOutputOptions.php';
 $wgAutoloadClasses['SemEx\PFParamsBasedFactory'         ] = $incDir . 'PFParamsBasedFactory.php';
