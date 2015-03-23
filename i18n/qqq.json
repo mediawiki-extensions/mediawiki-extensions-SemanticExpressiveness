@@ -4,10 +4,11 @@
 			"Daniel Werner",
 			"Kghbln",
 			"Shirayuki",
-			"Siebrand"
+			"Siebrand",
+			"Umherirrender"
 		]
 	},
-	"semex-desc": "{{desc|name=Semantic Expressiveness|url=http://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness}}",
+	"semex-desc": "{{desc|name=Semantic Expressiveness|url=https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness}}",
 	"semex-shortquery-title": "Description of a simple query. Says which property got queried from which page.\n\nParameters:\n* $1 - semantic property name\n* $2 - page the query got the property value from",
 	"semex-shortquery-title-from-ref": "Description of a query by a reference. Says which property got queried from which reference (a reference is a property of type \"Page\" defined on the same page).\n\nParameters:\n* $1 - semantic property name\n* $2 - another semantic property name of the same page",
 	"semex-shortquery-hover-loading": "{{Identical|Loading}}",
