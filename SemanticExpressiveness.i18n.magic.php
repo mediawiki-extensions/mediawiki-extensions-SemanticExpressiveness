@@ -60,6 +60,11 @@ $magicWords['fr'] = array(
 	'?to?!' => array( 0, '?à?!' ),
 );
 
+/** Western Frisian (Frysk) */
+$magicWords['fy'] = array(
+	'?to?!' => array( 0, '?nei?!' ),
+);
+
 /** Korean (한국어) */
 $magicWords['ko'] = array(
 	'?to?!' => array( 0, '?에서?!로' ),
