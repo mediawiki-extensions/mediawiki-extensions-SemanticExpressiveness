@@ -38,6 +38,13 @@ $magicWords['as'] = array(
 	'?to?!' => array( 0, '?_লৈ_?_!' ),
 );
 
+/** Chuvash (Чӑвашла) */
+$magicWords['cv'] = array(
+	'?' => array( 0, '?' ),
+	'?!' => array( 0, '?!' ),
+	'?to?!' => array( 0, '?to?!' ),
+);
+
 /** Zazaki (Zazaki) */
 $magicWords['diq'] = array(
 	'?to?!' => array( 0, '?ra?!' ),
