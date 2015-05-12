@@ -24,7 +24,7 @@ $magicWords['ar'] = array(
 	'?to?!' => array( 0, '؟إلى؟!' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $magicWords['arz'] = array(
 	'?' => array( 0, '؟' ),
 	'?!' => array( 0, '؟!' ),
