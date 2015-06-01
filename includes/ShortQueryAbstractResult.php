@@ -95,10 +95,10 @@ class ShortQueryAbstractResult extends ShortQueryResult {
 			$ret = $property;
 		} elseif( $fromRef ) {
 			// query 'from ref'
-			$ret = wfMsgForContent( 'semex-shortquery-title-from-ref', $property, $source );
+			$ret = wfMessage( 'semex-shortquery-title-from-ref', $property, $source )->inContentLanguage()->text();
 		} else {
 			// query from any other known page or expressive string
-			$ret = wfMsgForContent( 'semex-shortquery-title', $property, $source );
+			$ret = wfMessage( 'semex-shortquery-title', $property, $source )->inContentLanguage()->text();
 		}
 		return $ret;
 	}
