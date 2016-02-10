@@ -367,7 +367,7 @@ class ShortQueryResult {
 			}
 		}
 
-		$out .= HTML::openElement( 'span', array( 'class' => implode( ' ', $sqClasses ) ) );
+		$out .= Html::openElement( 'span', array( 'class' => implode( ' ', $sqClasses ) ) );
 
 		// get all important information to re-create this object:
 		$out .= $this->getSerialization();
@@ -376,7 +376,7 @@ class ShortQueryResult {
 			// data for formatted result:
 			// ( can't quote this since it might contain html data! TODO: perhaps we could just strip this as HTML )
 			// ( this is a problem when using ?to?! having some invalid stuff in here for any reason )
-			$out .= HTML::rawElement( 'span', array( 'class' => 'result'),  $this->getShortWikiText( $linked, $showErrors ) );
+			$out .= Html::rawElement( 'span', array( 'class' => 'result'),  $this->getShortWikiText( $linked, $showErrors ) );
 		}
 		else {
 			$out .= $this->getAbstractResult()->getShortWikiText( $linked, $showErrors );
@@ -384,10 +384,10 @@ class ShortQueryResult {
 
 		if( $showErrors && !empty( $this->errors ) ) {
 			// add errors, except the one saying that the whole thing is a failure:
-			$out .= HTML::rawElement( 'span', array( 'class' => 'errors' ), $this->getErrorTextForFormattedSQ() );
+			$out .= Html::rawElement( 'span', array( 'class' => 'errors' ), $this->getErrorTextForFormattedSQ() );
 		}
 
-		$out .= HTML::closeElement( 'span' );
+		$out .= Html::closeElement( 'span' );
 		return $out;
 	}
 
@@ -402,15 +402,15 @@ class ShortQueryResult {
 	public function getSerialization() {
 		// query target page:
 		$source = ( $this->getSource() === null ) ? ''	: $this->getSource()->getPrefixedText();
-		$out = HTML::element( 'span', array( 'class' => 'source', 'title' => $source ) );
+		$out = Html::element( 'span', array( 'class' => 'source', 'title' => $source ) );
 
 		// queried property:
-		$out .= HTML::element( 'span', array( 'class' => 'type',   'title' => $this->query->getProperty()->getDataItem()->getLabel() ) );
+		$out .= Html::element( 'span', array( 'class' => 'type',   'title' => $this->query->getProperty()->getDataItem()->getLabel() ) );
 
 		$storeName = $this->query->getStoreName();
 		if( $storeName !== '' ) {
 			// only add information about store if default store not in use
-			$out .= HTML::element( 'span', array( 'class' => 'storeSource', 'title' => $storeName ) );
+			$out .= Html::element( 'span', array( 'class' => 'storeSource', 'title' => $storeName ) );
 		}
 
 		if( ! $this->isEmpty() ) {
@@ -420,13 +420,13 @@ class ShortQueryResult {
 				// separate all data values by putting them in their own span each
 				$dataValue = SMWDataValueFactory::newDataItemValue( $dataItem, null );
 				$dataValue = trim( $dataValue->getWikiValue() );
-				$rawValues .= HTML::element( 'span', array( 'title' => $dataValue ) );
+				$rawValues .= Html::element( 'span', array( 'title' => $dataValue ) );
 				/*
 				 * @ToDo: FIXME: Might be a good idea to simply use DataItem default serialization,
 				 *               on the other hand, this would be kind of useless for JavaScript.
 				 */
 			}
-			$out .= HTML::rawElement( 'span', array( 'class' => 'value' ), $rawValues );
+			$out .= Html::rawElement( 'span', array( 'class' => 'value' ), $rawValues );
 		}
 
 		return $out;
