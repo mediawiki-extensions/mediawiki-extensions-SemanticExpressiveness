@@ -4,5 +4,6 @@
 			"Chrumps"
 		]
 	},
-	"semex-shortquery-title": "$1 z $2"
+	"semex-shortquery-title": "$1 z $2",
+	"semex-shortquery-hover-loading": "Wczytywanie"
 }
