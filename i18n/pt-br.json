@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"semex-desc": "Adiciona uma sintaxe para consultas curtas mais expressivas",
+	"semex-shortquery-title": "$1 de $2",
+	"semex-shortquery-title-from-ref": "$1 de referencia $2",
+	"semex-shortquery-hover-loading": "Carregando",
+	"semex-shortquery-hover-loading-failed": "Carregando o conteúdo da página de destino da consulta curta falhou.",
+	"semex-shortquery-error-missing-property": "Nenhum valor definido para a propriedade consultada.",
+	"semex-shortquery-error-byref-has-many-values": "A propriedade de referência dada possui mais de um valor, apenas o primeiro foi tomado como o alvo da consulta.",
+	"semex-shortquery-error-byref-has-wrong-type": "A propriedade de referência dada deve ser de tipo \"Página\".",
+	"semex-shortquery-error-failed-nested-queries": "A consulta curta não pode ser executada porque a consulta curta aninhada falhou.",
+	"semex-expressivestring-unresolvable": "Marcação irresolúvel"
+}
