@@ -1,8 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"SandroHc"
+			"SandroHc",
+			"Hamilton Abreu"
 		]
 	},
-	"semex-shortquery-hover-loading": "A carregar"
+	"semex-desc": "Adiciona uma sintaxe para consultas breves mais expressivas",
+	"semex-shortquery-title": "$1 de $2",
+	"semex-shortquery-title-from-ref": "$1 da referência $2",
+	"semex-shortquery-hover-loading": "A carregar",
+	"semex-shortquery-hover-loading-failed": "O carregamento do conteúdo da página de destino da consulta breve falhou.",
+	"semex-shortquery-error-missing-property": "Não foi definido nenhum valor para a propriedade consultada.",
+	"semex-shortquery-error-byref-has-many-values": "A propriedade de referência fornecida tem mais do que um valor; só foi considerado objetivo da consulta o primeiro valor.",
+	"semex-shortquery-error-byref-has-wrong-type": "A propriedade de referência fornecida deve ser do tipo \"Page\".",
+	"semex-shortquery-error-failed-nested-queries": "A consulta breve não pode ser executada porque a consulta breve intercalada (''nested'') falhou.",
+	"semex-expressivestring-unresolvable": "Notação irresolúvel"
 }
