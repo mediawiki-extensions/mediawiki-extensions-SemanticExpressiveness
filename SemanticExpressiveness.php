@@ -8,7 +8,7 @@ namespace SemEx;
  *
  * Documentation: https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness
  * Support:       https://www.mediawiki.org/wiki/Extension_talk:Semantic_Expressiveness
- * Source code:   https://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SemanticExpressiveness
+ * Source code:   https://phabricator.wikimedia.org/diffusion/ESEX/
  *
  * @license: ISC License
  * @author: Daniel Werner < danweetz@web.de >
@@ -17,28 +17,30 @@ namespace SemEx;
  * @ingroup SemanticExpressiveness
  */
 
-if( !defined( 'MEDIAWIKI' ) ) { die(); }
-
-/**
-if ( version_compare( $wgVersion, '1.20a', '<' ) ) {
-	die( '<b>Error:</b> SemanticExpressiveness requires MediaWiki 1.20 or above.' );
+// Ensure that the script cannot be executed outside of MediaWiki.
+if ( !defined( 'MEDIAWIKI' ) ) {
+    die( 'This is an extension to MediaWiki and cannot be run standalone.' );
 }
-*/
 
-$wgExtensionCredits[ defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other' ][] = array(
-	'path'           => __FILE__,
-	'name'           => 'Semantic Expressiveness',
+// Display extension properties on MediaWiki.
+$wgExtensionCredits['semantic'][] = array(
+	'path' => __FILE__,
+	'name' => 'Semantic Expressiveness',
 	'descriptionmsg' => 'semex-desc',
-	'version'        => Ext::VERSION,
-	'author'         => '[https://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
-	'url'            => 'https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness',
+	'version' => Ext::VERSION,
+	'author' => array(
+		'[https://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
+		'...'
+	),
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Expressiveness',
+	'license-name' => 'ISC'
 );
 
+// register hooks:
 $wgHooks['ParserFirstCallInit'][] = 'SemEx\Ext::init';
 
 // language files:
 $wgMessagesDirs['SemanticExpressiveness'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['SemanticExpressiveness'] = Ext::getDir() . '/SemanticExpressiveness.i18n.php';
 $wgExtensionMessagesFiles['SemExMagic'] = Ext::getDir() . '/SemanticExpressiveness.i18n.magic.php';
 
 // Resource Loader Modules:
@@ -93,7 +95,7 @@ define( 'SEMEX_EXPR_PIECE_WIKILINK', ExpressiveStringPieceWikiLink::getType() );
 
 class Ext {
 
-	const VERSION = '0.2.0 alpha';
+	const VERSION = '0.3.0-alpha';
 
 	static function init( &$parser ) {
 		$parser->setFunctionHook( '?',  array( 'SemEx\QueryPF', 'render' ), Parser::SFH_NO_HASH );
