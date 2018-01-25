@@ -3,7 +3,8 @@
 		"authors": [
 			"DavidL",
 			"Gomoko",
-			"Nicolas NALLET"
+			"Nicolas NALLET",
+			"Wladek92"
 		]
 	},
 	"semex-desc": "Ajoute une syntaxe pour des requêtes courtes plus expressives",
@@ -15,5 +16,5 @@
 	"semex-shortquery-error-byref-has-many-values": "La propriété de référence fournie a plus d'une valeur, seule la première a été prise comme cible de la requête.",
 	"semex-shortquery-error-byref-has-wrong-type": "La propriété de référence donnée doit être de type « Page ».",
 	"semex-shortquery-error-failed-nested-queries": "La requête courte ne peut être exécutée parce que la requête courte imbriquée a échoué.",
-	"semex-expressivestring-unresolvable": "Balisage insoluble"
+	"semex-expressivestring-unresolvable": "Balisage non résolvable"
 }
