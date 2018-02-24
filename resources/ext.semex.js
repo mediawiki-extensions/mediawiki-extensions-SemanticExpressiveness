@@ -14,7 +14,7 @@ var semanticExpressiveness = new ( function( mw, $, undefined ) {
 	// make sure rest of the module is loaded first
 	mw.loader.using( 'ext.semex', function() {
 		// Initialize user interface stuff when dom ready (can be ready before or after module loaded)
-		$( document ).ready( function() {
+		$( function() {
 
 			// add popup ui functionality to short query results:
 			var globalShortQueryInfoCache = new semanticExpressiveness.ui.ShortQueryHover.Cache();
