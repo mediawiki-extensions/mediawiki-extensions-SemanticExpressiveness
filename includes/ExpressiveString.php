@@ -477,7 +477,7 @@ class ExpressiveString {
 
 		// allow other extensions to handle further expressive string pieces
 		// TODO: might not be good to use __CLASS__ here
-		wfRunHooks( __CLASS__ . 'PieceTypesRegistration' , array( &$types ) );
+		Hooks::run( __CLASS__ . 'PieceTypesRegistration' , array( &$types ) );
 
 		return $types;
 	}
