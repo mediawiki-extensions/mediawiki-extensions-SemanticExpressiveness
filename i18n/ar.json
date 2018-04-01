@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"ديفيد"
+		]
+	},
+	"semex-desc": "يضيف بناء جملة لاستعلامات قصيرة أكثر تعبيرا",
+	"semex-shortquery-title": "$1 من $2",
+	"semex-shortquery-title-from-ref": "$1 من مر $2",
+	"semex-shortquery-hover-loading": "جارٍ التحميل",
+	"semex-shortquery-hover-loading-failed": "فشل تحميل محتوى الصفحة المستهدفة للاستعلام القصير.",
+	"semex-shortquery-error-missing-property": "لم يتم تحديد قيمة للخاصية التي تم الاستعلام عنها.",
+	"semex-shortquery-error-byref-has-many-values": "تحتوي الخاصية المرجعية المعينة على أكثر من قيمة واحدةك حيث تم أخذ القيمة الأولى فقط كهدف الاستعلام.",
+	"semex-shortquery-error-byref-has-wrong-type": "يجب أن تكون الخاصية المرجعية المحددة واحدة من النوع \"صفحة\".",
+	"semex-shortquery-error-failed-nested-queries": "لا يمكن تنفيذ استعلام قصير بسبب فشل استعلام قصير متداخل.",
+	"semex-expressivestring-unresolvable": "ترميز غير قابل للحل"
+}
